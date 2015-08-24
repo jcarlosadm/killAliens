@@ -1,5 +1,7 @@
 package br.com.killaliens.ship;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
@@ -7,6 +9,7 @@ import br.com.killaliens.ammunition.AmmunitionFactory;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.status.Life;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -26,7 +29,11 @@ public abstract class Ship extends Actor {
     
     private Rectangle limits = new Rectangle();
     
-    private Animation animations = null;
+    private Map<String, Animation> animations = new HashMap<String, Animation>();
+    
+    private Animation currentAnimation = null;
+    
+    private float elapsedTime = 0;
     
     /**
      * Constructor
@@ -87,6 +94,11 @@ public abstract class Ship extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
+        this.elapsedTime += Gdx.graphics.getDeltaTime();
+        batch.draw(this.currentAnimation.getKeyFrame(this.elapsedTime, true), 
+                this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
+                this.getWidth(), this.getHeight(), this.getScaleX(), 
+                this.getScaleY(), this.getRotation());
     }
     
     /**
@@ -184,6 +196,29 @@ public abstract class Ship extends Actor {
         if (bullet.getLimits().overlaps(this.limits)) {
             return true;
         }
+        return false;
+    }
+    
+    public void addAnimation(String key, Animation animation){
+        this.animations.put(key, animation);
+    }
+    
+    public boolean removeAnimation(String key){
+        if (this.animations.containsKey(key)) {
+            this.animations.remove(key);
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public boolean setAnimation(String key){
+        if (this.animations.containsKey(key)) {
+            this.currentAnimation = this.animations.get(key);
+            this.elapsedTime = 0;
+            return true;
+        }
+        
         return false;
     }
 }
