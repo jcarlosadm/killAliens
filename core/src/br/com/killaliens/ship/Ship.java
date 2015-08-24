@@ -8,6 +8,7 @@ import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.ammunition.AmmunitionFactory;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.status.Life;
+import br.com.killaliens.util.AnimationTypes;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -29,7 +30,8 @@ public abstract class Ship extends Actor {
     
     private Rectangle limits = new Rectangle();
     
-    private Map<String, Animation> animations = new HashMap<String, Animation>();
+    private Map<AnimationTypes, Animation> animations = 
+            new HashMap<AnimationTypes, Animation>();
     
     private Animation currentAnimation = null;
     
@@ -199,11 +201,11 @@ public abstract class Ship extends Actor {
         return false;
     }
     
-    public void addAnimation(String key, Animation animation){
+    public void addAnimation(AnimationTypes key, Animation animation){
         this.animations.put(key, animation);
     }
     
-    public boolean removeAnimation(String key){
+    public boolean removeAnimation(AnimationTypes key){
         if (this.animations.containsKey(key)) {
             this.animations.remove(key);
             return true;
@@ -212,7 +214,7 @@ public abstract class Ship extends Actor {
         return false;
     }
     
-    public boolean setAnimation(String key){
+    public boolean setAnimation(AnimationTypes key){
         if (this.animations.containsKey(key)) {
             this.currentAnimation = this.animations.get(key);
             this.elapsedTime = 0;
