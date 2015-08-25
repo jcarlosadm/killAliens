@@ -40,6 +40,12 @@ public class Bullet extends Actor {
     }
     
     @Override
+    public void act(float delta) {
+        // TODO Auto-generated method stub
+        super.act(delta);
+    }
+    
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
