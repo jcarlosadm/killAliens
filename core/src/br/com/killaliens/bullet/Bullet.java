@@ -1,5 +1,6 @@
 package br.com.killaliens.bullet;
 
+import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.Speed;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -15,8 +16,8 @@ public class Bullet extends Actor {
     private boolean enemyBullet = false;
     
     private Speed speed = new Speed(MINSPEEDX, MINSPEEDY);
-    private int firePower = MINFIREPOWER;
-    
+    private FirePower firePower = new FirePower(MINFIREPOWER);
+
     public Bullet(BulletProperties properties) {
         this.setX(properties.getPositionX());
         this.setY(properties.getPositionY());
@@ -27,7 +28,7 @@ public class Bullet extends Actor {
         this.speed.setSpeedX(properties.getSpeedX());
         this.speed.setSpeedY(properties.getSpeedY());
         
-        this.firePower = properties.getFirePower();
+        this.firePower.setFirePower(properties.getFirePower());
         this.enemyBullet = properties.isEnemyBullet();
     }
     
@@ -72,6 +73,14 @@ public class Bullet extends Actor {
     }
     
     public int getFirePower(){
-        return this.firePower;
+        return this.firePower.getFirePower();
+    }
+    
+    public boolean colliding(Ship ship){
+        if (ship.getLimits().overlaps(this.limits)) {
+            // TODO implement
+            return true;
+        }
+        return false;
     }
 }

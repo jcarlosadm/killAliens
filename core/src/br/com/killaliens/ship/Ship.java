@@ -217,6 +217,13 @@ public abstract class Ship extends Actor {
         return false;
     }
     
+    public boolean colliding(Ship ship){
+        if (ship.getLimits().overlaps(this.limits)) {
+            return true;
+        }
+        return false;
+    }
+    
     public void addAnimation(AnimationTypes key, Animation animation){
         this.animations.put(key, animation);
     }
@@ -246,5 +253,9 @@ public abstract class Ship extends Actor {
     
     public void setIfIsEnemy(boolean enemy){
         this.enemy = enemy;
+    }
+    
+    public final Rectangle getLimits(){
+        return this.limits;
     }
 }
