@@ -14,7 +14,7 @@ public class ShipProperties {
 
     private Life life = null;
     private int shield = 0;
-    private AmmunitionTypes basicAmmunition = AmmunitionTypes.SINGLESHOOT;
+    private AmmunitionTypes basicAmmunition = AmmunitionTypes.NORMALBULLET;
 
     /**
      * @return the positionX
