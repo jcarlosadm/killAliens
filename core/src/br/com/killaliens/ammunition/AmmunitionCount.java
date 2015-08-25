@@ -1,11 +1,11 @@
 package br.com.killaliens.ammunition;
 
-public class AmmunitionTotal {
-    private int totalBullets;
-    private int currentBullets;
-    private boolean infinity;
+public class AmmunitionCount {
+    private int totalBullets = 1;
+    private int currentBullets = 1;
+    private boolean infinity = false;
 
-    public AmmunitionTotal(int totalBullets, int currentBullets,
+    public AmmunitionCount(int totalBullets, int currentBullets,
             boolean infinity) {
         this.totalBullets = totalBullets;
         this.currentBullets = currentBullets;

@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
-import br.com.killaliens.ammunition.AmmunitionFactory;
 import br.com.killaliens.bullet.Bullet;
+import br.com.killaliens.bullet.factory.CreateBulletParameter;
 import br.com.killaliens.status.Life;
 import br.com.killaliens.util.AnimationTypes;
 
@@ -37,6 +37,8 @@ public abstract class Ship extends Actor {
     
     private float elapsedTime = 0;
     
+    private boolean enemy = false;
+    
     /**
      * Constructor
      * @param properties properties of the ship
@@ -53,8 +55,10 @@ public abstract class Ship extends Actor {
         this.life = properties.getLife();
         this.shield = properties.getShield();
         
-        this.addAmmunition(AmmunitionFactory.MakeAmmunition(
-                properties.getBasicAmmunition()));
+        Ammunition ammunition = new Ammunition(properties.getBasicAmmunition());
+        ammunition.setInfinity(true);
+        
+        this.addAmmunition(ammunition);
     }
     
     @Override
@@ -191,7 +195,16 @@ public abstract class Ship extends Actor {
     }
     
     private void shoot(){
-        // TODO implement
+        CreateBulletParameter cBulletParameter = new CreateBulletParameter();
+        cBulletParameter.setBulletEnemy(this.isEnemy());
+        cBulletParameter.setOriginX(this.getX() + this.getWidth()/2);
+        cBulletParameter.setOriginY(this.getY() + this.getHeight());
+        cBulletParameter.setRotation(this.getRotation());
+        this.ammunitions.peek().makeBullets(cBulletParameter);
+        
+        if (!this.ammunitions.peek().hasAmmunition()) {
+            this.ammunitions.pop();
+        }
     }
     
     public boolean colliding(Bullet bullet){
@@ -222,5 +235,13 @@ public abstract class Ship extends Actor {
         }
         
         return false;
+    }
+    
+    public boolean isEnemy(){
+        return this.enemy;
+    }
+    
+    public void setIfIsEnemy(boolean enemy){
+        this.enemy = enemy;
     }
 }

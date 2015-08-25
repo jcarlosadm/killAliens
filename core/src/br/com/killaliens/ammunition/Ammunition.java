@@ -3,13 +3,13 @@ package br.com.killaliens.ammunition;
 import br.com.killaliens.bullet.factory.BulletFactory;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
 
-public abstract class Ammunition {
+public class Ammunition {
 
     private static final int MINBULLET = 1;
     private static final int MINLEVEL = 1;
-    private static final int MAXLEVEL = 6;
+    private static final int MAXLEVEL = 7;
     
-    private AmmunitionTotal total = new AmmunitionTotal(MINBULLET, MINBULLET, true);
+    private AmmunitionCount ammoCount = new AmmunitionCount(MINBULLET, MINBULLET, false);
     private BulletFactory bulletFactory = null;
     private int level = MINLEVEL;
     
@@ -32,7 +32,7 @@ public abstract class Ammunition {
      * @return the totalBullets
      */
     public int getTotalBullets() {
-        return this.total.getTotalBullets();
+        return this.ammoCount.getTotalBullets();
     }
 
     /**
@@ -40,14 +40,14 @@ public abstract class Ammunition {
      *            the totalBullets to set
      */
     public void setTotalBullets(int totalBullets) {
-        this.total.setTotalBullets(totalBullets);
+        this.ammoCount.setTotalBullets(totalBullets);
     }
 
     /**
      * @return the currentBullets
      */
     public int getCurrentBullets() {
-        return this.total.getCurrentBullets();
+        return this.ammoCount.getCurrentBullets();
     }
 
     /**
@@ -55,14 +55,14 @@ public abstract class Ammunition {
      *            the currentBullets to set
      */
     public void setCurrentBullets(int currentBullets) {
-        this.total.setCurrentBullets(currentBullets);
+        this.ammoCount.setCurrentBullets(currentBullets);
     }
 
     /**
      * @return the infinity
      */
     public boolean isInfinity() {
-        return this.total.isInfinity();
+        return this.ammoCount.isInfinity();
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class Ammunition {
      *            the infinity to set
      */
     public void setInfinity(boolean infinity) {
-        this.total.setInfinity(infinity);
+        this.ammoCount.setInfinity(infinity);
     }
 
     /**
@@ -94,7 +94,8 @@ public abstract class Ammunition {
     
     public void makeBullets(CreateBulletParameter cParameter){
         
-        for (int currentNumBullet = 1; currentNumBullet <= this.level; currentNumBullet++) {
+        for (int currentNumBullet = 1; currentNumBullet <= this.level; 
+                currentNumBullet++) {
             if (!this.hasAmmunition()) {
                 break;
             }
