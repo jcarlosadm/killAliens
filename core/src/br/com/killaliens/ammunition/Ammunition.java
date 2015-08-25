@@ -1,6 +1,7 @@
 package br.com.killaliens.ammunition;
 
 import br.com.killaliens.bullet.factory.BulletFactory;
+import br.com.killaliens.bullet.factory.CreateBulletParameter;
 
 public abstract class Ammunition {
 
@@ -91,18 +92,27 @@ public abstract class Ammunition {
         }
     }
     
-    public void makeBullets(boolean isEnemy, float originX, float originY){
-        int levelCount = this.level;
-        float xValue = 0;
-        float adjust = 0;
+    public void makeBullets(CreateBulletParameter cParameter){
         
-        while (levelCount > 0) {
-            levelCount -= 1;
+        for (int currentNumBullet = 1; currentNumBullet <= this.level; currentNumBullet++) {
+            if (!this.hasAmmunition()) {
+                break;
+            }
             
-            adjust = levelCount * 10;
-            xValue = originX + (levelCount % 2 == 0 ? adjust : adjust * (-1) );
-            this.bulletFactory.createBullet(isEnemy, xValue, originY);
+            if (!this.isInfinity()) {
+                this.setCurrentBullets(this.getCurrentBullets() - 1);
+            }
+            
+            cParameter.setNumBullet(currentNumBullet);
+            this.bulletFactory.createBullet(cParameter);
         }
+    }
+
+    public boolean hasAmmunition() {
+        if (this.isInfinity() || this.getCurrentBullets() > 0) {
+            return true;
+        }
+        return false;
     }
 
 }

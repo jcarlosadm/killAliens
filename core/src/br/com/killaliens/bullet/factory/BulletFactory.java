@@ -20,5 +20,5 @@ public abstract class BulletFactory {
         return null;
     }
     
-    public abstract void createBullet(boolean bulletEnemy, float positionX, float positionY);
+    public abstract void createBullet(CreateBulletParameter parameterObject);
 }
