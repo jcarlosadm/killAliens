@@ -8,6 +8,7 @@ import br.com.killaliens.ammunition.AmmunitionTypes;
  */
 public abstract class BulletFactory {
     
+    protected BulletFactory() {}
     
     public static BulletFactory getFactory(AmmunitionTypes type){
         if (type.equals(AmmunitionTypes.NORMALBULLET)) {

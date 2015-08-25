@@ -1,8 +1,9 @@
 package br.com.killaliens.bullet.factory;
 
+
 public class FastBulletFactory extends BulletFactory {
 
-    public FastBulletFactory() {
+    protected FastBulletFactory() {
         // TODO Auto-generated constructor stub
     }
 

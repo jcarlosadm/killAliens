@@ -1,12 +1,13 @@
 package br.com.killaliens.bullet.factory;
 
+
 public class NullBulletFactory extends BulletFactory {
 
     private static NullBulletFactory instance = null;
     
     private NullBulletFactory() {}
     
-    public static synchronized NullBulletFactory getInstance(){
+    protected static synchronized NullBulletFactory getInstance(){
         if (instance == null) {
             instance = new NullBulletFactory();
         }

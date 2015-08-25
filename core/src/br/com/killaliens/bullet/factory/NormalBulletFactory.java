@@ -1,8 +1,15 @@
 package br.com.killaliens.bullet.factory;
 
+
 public class NormalBulletFactory extends BulletFactory {
 
-    public NormalBulletFactory() {
+    private static final int FIREPOWER = 1;
+    private static final float SPEEDX = 1;
+    private static final float SPEEDY = 1;
+    
+    // TODO add animations
+    
+    protected NormalBulletFactory() {
         // TODO Auto-generated constructor stub
     }
 
@@ -11,5 +18,4 @@ public class NormalBulletFactory extends BulletFactory {
         // TODO Auto-generated method stub
         
     }
-
 }
