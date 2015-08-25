@@ -227,7 +227,7 @@ public abstract class Ship extends Actor {
         return false;
     }
     
-    public boolean setAnimation(AnimationTypes key){
+    public boolean setCurrentAnimation(AnimationTypes key){
         if (this.animations.containsKey(key)) {
             this.currentAnimation = this.animations.get(key);
             this.elapsedTime = 0;
