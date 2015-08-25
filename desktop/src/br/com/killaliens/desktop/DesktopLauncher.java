@@ -10,7 +10,7 @@ import br.com.killaliens.KillAliens;
 
 public class DesktopLauncher {
     private static final double ADJUST_HEIGHT = 0.10;
-    private static final double ADJUST_WIDTH = 0.02;
+    private static final double ADJUST_WIDTH = 0.65;
     
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
