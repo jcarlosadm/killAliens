@@ -17,7 +17,8 @@ public abstract class BulletFactory {
         } else if (type.equals(AmmunitionTypes.FASTBULLET)) {
             return new FastBulletFactory();
         }
-        return null;
+        
+        return NullBulletFactory.getInstance();
     }
     
     public abstract void createBullet(CreateBulletParameter parameterObject);
