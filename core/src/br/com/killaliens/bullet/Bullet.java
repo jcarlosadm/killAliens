@@ -2,7 +2,12 @@ package br.com.killaliens.bullet;
 
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.Speed;
+import br.com.killaliens.util.animation.AnimationManagement;
+import br.com.killaliens.util.animation.AnimationTypes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
@@ -17,6 +22,8 @@ public class Bullet extends Actor {
     
     private Speed speed = new Speed(MINSPEEDX, MINSPEEDY);
     private FirePower firePower = new FirePower(MINFIREPOWER);
+    
+    private AnimationManagement animationData = new AnimationManagement();
 
     public Bullet(BulletProperties properties) {
         this.setX(properties.getPositionX());
@@ -30,6 +37,18 @@ public class Bullet extends Actor {
         
         this.firePower.setFirePower(properties.getFirePower());
         this.enemyBullet = properties.isEnemyBullet();
+    }
+    
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        // TODO Auto-generated method stub
+        super.draw(batch, parentAlpha);
+        
+        this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
+        batch.draw(this.animationData.getCurrentTextureRegion(true), 
+                this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
+                this.getWidth(), this.getHeight(), this.getScaleX(), 
+                this.getScaleY(), this.getRotation());
     }
     
     @Override
@@ -82,5 +101,17 @@ public class Bullet extends Actor {
             return true;
         }
         return false;
+    }
+    
+    public boolean setCurrentAnimation(AnimationTypes key){
+        return this.animationData.setCurrentAnimation(key);
+    }
+    
+    public void addAnimation(AnimationTypes key, Animation animation){
+        this.animationData.addAnimation(key, animation);
+    }
+    
+    public boolean removeAnimation(AnimationTypes key){
+        return this.animationData.removeAnimation(key);
     }
 }

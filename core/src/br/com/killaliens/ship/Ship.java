@@ -1,15 +1,14 @@
 package br.com.killaliens.ship;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
 import br.com.killaliens.status.Life;
-import br.com.killaliens.util.AnimationTypes;
 import br.com.killaliens.util.Speed;
+import br.com.killaliens.util.animation.AnimationManagement;
+import br.com.killaliens.util.animation.AnimationTypes;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -33,12 +32,7 @@ public abstract class Ship extends Actor {
     
     private Rectangle limits = new Rectangle();
     
-    private Map<AnimationTypes, Animation> animations = 
-            new HashMap<AnimationTypes, Animation>();
-    
-    private Animation currentAnimation = null;
-    
-    private float elapsedTime = 0;
+    private AnimationManagement animationData = new AnimationManagement();
     
     private boolean enemy = false;
     
@@ -103,8 +97,8 @@ public abstract class Ship extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
-        this.elapsedTime += Gdx.graphics.getDeltaTime();
-        batch.draw(this.currentAnimation.getKeyFrame(this.elapsedTime, true), 
+        this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
+        batch.draw(this.animationData.getCurrentTextureRegion(true), 
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
                 this.getWidth(), this.getHeight(), this.getScaleX(), 
                 this.getScaleY(), this.getRotation());
@@ -200,6 +194,7 @@ public abstract class Ship extends Actor {
     private void shoot(){
         CreateBulletParameter cBulletParameter = new CreateBulletParameter();
         cBulletParameter.setBulletEnemy(this.isEnemy());
+        // TODO revision
         cBulletParameter.setOriginX(this.getX() + this.getWidth()/2);
         cBulletParameter.setOriginY(this.getY() + this.getHeight());
         cBulletParameter.setRotation(this.getRotation());
@@ -225,26 +220,15 @@ public abstract class Ship extends Actor {
     }
     
     public void addAnimation(AnimationTypes key, Animation animation){
-        this.animations.put(key, animation);
+        this.animationData.addAnimation(key, animation);
     }
     
     public boolean removeAnimation(AnimationTypes key){
-        if (this.animations.containsKey(key)) {
-            this.animations.remove(key);
-            return true;
-        }
-        
-        return false;
+        return this.animationData.removeAnimation(key);
     }
     
     public boolean setCurrentAnimation(AnimationTypes key){
-        if (this.animations.containsKey(key)) {
-            this.currentAnimation = this.animations.get(key);
-            this.elapsedTime = 0;
-            return true;
-        }
-        
-        return false;
+        return this.animationData.setCurrentAnimation(key);
     }
     
     public boolean isEnemy(){
