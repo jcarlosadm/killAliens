@@ -14,4 +14,9 @@ public class FirePower {
     public void setFirePower(int firePower) {
         this.firePower = firePower;
     }
+    
+    public int getDamage(){
+        // TODO implement
+        return 0;
+    }
 }
