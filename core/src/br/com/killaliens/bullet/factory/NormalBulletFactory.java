@@ -1,12 +1,7 @@
 package br.com.killaliens.bullet.factory;
 
-import java.util.Map;
-
+import br.com.killaliens.bullet.FirePower;
 import br.com.killaliens.util.Speed;
-import br.com.killaliens.util.animation.AnimationTypes;
-
-import com.badlogic.gdx.graphics.g2d.Animation;
-
 
 public class NormalBulletFactory extends BulletFactory {
 
@@ -17,13 +12,14 @@ public class NormalBulletFactory extends BulletFactory {
     // TODO define animations
     private static final String[] ANIMATION_NORMAL_FRAMENAMES = {""};
     
-    private static Map<AnimationTypes, Animation> animationsInstance = null;
+    // TODO define animations
+    private static final String[] ANIMATION_DEAD_FRAMENAMES = {""};
     
     protected NormalBulletFactory() {}
 
     @Override
-    protected int getFirePower() {
-        return FIREPOWER;
+    protected FirePower getFirePower() {
+        return new FirePower(FIREPOWER);
     }
 
     @Override
@@ -32,18 +28,12 @@ public class NormalBulletFactory extends BulletFactory {
     }
 
     @Override
-    protected Map<AnimationTypes, Animation> getStaticAnimationsInstance() {
-        return animationsInstance;
-    }
-
-    @Override
-    protected void setStaticAnimationsInstance(
-            Map<AnimationTypes, Animation> animations) {
-        animationsInstance = animations;
-    }
-
-    @Override
-    protected String[] getAnimationNormalFrameNames() {
+    protected String[] getAnimationNormalFramesName() {
         return ANIMATION_NORMAL_FRAMENAMES;
+    }
+
+    @Override
+    protected String[] getAnimationDeadFramesName() {
+        return ANIMATION_DEAD_FRAMENAMES;
     }
 }

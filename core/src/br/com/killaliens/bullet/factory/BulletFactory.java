@@ -1,18 +1,24 @@
 package br.com.killaliens.bullet.factory;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import br.com.killaliens.ammunition.AmmunitionTypes;
+import br.com.killaliens.bullet.FirePower;
+import br.com.killaliens.util.Speed;
+import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.animation.BuildAnimation;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 
-import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.util.Speed;
-import br.com.killaliens.util.animation.AnimationTypes;
-
 /**
  * BulletFactory
- * Using pattern abstract factory
+ * Using pattern factory method (in getFactory)
+ * Using pattern template method (in createBullet and in getAnimations)
  */
 public abstract class BulletFactory {
+    
+    private static final float ANIMATION_FRAMETIME = 15f;
     
     protected BulletFactory() {}
     
@@ -32,14 +38,31 @@ public abstract class BulletFactory {
         // TODO implement
     };
     
-    protected abstract int getFirePower();
+    protected abstract FirePower getFirePower();
     
     protected abstract Speed getSpeed();
     
-    protected abstract String[] getAnimationNormalFrameNames();
+    protected abstract String[] getAnimationNormalFramesName();
     
-    protected abstract Map<AnimationTypes, Animation> getStaticAnimationsInstance();
+    protected abstract String[] getAnimationDeadFramesName();
     
-    protected abstract void setStaticAnimationsInstance(Map<AnimationTypes, 
-            Animation> animations);
+    protected Map<AnimationTypes, Animation> getAnimations(){
+        Map<AnimationTypes, Animation> animations = new HashMap<AnimationTypes, Animation>();
+        
+        this.buildAnimationType(animations, getAnimationNormalFramesName(), 
+                AnimationTypes.NORMAL_STATE);
+        this.buildAnimationType(animations, getAnimationDeadFramesName(), 
+                AnimationTypes.DEAD);
+        
+        return animations;
+    }
+    
+    private void buildAnimationType(Map<AnimationTypes, Animation> animations,
+            String[] frameNames, AnimationTypes stateName){
+        
+        Animation animation = BuildAnimation.build(ANIMATION_FRAMETIME, frameNames);
+        if (animation != null) {
+            animations.put(stateName, animation);
+        }
+    }
 }

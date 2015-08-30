@@ -4,28 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.killaliens.util.image.AtlasLoader;
+import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class BuildAnimation {
-
-    private String atlasPath = "";
     
-    public BuildAnimation(String atlasPath) {
-        this.atlasPath = atlasPath;
-    }
+    private BuildAnimation() {}
     
-    public Animation build(float frametime, String[] frameNames){
-        TextureAtlas atlas = AtlasLoader.getTextureAtlas(this.atlasPath);
-        
+    public static Animation build(float frametime, String[] frameNames){
         List<TextureRegion> textureRegions = new ArrayList<TextureRegion>();
         
         TextureRegion region = null;
         for (String frameName : frameNames) {
-            region = atlas.findRegion(frameName);
+            region = TextureCache.getTextureRegion(frameName);
             if (region != null) {
                 textureRegions.add(region);
             }

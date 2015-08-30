@@ -5,16 +5,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class AtlasLoader {
     
-    private static String currentAtlasPath = "";
+    private static final String ATLAS_PATH = "images/mainAtlas.atlas";
     
     private static TextureAtlas atlasInstance = null;
     
     private AtlasLoader() {}
     
-    public static synchronized TextureAtlas getTextureAtlas(String atlasPath){
-        if (atlasInstance == null || !currentAtlasPath.equals(atlasPath)) {
-            atlasInstance = new TextureAtlas(Gdx.files.internal(atlasPath));
-            currentAtlasPath = atlasPath;
+    public static synchronized TextureAtlas getTextureAtlas(){
+        if (atlasInstance == null) {
+            atlasInstance = new TextureAtlas(Gdx.files.internal(ATLAS_PATH));
         }
         return atlasInstance;
     }

@@ -1,48 +1,41 @@
 package br.com.killaliens.bullet.factory;
 
-import java.util.Map;
-
+import br.com.killaliens.bullet.FirePower;
 import br.com.killaliens.util.Speed;
-import br.com.killaliens.util.animation.AnimationTypes;
-
-import com.badlogic.gdx.graphics.g2d.Animation;
 
 
 public class BigBulletFactory extends BulletFactory {
 
-    protected BigBulletFactory() {
-        // TODO Auto-generated constructor stub
-    }
+    private static final int FIREPOWER = 1;
+    private static final float SPEEDX = 1;
+    private static final float SPEEDY = 1;
+    
+    // TODO define animations
+    private static final String[] ANIMATION_NORMAL_FRAMENAMES = {""};
+    
+    // TODO define animations
+    private static final String[] ANIMATION_DEAD_FRAMENAMES = {""};
+    
+    protected BigBulletFactory() {}
 
     @Override
-    protected int getFirePower() {
-        // TODO Auto-generated method stub
-        return 0;
+    protected FirePower getFirePower() {
+        return new FirePower(FIREPOWER);
     }
 
     @Override
     protected Speed getSpeed() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Speed(SPEEDX, SPEEDY);
     }
 
     @Override
-    protected String[] getAnimationNormalFrameNames() {
-        // TODO Auto-generated method stub
-        return null;
+    protected String[] getAnimationNormalFramesName() {
+        return ANIMATION_NORMAL_FRAMENAMES;
     }
 
     @Override
-    protected Map<AnimationTypes, Animation> getStaticAnimationsInstance() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    protected void setStaticAnimationsInstance(
-            Map<AnimationTypes, Animation> animations) {
-        // TODO Auto-generated method stub
-        
+    protected String[] getAnimationDeadFramesName() {
+        return ANIMATION_DEAD_FRAMENAMES;
     }
 
 }
