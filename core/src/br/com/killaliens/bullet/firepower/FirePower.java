@@ -1,4 +1,4 @@
-package br.com.killaliens.bullet;
+package br.com.killaliens.bullet.firepower;
 
 public class FirePower {
     private int firePower;

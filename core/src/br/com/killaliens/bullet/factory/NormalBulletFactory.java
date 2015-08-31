@@ -1,7 +1,7 @@
 package br.com.killaliens.bullet.factory;
 
-import br.com.killaliens.bullet.FirePower;
-import br.com.killaliens.util.Speed;
+import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.util.speed.Speed;
 
 public class NormalBulletFactory extends BulletFactory {
 

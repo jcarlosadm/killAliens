@@ -1,9 +1,10 @@
 package br.com.killaliens.bullet;
 
+import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.ship.Ship;
-import br.com.killaliens.util.Speed;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -32,10 +33,9 @@ public class Bullet extends Actor {
         this.setHeight(properties.getHeight());
         this.setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
         
-        this.speed.setSpeedX(properties.getSpeedX());
-        this.speed.setSpeedY(properties.getSpeedY());
+        this.speed = properties.getSpeed();
         
-        this.firePower.setFirePower(properties.getFirePower());
+        this.firePower = properties.getFirePower();
         this.enemyBullet = properties.isEnemyBullet();
     }
     

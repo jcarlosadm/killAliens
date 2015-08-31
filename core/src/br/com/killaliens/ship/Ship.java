@@ -6,9 +6,9 @@ import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
 import br.com.killaliens.status.Life;
-import br.com.killaliens.util.Speed;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;

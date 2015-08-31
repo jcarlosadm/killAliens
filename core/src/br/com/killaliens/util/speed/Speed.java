@@ -1,8 +1,8 @@
-package br.com.killaliens.util;
+package br.com.killaliens.util.speed;
 
 public class Speed {
-    private float speedX;
-    private float speedY;
+    private float speedX = 0;
+    private float speedY = 0;
 
     public Speed(float speedX, float speedY) {
         this.speedX = speedX;

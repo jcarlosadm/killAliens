@@ -1,5 +1,10 @@
 package br.com.killaliens.bullet;
 
+import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.bullet.firepower.NullFirePower;
+import br.com.killaliens.util.speed.NullSpeed;
+import br.com.killaliens.util.speed.Speed;
+
 public class BulletProperties {
     private boolean enemyBullet = false;
     
@@ -8,10 +13,9 @@ public class BulletProperties {
     private float width = 1;
     private float height = 1;
     
-    private float speedX = 1;
-    private float speedY = 1;
+    private Speed speed = NullSpeed.getNullSpeedInstance();
     
-    private int firePower = 1;
+    private FirePower firePower = NullFirePower.getNullFirePowerInstance();
 
     /**
      * @return the enemyBullet
@@ -90,47 +94,31 @@ public class BulletProperties {
     /**
      * @return the speedX
      */
-    public float getSpeedX() {
-        return this.speedX;
+    public Speed getSpeed() {
+        return this.speed;
     }
 
     /**
      * @param speedX the speedX to set
      */
-    public void setSpeedX(float speedX) {
-        if (speedX > 0) {
-            this.speedX = speedX;
-        }
-    }
-
-    /**
-     * @return the speedY
-     */
-    public float getSpeedY() {
-        return this.speedY;
-    }
-
-    /**
-     * @param speedY the speedY to set
-     */
-    public void setSpeedY(float speedY) {
-        if (speedY > 0) {
-            this.speedY = speedY;
+    public void setSpeed(Speed speed) {
+        if (speed != null) {
+            this.speed = speed;
         }
     }
 
     /**
      * @return the firePower
      */
-    public int getFirePower() {
+    public FirePower getFirePower() {
         return this.firePower;
     }
 
     /**
      * @param firePower the firePower to set
      */
-    public void setFirePower(int firePower) {
-        if (firePower > 0) {
+    public void setFirePower(FirePower firePower) {
+        if (firePower != null) {
             this.firePower = firePower;
         }
     }

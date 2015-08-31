@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.bullet.FirePower;
-import br.com.killaliens.util.Speed;
+import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 
