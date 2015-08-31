@@ -1,11 +1,15 @@
 package br.com.killaliens.bullet.factory;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
 public class CreateBulletParameter {
     private boolean bulletEnemy = false;
     private float originX = 0;
     private float originY = 0;
     private float rotation = 0;
     private int numBullet = 1;
+    
+    private Stage stage = null;
 
     /**
      * @return the bulletEnemy
@@ -77,6 +81,22 @@ public class CreateBulletParameter {
         if (numBullet > 0) {
             this.numBullet = numBullet;
         }
+    }
+    
+    /**
+     * Get parent stage
+     * @return
+     */
+    public Stage getParentStage(){
+        return this.stage;
+    }
+    
+    /**
+     * set parent stage
+     * @param stage
+     */
+    public void setParentStage(Stage stage){
+        this.stage = stage;
     }
     
 }

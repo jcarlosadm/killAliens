@@ -198,6 +198,7 @@ public abstract class Ship extends Actor {
         cBulletParameter.setOriginX(this.getX() + this.getWidth()/2);
         cBulletParameter.setOriginY(this.getY() + this.getHeight());
         cBulletParameter.setRotation(this.getRotation());
+        cBulletParameter.setParentStage(this.getStage());
         this.ammunitions.peek().makeBullets(cBulletParameter);
         
         if (!this.ammunitions.peek().hasAmmunition()) {
