@@ -38,37 +38,50 @@ public abstract class BulletFactory {
         return NullBulletFactory.getInstance();
     }
 
-    public void createBullet(CreateBulletParameter parameterObject) {
+    public void createBullet(CreateBulletParameter createBulletParameter) {
 
-        float increment = this.getIncrementFromNumBullet(parameterObject
+        float increment = this.getIncrementFromNumBullet(createBulletParameter
                 .getNumBullet());
-        float radians = (float) Math.toRadians(parameterObject.getRotation());
+        float radians = (float) Math.toRadians(createBulletParameter.getRotation());
 
-        float positionX = parameterObject.getOriginX() - this.getRadius() + increment
+        float positionX = createBulletParameter.getOriginX() - this.getRadius() + increment
                 * ((float) Math.cos(radians));
-        float positionY = parameterObject.getOriginY() - this.getRadius() + increment
+        float positionY = createBulletParameter.getOriginY() - this.getRadius() + increment
                 * ((float) Math.sin(radians));
 
         Speed speed = this.getSpeed();
         speed.setSpeedX(speed.getSpeedX() * ((float) Math.sin(radians)) * (-1));
         speed.setSpeedY(speed.getSpeedY() * ((float) Math.cos(radians)));
 
-        Map<AnimationTypes, Animation> animations = this.getAnimations();
+        BulletProperties bulletProperties = this.buildBulletProperties(
+                createBulletParameter, positionX, positionY, speed);
 
+        Bullet bullet = new Bullet(bulletProperties);
+        this.setAnimations(bullet);
+        createBulletParameter.getParentStage().addActor(bullet);
+    }
+
+    private void setAnimations(Bullet bullet) {
+        Map<AnimationTypes, Animation> animations = this.getAnimations();
+        
+        bullet.addAnimation(AnimationTypes.NORMAL_STATE,
+                animations.get(AnimationTypes.NORMAL_STATE));
+        bullet.addAnimation(AnimationTypes.DEAD,
+                animations.get(AnimationTypes.DEAD));
+    }
+
+    private BulletProperties buildBulletProperties(
+            CreateBulletParameter createBulletParameter, float positionX,
+            float positionY, Speed speed) {
+        
         BulletProperties bulletProperties = new BulletProperties();
-        bulletProperties.setEnemyBullet(parameterObject.isBulletEnemy());
+        bulletProperties.setEnemyBullet(createBulletParameter.isBulletEnemy());
         bulletProperties.setFirePower(this.getFirePower());
         bulletProperties.setPositionX(positionX);
         bulletProperties.setPositionY(positionY);
         bulletProperties.setRadius(this.getRadius());
         bulletProperties.setSpeed(speed);
-
-        Bullet bullet = new Bullet(bulletProperties);
-        bullet.addAnimation(AnimationTypes.NORMAL_STATE,
-                animations.get(AnimationTypes.NORMAL_STATE));
-        bullet.addAnimation(AnimationTypes.DEAD,
-                animations.get(AnimationTypes.DEAD));
-        parameterObject.getParentStage().addActor(bullet);
+        return bulletProperties;
     };
 
     private float getIncrementFromNumBullet(int numBullet) {

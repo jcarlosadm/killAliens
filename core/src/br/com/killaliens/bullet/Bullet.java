@@ -1,9 +1,11 @@
 package br.com.killaliens.bullet;
 
 import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.bullet.firepower.NullFirePower;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
@@ -14,15 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Bullet extends Actor {
     
-    private static final int MINFIREPOWER = 1;
-    private static final int MINSPEEDY = 1;
-    private static final int MINSPEEDX = 1;
-    
     private Circle limits = new Circle();
     private boolean enemyBullet = false;
     
-    private Speed speed = new Speed(MINSPEEDX, MINSPEEDY);
-    private FirePower firePower = new FirePower(MINFIREPOWER);
+    private Speed speed = NullSpeed.getNullSpeedInstance();
+    private FirePower firePower = NullFirePower.getNullFirePowerInstance();
     
     private AnimationManagement animationData = new AnimationManagement();
 
@@ -45,6 +43,8 @@ public class Bullet extends Actor {
     public void act(float delta) {
         // TODO Auto-generated method stub
         super.act(delta);
+        this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
+        
     }
     
     @Override

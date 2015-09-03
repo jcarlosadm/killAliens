@@ -22,7 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  * Ship
  * 
  * Note:
- * credits for the method colliding(Circle):
+ * credits for method colliding(Circle):
  * http://stackoverflow.com/questions/15323719/circle-and-polygon-collision-with-libgdx
  */
 public abstract class Ship extends Actor {
