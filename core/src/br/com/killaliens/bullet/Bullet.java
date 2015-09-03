@@ -8,7 +8,6 @@ import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
@@ -44,7 +43,7 @@ public class Bullet extends Actor {
         // TODO Auto-generated method stub
         super.act(delta);
         this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
-        
+        this.animationData.advanceTime(delta);
     }
     
     @Override
@@ -52,7 +51,6 @@ public class Bullet extends Actor {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
         
-        this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
         batch.draw(this.animationData.getCurrentTextureRegion(true), 
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
                 this.getWidth(), this.getHeight(), this.getScaleX(), 
@@ -62,7 +60,7 @@ public class Bullet extends Actor {
     public void dispose() {
         // TODO Auto-generated method stub
         
-        // generate explosion object
+        // generate explosion object and add to stage
         // remove this from Stage
     }
     
