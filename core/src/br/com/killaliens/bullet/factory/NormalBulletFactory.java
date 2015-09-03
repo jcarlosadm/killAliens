@@ -36,4 +36,10 @@ public class NormalBulletFactory extends BulletFactory {
     protected String[] getAnimationDeadFramesName() {
         return ANIMATION_DEAD_FRAMENAMES;
     }
+
+    @Override
+    protected float getRadius() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

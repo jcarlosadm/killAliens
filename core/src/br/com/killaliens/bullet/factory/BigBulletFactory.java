@@ -38,4 +38,10 @@ public class BigBulletFactory extends BulletFactory {
         return ANIMATION_DEAD_FRAMENAMES;
     }
 
+    @Override
+    protected float getRadius() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
 }

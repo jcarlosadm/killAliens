@@ -39,4 +39,10 @@ public class NullBulletFactory extends BulletFactory {
     protected String[] getAnimationDeadFramesName() {
         return null;
     }
+
+    @Override
+    protected float getRadius() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }
