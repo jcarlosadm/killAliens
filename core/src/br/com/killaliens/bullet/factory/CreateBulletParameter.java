@@ -6,6 +6,7 @@ public class CreateBulletParameter {
     private boolean bulletEnemy = false;
     private float originX = 0;
     private float originY = 0;
+    
     private float rotation = 0;
     private int numBullet = 1;
     
@@ -23,34 +24,6 @@ public class CreateBulletParameter {
      */
     public void setBulletEnemy(boolean bulletEnemy) {
         this.bulletEnemy = bulletEnemy;
-    }
-
-    /**
-     * @return the originX
-     */
-    public float getOriginX() {
-        return this.originX;
-    }
-
-    /**
-     * @param originX the originX to set
-     */
-    public void setOriginX(float originX) {
-        this.originX = originX;
-    }
-
-    /**
-     * @return the originY
-     */
-    public float getOriginY() {
-        return this.originY;
-    }
-
-    /**
-     * @param originY the originY to set
-     */
-    public void setOriginY(float originY) {
-        this.originY = originY;
     }
 
     /**
@@ -97,6 +70,34 @@ public class CreateBulletParameter {
      */
     public void setParentStage(Stage stage){
         this.stage = stage;
+    }
+
+    /**
+     * @return the originX
+     */
+    public float getOriginX() {
+        return this.originX;
+    }
+
+    /**
+     * @param originX the originX to set
+     */
+    public void setOriginX(float originX) {
+        this.originX = originX;
+    }
+
+    /**
+     * @return the originY
+     */
+    public float getOriginY() {
+        return this.originY;
+    }
+
+    /**
+     * @param originY the originY to set
+     */
+    public void setOriginY(float originY) {
+        this.originY = originY;
     }
     
 }

@@ -8,6 +8,11 @@ public class ShipProperties {
     private float positionY = 0;
     private float width = 1;
     private float height = 1;
+    
+    private float originX = 0;
+    private float originY = 0;
+    
+    private float rotation = 0;
 
     private float speedX = 1;
     private float speedY = 1;
@@ -160,5 +165,47 @@ public class ShipProperties {
      */
     public void setBasicAmmunition(AmmunitionTypes basicAmmunition) {
         this.basicAmmunition = basicAmmunition;
+    }
+
+    /**
+     * @return the rotation
+     */
+    public float getRotation() {
+        return this.rotation;
+    }
+
+    /**
+     * @param rotation the rotation to set
+     */
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
+    }
+
+    /**
+     * @return the originX
+     */
+    public float getOriginX() {
+        return this.originX;
+    }
+
+    /**
+     * @param originX the originX to set
+     */
+    public void setOriginX(float originX) {
+        this.originX = originX;
+    }
+
+    /**
+     * @return the originY
+     */
+    public float getOriginY() {
+        return this.originY;
+    }
+
+    /**
+     * @param originY the originY to set
+     */
+    public void setOriginY(float originY) {
+        this.originY = originY;
     }
 }

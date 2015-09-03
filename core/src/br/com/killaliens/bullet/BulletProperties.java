@@ -10,8 +10,8 @@ public class BulletProperties {
     
     private float positionX = 0;
     private float positionY = 0;
-    private float width = 1;
-    private float height = 1;
+    
+    private float radius = 1;
     
     private Speed speed = NullSpeed.getNullSpeedInstance();
     
@@ -60,38 +60,6 @@ public class BulletProperties {
     }
 
     /**
-     * @return the width
-     */
-    public float getWidth() {
-        return this.width;
-    }
-
-    /**
-     * @param width the width to set
-     */
-    public void setWidth(float width) {
-        if (width > 0) {
-            this.width = width;
-        }
-    }
-
-    /**
-     * @return the height
-     */
-    public float getHeight() {
-        return this.height;
-    }
-
-    /**
-     * @param height the height to set
-     */
-    public void setHeight(float height) {
-        if (height > 0) {
-            this.height = height;
-        }
-    }
-
-    /**
      * @return the speedX
      */
     public Speed getSpeed() {
@@ -121,6 +89,20 @@ public class BulletProperties {
         if (firePower != null) {
             this.firePower = firePower;
         }
+    }
+
+    /**
+     * @return the radius
+     */
+    public float getRadius() {
+        return this.radius;
+    }
+
+    /**
+     * @param radius the radius to set
+     */
+    public void setRadius(float radius) {
+        this.radius = radius;
     }
     
 }
