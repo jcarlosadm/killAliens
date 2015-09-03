@@ -59,6 +59,13 @@ public class Bullet extends Actor {
                 this.getScaleY(), this.getRotation());
     }
     
+    public void dispose() {
+        // TODO Auto-generated method stub
+        
+        // generate explosion object
+        // remove this from Stage
+    }
+    
     @Override
     public void setX(float x) {
         super.setX(x);
@@ -90,6 +97,9 @@ public class Bullet extends Actor {
     public boolean colliding(Ship ship){
         if (ship.colliding(this.limits)) {
             // TODO implement
+            
+            // ship.getDamage
+            // this.dispose
             return true;
         }
         return false;
