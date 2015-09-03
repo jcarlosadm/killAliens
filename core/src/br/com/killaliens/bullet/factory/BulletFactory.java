@@ -44,9 +44,9 @@ public abstract class BulletFactory {
                 .getNumBullet());
         float radians = (float) Math.toRadians(parameterObject.getRotation());
 
-        float positionX = parameterObject.getOriginX() + increment
+        float positionX = parameterObject.getOriginX() - this.getRadius() + increment
                 * ((float) Math.cos(radians));
-        float positionY = parameterObject.getOriginY() + increment
+        float positionY = parameterObject.getOriginY() - this.getRadius() + increment
                 * ((float) Math.sin(radians));
 
         Speed speed = this.getSpeed();
