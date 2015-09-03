@@ -12,6 +12,8 @@ public class Explosion extends Actor {
 
     private static final float TIME_LIMIT_IN_FRAMES = 150f;
     private static final float ANIMATION_FRAME_TIME = 10f;
+    
+    private static final float RADIUS = 20f;
 
     // TODO define frames
     private static final String[] ANIMATION_NORMAL_FRAME_NAMES = { "" };
@@ -22,10 +24,10 @@ public class Explosion extends Actor {
 
     private float elapsedTime = 0f;
 
-    public Explosion(float positionX, float positionY) {
+    public Explosion(float centerX, float centerY) {
         // TODO Auto-generated constructor stub
-        this.setX(positionX);
-        this.setY(positionY);
+        this.setX(centerX - RADIUS);
+        this.setY(centerY - RADIUS);
 
         Animation animation = BuildAnimation.build(ANIMATION_FRAME_TIME,
                 ANIMATION_NORMAL_FRAME_NAMES);

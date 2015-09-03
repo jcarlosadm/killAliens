@@ -2,6 +2,7 @@ package br.com.killaliens.bullet;
 
 import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.bullet.firepower.NullFirePower;
+import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -44,6 +45,8 @@ public class Bullet extends Actor {
         super.act(delta);
         this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
         this.animationData.advanceTime(delta);
+        
+        // if out of viewport, this.remove()
     }
     
     @Override
@@ -55,13 +58,6 @@ public class Bullet extends Actor {
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
                 this.getWidth(), this.getHeight(), this.getScaleX(), 
                 this.getScaleY(), this.getRotation());
-    }
-    
-    public void dispose() {
-        // TODO Auto-generated method stub
-        
-        // generate explosion object and add to stage
-        // remove this from Stage
     }
     
     @Override
@@ -94,13 +90,20 @@ public class Bullet extends Actor {
     
     public boolean colliding(Ship ship){
         if (ship.colliding(this.limits)) {
-            // TODO implement
+            ship.getDamage(this.firePower.getDamage());
+            this.explode();
             
-            // ship.getDamage
-            // this.dispose
             return true;
         }
         return false;
+    }
+    
+    private void explode() {
+        Explosion explosion = new Explosion(this.getX() + this.getWidth()/2, 
+                this.getY() + this.getHeight()/2);
+        this.getStage().addActor(explosion);
+        
+        this.remove();
     }
     
     public boolean setCurrentAnimation(AnimationTypes key){
