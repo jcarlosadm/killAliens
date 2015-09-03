@@ -7,8 +7,9 @@ import br.com.killaliens.util.speed.Speed;
 public class BigBulletFactory extends BulletFactory {
 
     private static final int FIREPOWER = 1;
-    private static final float SPEEDX = 1;
-    private static final float SPEEDY = 1;
+    private static final float SPEEDX = 1f;
+    private static final float SPEEDY = 1f;
+    private static final float RADIUS = 3f;
     
     // TODO define animations
     private static final String[] ANIMATION_NORMAL_FRAMENAMES = {""};
@@ -40,8 +41,7 @@ public class BigBulletFactory extends BulletFactory {
 
     @Override
     protected float getRadius() {
-        // TODO Auto-generated method stub
-        return 0;
+        return RADIUS;
     }
 
 }

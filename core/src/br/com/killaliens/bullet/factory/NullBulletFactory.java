@@ -42,7 +42,6 @@ public class NullBulletFactory extends BulletFactory {
 
     @Override
     protected float getRadius() {
-        // TODO Auto-generated method stub
         return 0;
     }
 }
