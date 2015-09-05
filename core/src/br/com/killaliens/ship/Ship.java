@@ -1,7 +1,5 @@
 package br.com.killaliens.ship;
 
-import java.awt.Point;
-import java.util.Arrays;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
@@ -15,6 +13,7 @@ import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.collision.CollisionPolygonWithCircle;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
+import br.com.killaliens.util.vertices.VerticesBuilder;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -79,36 +78,14 @@ public abstract class Ship extends Actor {
     }
 
     private float[] buildVertices(float width, float height) {
-        float[] vertices = new float[8];
-        Arrays.fill(vertices, -100);
         
-        Point[] points = new Point[4];
+        VerticesBuilder vBuilder = new VerticesBuilder();
+        vBuilder.addPoint(0f, 0f);
+        vBuilder.addPoint(width, 0f);
+        vBuilder.addPoint(width, height);
+        vBuilder.addPoint(0f, height);
         
-        for (int index = 0; index < points.length; index++) {
-            int x = (index % 2 != 0 ? (int) width : 0);
-            int y = (index >= 2 ? (int) height : 0);
-            points[index] = new Point(x, y);
-        }
-        
-        for (int pointIndex = 0; pointIndex < points.length; pointIndex++) {
-            vertices = addPointToVertice(vertices, points[pointIndex]);
-        }
-
-        return vertices;
-    }
-
-    private float[] addPointToVertice(float[] vertices, Point point) {
-        int arrayPosition = 0;
-
-        for (int verticeIndex = 0; verticeIndex < vertices.length; verticeIndex++) {
-            if (vertices[verticeIndex] == -100) {
-                arrayPosition = verticeIndex;
-            }
-        }
-
-        vertices[arrayPosition] = point.x;
-        vertices[arrayPosition + 1] = point.y;
-        return vertices;
+        return vBuilder.buildVertices();
     }
 
     @Override
