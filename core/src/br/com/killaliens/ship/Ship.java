@@ -1,5 +1,7 @@
 package br.com.killaliens.ship;
 
+import java.awt.Point;
+import java.util.Arrays;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
@@ -78,38 +80,34 @@ public abstract class Ship extends Actor {
 
     private float[] buildVertices(float width, float height) {
         float[] vertices = new float[8];
-
-        vertices = this.buildPoint(vertices, 1, 0f, 0f);
-        vertices = this.buildPoint(vertices, 2, width, 0f);
-        vertices = this.buildPoint(vertices, 3, 0f, height);
-        vertices = this.buildPoint(vertices, 4, width, height);
+        Arrays.fill(vertices, -100);
+        
+        Point[] points = new Point[4];
+        
+        for (int index = 0; index < points.length; index++) {
+            int x = (index % 2 != 0 ? (int) width : 0);
+            int y = (index >= 2 ? (int) height : 0);
+            points[index] = new Point(x, y);
+        }
+        
+        for (int pointIndex = 0; pointIndex < points.length; pointIndex++) {
+            vertices = addPointToVertice(vertices, points[pointIndex]);
+        }
 
         return vertices;
     }
 
-    private float[] buildPoint(float[] vertices, int pointNumber, float xValue,
-            float yValue) {
+    private float[] addPointToVertice(float[] vertices, Point point) {
         int arrayPosition = 0;
 
-        switch (pointNumber) {
-        case 1:
-            arrayPosition = 0;
-            break;
-        case 2:
-            arrayPosition = 2;
-            break;
-        case 3:
-            arrayPosition = 4;
-            break;
-        case 4:
-            arrayPosition = 6;
-            break;
-        default:
-            break;
+        for (int verticeIndex = 0; verticeIndex < vertices.length; verticeIndex++) {
+            if (vertices[verticeIndex] == -100) {
+                arrayPosition = verticeIndex;
+            }
         }
 
-        vertices[arrayPosition] = xValue;
-        vertices[arrayPosition + 1] = yValue;
+        vertices[arrayPosition] = point.x;
+        vertices[arrayPosition + 1] = point.y;
         return vertices;
     }
 
