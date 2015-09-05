@@ -1,7 +1,11 @@
 package br.com.killaliens.bullet;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
+
 import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.bullet.firepower.NullFirePower;
+import br.com.killaliens.util.animation.AnimationManagement;
+import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
@@ -16,6 +20,8 @@ public class BulletProperties {
     private Speed speed = NullSpeed.getNullSpeedInstance();
     
     private FirePower firePower = NullFirePower.getNullFirePowerInstance();
+    
+    private AnimationManagement aniManagement = new AnimationManagement();
 
     /**
      * @return the enemyBullet
@@ -105,4 +111,11 @@ public class BulletProperties {
         this.radius = radius;
     }
     
+    public void addAnimation(AnimationTypes type, Animation animation){
+        this.aniManagement.addAnimation(type, animation);
+    }
+    
+    public AnimationManagement getAnimationData(){
+        return this.aniManagement;
+    }
 }

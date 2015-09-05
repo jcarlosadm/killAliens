@@ -56,18 +56,18 @@ public abstract class BulletFactory {
         BulletProperties bulletProperties = this.buildBulletProperties(
                 createBulletParameter, positionX, positionY, speed);
 
+        this.setAnimations(bulletProperties);
+        
         Bullet bullet = new Bullet(bulletProperties);
-        this.setAnimations(bullet);
         createBulletParameter.getParentStage().addActor(bullet);
     }
 
-    private void setAnimations(Bullet bullet) {
+    private void setAnimations(BulletProperties bulletProperties) {
         Map<AnimationTypes, Animation> animations = this.getAnimations();
         
-        bullet.addAnimation(AnimationTypes.NORMAL_STATE,
-                animations.get(AnimationTypes.NORMAL_STATE));
-        bullet.addAnimation(AnimationTypes.DEAD,
-                animations.get(AnimationTypes.DEAD));
+        for (AnimationTypes type : AnimationTypes.values()) {
+            bulletProperties.addAnimation(type, animations.get(type));
+        }
     }
 
     private BulletProperties buildBulletProperties(

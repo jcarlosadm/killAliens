@@ -57,10 +57,8 @@ public abstract class Ship extends Actor {
         this.limits.setVertices(this.buildVertices(properties.getWidth(),
                 properties.getHeight()));
 
-        this.setX(properties.getPositionX());
-        this.setY(properties.getPositionY());
-        this.setHeight(properties.getHeight());
-        this.setWidth(properties.getWidth());
+        this.setPosition(properties.getPositionX(), properties.getPositionY());
+        this.setSize(properties.getWidth(), properties.getHeight());
 
         this.setOrigin(properties.getOriginX(), properties.getOriginY());
         this.setRotation(properties.getRotation());
@@ -73,8 +71,9 @@ public abstract class Ship extends Actor {
 
         Ammunition ammunition = new Ammunition(properties.getBasicAmmunition());
         ammunition.setInfinity(true);
-
         this.addAmmunition(ammunition);
+        
+        this.animationData = properties.getAnimationData();
     }
 
     private float[] buildVertices(float width, float height) {
@@ -99,11 +98,23 @@ public abstract class Ship extends Actor {
         super.setY(y);
         this.limits.setPosition(this.getX(), y);
     }
+    
+    @Override
+    public void setPosition(float x, float y) {
+        super.setPosition(x, y);
+        this.limits.setPosition(x, y);
+    }
 
     @Override
     public void setRotation(float degrees) {
         super.setRotation(degrees);
         this.limits.setRotation(this.getRotation());
+    }
+    
+    @Override
+    public void rotateBy(float amountInDegrees) {
+        super.rotateBy(amountInDegrees);
+        this.limits.rotate(amountInDegrees);
     }
 
     @Override
