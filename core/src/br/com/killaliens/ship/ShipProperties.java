@@ -1,7 +1,12 @@
 package br.com.killaliens.ship;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.status.Life;
+import br.com.killaliens.ship.status.Life;
+import br.com.killaliens.ship.status.NullLife;
+import br.com.killaliens.ship.status.NullShield;
+import br.com.killaliens.ship.status.Shield;
+import br.com.killaliens.util.speed.NullSpeed;
+import br.com.killaliens.util.speed.Speed;
 
 public class ShipProperties {
     private float positionX = 0;
@@ -14,11 +19,11 @@ public class ShipProperties {
     
     private float rotation = 0;
 
-    private float speedX = 1;
-    private float speedY = 1;
+    private Speed speed = NullSpeed.getNullSpeedInstance();
 
-    private Life life = null;
-    private int shield = 0;
+    private Life life = NullLife.getNullLifeInstance();
+    private Shield shield = NullShield.getNullShieldInstance();
+    
     private AmmunitionTypes basicAmmunition = AmmunitionTypes.NORMALBULLET;
 
     /**
@@ -87,42 +92,6 @@ public class ShipProperties {
     }
 
     /**
-     * @return the speedX
-     */
-    public float getSpeedX() {
-        return this.speedX;
-    }
-
-    /**
-     * @param speedX
-     *            the speedX to set
-     */
-    public void setSpeedX(float speedX) {
-        if (speedX > 0) {
-            this.speedX = speedX;
-        }
-    }
-
-    /**
-     * @return the speedY
-     */
-
-    public float getSpeedY() {
-        return this.speedY;
-    }
-
-    /**
-     * @param speedY
-     *            the speedY to set
-     */
-
-    public void setSpeedY(float speedY) {
-        if (speedY > 0) {
-            this.speedY = speedY;
-        }
-    }
-
-    /**
      * @return the life
      */
     public Life getLife() {
@@ -140,7 +109,7 @@ public class ShipProperties {
     /**
      * @return the shield
      */
-    public int getShield() {
+    public Shield getShield() {
         return this.shield;
     }
 
@@ -148,8 +117,8 @@ public class ShipProperties {
      * @param shield
      *            the shield to set
      */
-    public void setShield(int shield) {
-        this.shield = shield;
+    public void setShield(int shieldLevel) {
+        this.shield = new Shield(shieldLevel);
     }
 
     /**
@@ -189,13 +158,6 @@ public class ShipProperties {
     }
 
     /**
-     * @param originX the originX to set
-     */
-    public void setOriginX(float originX) {
-        this.originX = originX;
-    }
-
-    /**
      * @return the originY
      */
     public float getOriginY() {
@@ -205,7 +167,22 @@ public class ShipProperties {
     /**
      * @param originY the originY to set
      */
-    public void setOriginY(float originY) {
+    public void setOrigin(float originX, float originY) {
+        this.originX = originX;
         this.originY = originY;
+    }
+
+    /**
+     * @return the speed
+     */
+    public Speed getSpeed() {
+        return speed;
+    }
+
+    /**
+     * @param speed the speed to set
+     */
+    public void setSpeed(float speedX, float speedY) {
+        this.speed = new Speed(speedX, speedY);
     }
 }

@@ -6,10 +6,14 @@ import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
-import br.com.killaliens.status.Life;
+import br.com.killaliens.ship.status.Life;
+import br.com.killaliens.ship.status.NullLife;
+import br.com.killaliens.ship.status.NullShield;
+import br.com.killaliens.ship.status.Shield;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.collision.CollisionPolygonWithCircle;
+import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
@@ -29,13 +33,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  */
 public abstract class Ship extends Actor {
 
-    private static final int MINSPEEDY = 1;
-    private static final int MINSPEEDX = 1;
+    private Speed speed = NullSpeed.getNullSpeedInstance();
 
-    private Speed speed = new Speed(MINSPEEDX, MINSPEEDY);
-
-    private Life life = null;
-    private int shield = 0;
+    private Life life = NullLife.getNullLifeInstance();
+    private Shield shield = NullShield.getNullShieldInstance();
 
     private boolean shooting = false;
 
@@ -67,8 +68,7 @@ public abstract class Ship extends Actor {
 
         setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
-        this.speed.setSpeedX(properties.getSpeedX());
-        this.speed.setSpeedY(properties.getSpeedY());
+        this.speed = properties.getSpeed();
         this.life = properties.getLife();
         this.shield = properties.getShield();
 
@@ -189,7 +189,7 @@ public abstract class Ship extends Actor {
      */
     public void getDamage(int damage) {
 
-        int totalDamage = damage - this.shield;
+        int totalDamage = damage - this.shield.calcProtectionValue();
 
         if (totalDamage > 0) {
             this.life.modifyCurrentLife(totalDamage * (-1));
@@ -214,8 +214,8 @@ public abstract class Ship extends Actor {
     /**
      * @return the shield
      */
-    public int getShield() {
-        return this.shield;
+    public int getShieldLevel() {
+        return this.shield.getShieldLevel();
     }
 
     /**

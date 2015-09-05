@@ -1,4 +1,4 @@
-package br.com.killaliens.status;
+package br.com.killaliens.ship.status;
 
 public class Life {
     private int currentLife = 1;
