@@ -9,6 +9,7 @@ import br.com.killaliens.bullet.factory.CreateBulletParameter;
 import br.com.killaliens.status.Life;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.collision.CollisionPolygonWithCircle;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
@@ -17,7 +18,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -250,49 +250,32 @@ public abstract class Ship extends Actor {
     }
 
     private void shoot() {
-        CreateBulletParameter cBulletParameter = new CreateBulletParameter();
+        CreateBulletParameter createBulletParameters = new CreateBulletParameter();
         
-        cBulletParameter.setBulletEnemy(this.isEnemy());
-        cBulletParameter.setOriginX(this.getOriginX());
-        cBulletParameter.setOriginY(this.getOriginY());
-        cBulletParameter.setRotation(this.getRotation());
-        cBulletParameter.setParentStage(this.getStage());
+        this.buildCreateBulletParameter(createBulletParameters);
         
-        this.ammunitions.peek().makeBullets(cBulletParameter);
+        this.ammunitions.peek().makeBullets(createBulletParameters);
 
         if (!this.ammunitions.peek().hasAmmunition()) {
             this.ammunitions.pop();
         }
     }
 
+    private void buildCreateBulletParameter(
+            CreateBulletParameter createBulletParameters) {
+        createBulletParameters.setBulletEnemy(this.isEnemy());
+        createBulletParameters.setOriginX(this.getOriginX());
+        createBulletParameters.setOriginY(this.getOriginY());
+        createBulletParameters.setRotation(this.getRotation());
+        createBulletParameters.setParentStage(this.getStage());
+    }
+
     public boolean colliding(Circle circle) {
-
-        float[] vertices = this.limits.getTransformedVertices();
-        Vector2 center = new Vector2(circle.x, circle.y);
-        float squareRadius = circle.radius * circle.radius;
-
-        for (int i = 0; i < vertices.length; i += 2) {
-            if (i == 0) {
-                if (Intersector.intersectSegmentCircle(new Vector2(
-                        vertices[vertices.length - 2],
-                        vertices[vertices.length - 1]), new Vector2(
-                        vertices[i], vertices[i + 1]), center, squareRadius))
-                    return true;
-            } else {
-                if (Intersector.intersectSegmentCircle(new Vector2(
-                        vertices[i - 2], vertices[i - 1]), new Vector2(
-                        vertices[i], vertices[i + 1]), center, squareRadius))
-                    return true;
-            }
-        }
-        return this.limits.contains(circle.x, circle.y);
+        return CollisionPolygonWithCircle.checkCollision(this.limits, circle);
     }
 
     public boolean colliding(Polygon polygon) {
-        if (Intersector.overlapConvexPolygons(this.limits, polygon)) {
-            return true;
-        }
-        return false;
+        return (Intersector.overlapConvexPolygons(this.limits, polygon));
     }
 
     public void addAnimation(AnimationTypes key, Animation animation) {
