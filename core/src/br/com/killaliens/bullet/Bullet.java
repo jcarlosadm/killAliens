@@ -6,6 +6,7 @@ import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.camera.CheckVisibleOnCamera;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
@@ -23,6 +24,8 @@ public class Bullet extends Actor {
     private FirePower firePower = NullFirePower.getNullFirePowerInstance();
     
     private AnimationManagement animationData = new AnimationManagement();
+    
+    private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(this);
 
     public Bullet(BulletProperties properties) {
         this.limits.setRadius(properties.getRadius());
@@ -46,9 +49,11 @@ public class Bullet extends Actor {
         this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
         this.animationData.advanceTime(delta);
         
-        // if out of viewport, this.remove()
+        if (!this.checkVisibleOnCamera.actorIsVisible(this.getStage().getCamera())) {
+            this.remove();
+        }
     }
-    
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
