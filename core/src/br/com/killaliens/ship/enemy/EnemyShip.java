@@ -10,5 +10,7 @@ public abstract class EnemyShip extends Ship {
         this.setIfIsEnemy(true);
         // TODO Auto-generated constructor stub
     }
+    
+    protected abstract void artificialInteligent();
 
 }
