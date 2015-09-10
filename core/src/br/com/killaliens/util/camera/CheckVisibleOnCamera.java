@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class CheckVisibleOnCamera {
     
     private Rectangle recActor = new Rectangle();
-    
     private Rectangle recCamera = new Rectangle();
     
     public CheckVisibleOnCamera(Actor actor) {
