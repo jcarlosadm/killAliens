@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
+import br.com.killaliens.util.touch.TouchState;
 
 public class PlayerShip extends Ship {
 
@@ -12,6 +13,16 @@ public class PlayerShip extends Ship {
         super(properties);
         this.setIfIsEnemy(false);
         // TODO Auto-generated constructor stub
+    }
+    
+    @Override
+    public void act(float delta) {
+        // TODO Auto-generated method stub
+        super.act(delta);
+        
+        if (TouchState.getDownState()) {
+            this.moveToLocation(TouchState.getPosition(), delta);
+        }
     }
     
     public void moveToLocation(Vector2 location, float timeInSeconds) {
