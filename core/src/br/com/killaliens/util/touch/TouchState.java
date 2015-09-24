@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 public class TouchState {
     
     private static boolean downState;
-    private static Vector2 position;
+    private static Vector2 position = new Vector2();
     
     public static boolean getDownState() {
         return downState;

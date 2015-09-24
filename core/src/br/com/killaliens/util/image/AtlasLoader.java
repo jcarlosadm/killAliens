@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class AtlasLoader {
     
-    private static final String ATLAS_PATH = "images/mainAtlas.atlas";
+    private static final String ATLAS_PATH = "images/images.atlas";
     
     private static TextureAtlas atlasInstance = null;
     

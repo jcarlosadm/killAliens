@@ -23,7 +23,7 @@ public class Bullet extends Actor {
     private Speed speed = NullSpeed.getNullSpeedInstance();
     private FirePower firePower = NullFirePower.getNullFirePowerInstance();
     
-    private AnimationManagement animationData = new AnimationManagement();
+    private AnimationManagement animationData = null;
     
     private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(this);
 
@@ -40,6 +40,9 @@ public class Bullet extends Actor {
         
         this.firePower = properties.getFirePower();
         this.enemyBullet = properties.isEnemyBullet();
+        
+        this.animationData = properties.getAnimationData();
+        this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
     }
     
     @Override
@@ -94,6 +97,10 @@ public class Bullet extends Actor {
     }
     
     public boolean colliding(Ship ship){
+        if (ship.isEnemy() == this.isEnemyBullet()) {
+            return false;
+        }
+        
         if (ship.colliding(this.limits)) {
             ship.getDamage(this.firePower.getDamage());
             this.explode();

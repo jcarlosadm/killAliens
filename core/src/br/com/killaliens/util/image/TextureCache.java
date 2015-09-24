@@ -20,6 +20,7 @@ public class TextureCache {
         }
 
         TextureAtlas atlas = AtlasLoader.getTextureAtlas();
+        
         TextureRegion texture = atlas.findRegion(textureRegionName);
         if (texture != null) {
             textures.put(textureRegionName, texture);

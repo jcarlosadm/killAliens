@@ -9,23 +9,20 @@ public class CheckVisibleOnCamera {
     private Rectangle recActor = new Rectangle();
     private Rectangle recCamera = new Rectangle();
     
+    private Actor actor = null;
+    
     public CheckVisibleOnCamera(Actor actor) {
-        this.recActor.setX(actor.getX());
-        this.recActor.setY(actor.getY());
-        this.recActor.setWidth(actor.getWidth());
-        this.recActor.setHeight(actor.getHeight());
+        this.actor = actor;
     }
     
     public boolean actorIsVisible(Camera camera){
         this.buildRectCamera(camera);
+        this.buildRectActor();
         return (!this.outOfLimits());
     }
 
     private boolean outOfLimits() {
-        return ((this.recActor.getX() + this.recActor.getWidth() <= this.recCamera.getX()) ||
-                (this.recActor.getX() >= this.recCamera.getX() + this.recCamera.getWidth()) ||
-                (this.recActor.getY() + this.recActor.getHeight() <= this.recCamera.getY()) ||
-                (this.recActor.getY() >= this.recCamera.getY() + this.recCamera.getHeight()));
+        return (!this.recActor.overlaps(this.recCamera));
     }
 
     private void buildRectCamera(Camera camera) {
@@ -33,5 +30,12 @@ public class CheckVisibleOnCamera {
         this.recCamera.setWidth(camera.viewportWidth);
         this.recCamera.setY(camera.position.y - camera.viewportHeight/2);
         this.recCamera.setHeight(camera.viewportHeight);
+    }
+    
+    private void buildRectActor() {
+        this.recActor.setX(actor.getX());
+        this.recActor.setY(actor.getY());
+        this.recActor.setWidth(actor.getWidth());
+        this.recActor.setHeight(actor.getHeight());
     }
 }

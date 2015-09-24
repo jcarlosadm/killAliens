@@ -13,10 +13,19 @@ public class Ammunition {
     private BulletFactory bulletFactory = null;
     private int level = MINLEVEL;
     
+    private int reloadTime = 0;
+    private int currentReloadTime = 0;
+    
     public Ammunition(AmmunitionTypes type, int level) {
         this.bulletFactory = BulletFactory.getFactory(type);
         if (level >= MINLEVEL && level <= MAXLEVEL) {
             this.level = level;
+        }
+        
+        if (type.equals(AmmunitionTypes.FASTBULLET)) {
+            this.reloadTime = 5;
+        } else {
+            this.reloadTime = 15;
         }
     }
     
@@ -93,6 +102,13 @@ public class Ammunition {
     }
     
     public void makeBullets(CreateBulletParameter cParameter){
+        
+        if (this.currentReloadTime < this.reloadTime) {
+            this.currentReloadTime++;
+            return;
+        } else {
+            this.currentReloadTime = 0;
+        }
         
         for (int currentNumBullet = 1; currentNumBullet <= this.level; 
                 currentNumBullet++) {

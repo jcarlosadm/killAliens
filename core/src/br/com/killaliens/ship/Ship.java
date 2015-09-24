@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -74,6 +75,7 @@ public abstract class Ship extends Actor {
         this.addAmmunition(ammunition);
         
         this.animationData = properties.getAnimationData();
+        this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
     }
 
     private float[] buildVertices(float width, float height) {
@@ -252,8 +254,8 @@ public abstract class Ship extends Actor {
     private void buildCreateBulletParameter(
             CreateBulletParameter createBulletParameters) {
         createBulletParameters.setBulletEnemy(this.isEnemy());
-        createBulletParameters.setOriginX(this.getOriginX());
-        createBulletParameters.setOriginY(this.getOriginY());
+        createBulletParameters.setOriginX(this.getX() + this.getWidth()/2);
+        createBulletParameters.setOriginY(this.getY() + this.getHeight());
         createBulletParameters.setRotation(this.getRotation());
         createBulletParameters.setParentStage(this.getStage());
     }
@@ -264,6 +266,10 @@ public abstract class Ship extends Actor {
 
     public boolean colliding(Polygon polygon) {
         return (Intersector.overlapConvexPolygons(this.limits, polygon));
+    }
+    
+    public boolean colliding(Vector2 point){
+        return this.limits.contains(point.x, point.y);
     }
 
     public void addAnimation(AnimationTypes key, Animation animation) {

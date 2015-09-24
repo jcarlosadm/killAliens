@@ -19,9 +19,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
  */
 public abstract class BulletFactory {
 
-    private static final float ANIMATION_FRAMETIME = 15f;
+    private static final float ANIMATION_FRAMETIME = 0.1f;
 
-    private static final float INCREMENT_BULLET_DISTANCE = 3f;
+    private static final float INCREMENT_BULLET_DISTANCE = 15f;
 
     protected BulletFactory() {
     }

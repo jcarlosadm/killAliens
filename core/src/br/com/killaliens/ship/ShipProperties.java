@@ -108,8 +108,8 @@ public class ShipProperties {
      * @param life
      *            the life to set
      */
-    public void setLife(Life life) {
-        this.life = life;
+    public void setLife(int maxLife) {
+        this.life = new Life(maxLife);
     }
 
     /**
