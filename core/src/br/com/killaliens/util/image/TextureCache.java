@@ -28,7 +28,6 @@ public class TextureCache {
         return texture;
     }
 
-    // TODO call this before finish the game
     public static void dispose() {
         for (TextureRegion textureRegion : textures.values()) {
             textureRegion.getTexture().dispose();

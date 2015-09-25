@@ -9,7 +9,6 @@ import br.com.killaliens.util.image.TextureCache;
 
 public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
 
-    // TODO set values
     private static final String[] ANIMATION_NORMAL_FRAMES = { "player" };
     private static final String[] ANIMATION_DEAD_FRAMES = { "player" };
     private static final float FRAMETIME_NORMAL = 15f;
