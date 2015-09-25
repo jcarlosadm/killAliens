@@ -9,6 +9,7 @@ import br.com.killaliens.bullet.BulletProperties;
 import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -97,7 +98,10 @@ public abstract class BulletFactory {
 
     protected abstract Speed getSpeed();
 
-    protected abstract float getRadius();
+    protected float getRadius(){
+        return TextureCache.getTextureRegion(this.getAnimationNormalFramesName()[0])
+                .getRegionWidth()/2;
+    }
 
     protected abstract String[] getAnimationNormalFramesName();
 

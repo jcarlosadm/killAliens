@@ -6,16 +6,12 @@ import br.com.killaliens.util.speed.Speed;
 
 public class BigBulletFactory extends BulletFactory {
 
-    private static final int FIREPOWER = 1;
-    private static final float SPEEDX = 1f;
-    private static final float SPEEDY = 1f;
-    private static final float RADIUS = 3f;
+    private static final int FIREPOWER = 3;
+    private static final float SPEEDX = 10f;
+    private static final float SPEEDY = 10f;
     
-    // TODO define animations
-    private static final String[] ANIMATION_NORMAL_FRAMENAMES = {""};
-    
-    // TODO define animations
-    private static final String[] ANIMATION_DEAD_FRAMENAMES = {""};
+    private static final String[] ANIMATION_NORMAL_FRAMENAMES = {"bigbullet"};
+    private static final String[] ANIMATION_DEAD_FRAMENAMES = {"bigbullet"};
     
     protected BigBulletFactory() {}
 
@@ -38,10 +34,4 @@ public class BigBulletFactory extends BulletFactory {
     protected String[] getAnimationDeadFramesName() {
         return ANIMATION_DEAD_FRAMENAMES;
     }
-
-    @Override
-    protected float getRadius() {
-        return RADIUS;
-    }
-
 }
