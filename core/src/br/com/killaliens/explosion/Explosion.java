@@ -12,22 +12,18 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class Explosion extends Actor {
 
     private static final float TIME_LIMIT_IN_FRAMES = 1f;
+    private float elapsedTime = 0f;
     private static final float ANIMATION_FRAME_TIME = 0.2f;
 
     private static final String[] ANIMATION_NORMAL_FRAME_NAMES = { "explosion01", 
         "explosion02", "explosion03" };
 
+    private AnimationManagement animationData = new AnimationManagement();
+    
     private static final float RADIUS = TextureCache.
             getTextureRegion(ANIMATION_NORMAL_FRAME_NAMES[0]).getRegionWidth()/2;
-    
-    private AnimationManagement animationData = new AnimationManagement();
-
-    // TODO add sound with low volume
-
-    private float elapsedTime = 0f;
 
     public Explosion(float centerX, float centerY) {
-        // TODO Auto-generated constructor stub
         this.setX(centerX - RADIUS);
         this.setY(centerY - RADIUS);
         this.setWidth(RADIUS * 2);
@@ -39,12 +35,11 @@ public class Explosion extends Actor {
         this.animationData.addAnimation(AnimationTypes.NORMAL_STATE, animation);
         this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
 
-        // load sound
+        // TODO load sound without loop
     }
 
     @Override
     public void act(float delta) {
-        // TODO Auto-generated method stub
         super.act(delta);
         this.elapsedTime += delta;
         
@@ -57,7 +52,6 @@ public class Explosion extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
 
         batch.draw(this.animationData.getCurrentTextureRegion(true),

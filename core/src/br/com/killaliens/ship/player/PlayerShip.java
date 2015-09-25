@@ -20,7 +20,6 @@ public class PlayerShip extends Ship {
         this.setTouchable(Touchable.enabled);
         this.setVisible(true);
         this.addListener(new PlayerTouchListener(this));
-        // TODO Auto-generated constructor stub
     }
     
     public static synchronized PlayerShip getPlayerShip(){
@@ -35,25 +34,7 @@ public class PlayerShip extends Ship {
 
     @Override
     public void act(float delta) {
-        // TODO Auto-generated method stub
         super.act(delta);
-        
-        
-        /**Rectangle rec = new Rectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-        
-        String state = this.getX() + " " + this.getY() + " "+ this.getWidth() 
-                + " "+this.getHeight() + " "+TouchState.getPosition().x
-                + " "+TouchState.getPosition().y;
-        
-        if (rec.contains(TouchState.getPosition())) {
-            //System.out.println(state);
-        }
-        //System.out.println(this.isTouched());
-        if (TouchState.getDownState() == true && this.colliding(TouchState.getPosition())) {
-            this.moveToLocation(TouchState.getPosition(), delta);
-        }*/
-        
-        
         
         if (this.isTouched()) {
             this.setShooting(true);

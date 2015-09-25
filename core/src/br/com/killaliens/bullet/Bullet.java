@@ -47,7 +47,6 @@ public class Bullet extends Actor {
     
     @Override
     public void act(float delta) {
-        // TODO Auto-generated method stub
         super.act(delta);
         this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
         this.animationData.advanceTime(delta);
@@ -59,7 +58,6 @@ public class Bullet extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
         
         batch.draw(this.animationData.getCurrentTextureRegion(true), 

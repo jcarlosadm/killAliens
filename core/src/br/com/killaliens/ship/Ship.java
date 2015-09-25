@@ -127,7 +127,6 @@ public abstract class Ship extends Actor {
 
     @Override
     public void act(float delta) {
-        // TODO Auto-generated method stub
         super.act(delta);
 
         if (this.shooting == true) {
@@ -138,7 +137,6 @@ public abstract class Ship extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
         this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
         batch.draw(this.animationData.getCurrentTextureRegion(true),

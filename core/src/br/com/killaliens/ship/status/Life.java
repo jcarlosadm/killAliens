@@ -5,7 +5,6 @@ public class Life {
     private int maxLife = 1;
     
     public Life(int maxLife) {
-        // TODO Auto-generated constructor stub
         this.maxLife = maxLife;
         this.currentLife = maxLife;
     }
@@ -19,7 +18,6 @@ public class Life {
     }
 
     private void upLife(int amount) {
-        // TODO Auto-generated method stub
         if (this.currentLife + amount <= this.maxLife) {
             this.currentLife += amount;
         } else {
@@ -28,7 +26,6 @@ public class Life {
     }
 
     private void downLife(int amount) {
-        // TODO Auto-generated method stub
         if (this.currentLife >= amount) {
             this.currentLife -= amount;
         } else {
