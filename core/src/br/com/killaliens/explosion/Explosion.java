@@ -3,6 +3,7 @@ package br.com.killaliens.explosion;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -10,17 +11,18 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Explosion extends Actor {
 
-    private static final float TIME_LIMIT_IN_FRAMES = 150f;
-    private static final float ANIMATION_FRAME_TIME = 10f;
+    private static final float TIME_LIMIT_IN_FRAMES = 1f;
+    private static final float ANIMATION_FRAME_TIME = 0.2f;
+
+    private static final String[] ANIMATION_NORMAL_FRAME_NAMES = { "explosion01", 
+        "explosion02", "explosion03" };
+
+    private static final float RADIUS = TextureCache.
+            getTextureRegion(ANIMATION_NORMAL_FRAME_NAMES[0]).getRegionWidth()/2;
     
-    private static final float RADIUS = 20f;
-
-    // TODO define frames
-    private static final String[] ANIMATION_NORMAL_FRAME_NAMES = { "" };
-
     private AnimationManagement animationData = new AnimationManagement();
 
-    // sound with low volume
+    // TODO add sound with low volume
 
     private float elapsedTime = 0f;
 
@@ -28,10 +30,14 @@ public class Explosion extends Actor {
         // TODO Auto-generated constructor stub
         this.setX(centerX - RADIUS);
         this.setY(centerY - RADIUS);
+        this.setWidth(RADIUS * 2);
+        this.setHeight(RADIUS * 2);
+        this.setOrigin(this.getWidth()/2, this.getHeight()/2);
 
         Animation animation = BuildAnimation.build(ANIMATION_FRAME_TIME,
                 ANIMATION_NORMAL_FRAME_NAMES);
         this.animationData.addAnimation(AnimationTypes.NORMAL_STATE, animation);
+        this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
 
         // load sound
     }
@@ -41,6 +47,7 @@ public class Explosion extends Actor {
         // TODO Auto-generated method stub
         super.act(delta);
         this.elapsedTime += delta;
+        
         this.animationData.advanceTime(delta);
 
         if (this.elapsedTime >= TIME_LIMIT_IN_FRAMES) {
