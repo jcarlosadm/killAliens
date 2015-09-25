@@ -52,7 +52,7 @@ public class Bullet extends Actor {
         this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
         this.animationData.advanceTime(delta);
         
-        if (!this.checkVisibleOnCamera.actorIsVisible(this.getStage().getCamera())) {
+        if (!this.checkVisibleOnCamera.actorIsVisible()) {
             this.remove();
         }
     }

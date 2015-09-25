@@ -15,8 +15,8 @@ public class CheckVisibleOnCamera {
         this.actor = actor;
     }
     
-    public boolean actorIsVisible(Camera camera){
-        this.buildRectCamera(camera);
+    public boolean actorIsVisible(){
+        this.buildRectCamera(this.actor.getStage().getCamera());
         this.buildRectActor();
         return (!this.outOfLimits());
     }
