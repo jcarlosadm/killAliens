@@ -27,6 +27,7 @@ public class KillAliens extends ApplicationAdapter {
 	    // TODO Auto-generated method stub
 	    super.dispose();
 	    TextureCache.dispose();
+	    // TODO dispose screens, sounds and musics
 	}
 
 	@Override
@@ -36,5 +37,12 @@ public class KillAliens extends ApplicationAdapter {
 		
 		this.currentScreen.act();
 		this.currentScreen.draw();
+	}
+	
+	@Override
+	public void resize(int width, int height) {
+	    // TODO Auto-generated method stub
+	    //super.resize(width, height);
+	    this.currentScreen.getViewport().update(width, height);
 	}
 }
