@@ -78,6 +78,14 @@ public class Bullet extends Actor {
         this.limits.setY(y + this.getHeight()/2);
     }
     
+    @Override
+    public void setPosition(float x, float y) {
+        // TODO Auto-generated method stub
+        super.setPosition(x, y);
+        this.limits.setX(x);
+        this.limits.setY(y);
+    }
+    
     public boolean isEnemyBullet(){
         return this.enemyBullet;
     }

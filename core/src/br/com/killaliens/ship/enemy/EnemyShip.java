@@ -11,6 +11,6 @@ public abstract class EnemyShip extends Ship {
         // TODO Auto-generated constructor stub
     }
     
-    protected abstract void artificialInteligent();
+    protected abstract void runArtificialIntelligence();
 
 }

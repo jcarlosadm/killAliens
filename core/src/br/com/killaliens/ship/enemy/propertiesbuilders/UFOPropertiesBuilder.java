@@ -1,4 +1,4 @@
-package br.com.killaliens.ship.player;
+package br.com.killaliens.ship.enemy.propertiesbuilders;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -7,28 +7,28 @@ import br.com.killaliens.ammunition.AmmunitionTypes;
 import br.com.killaliens.ship.ShipPropertiesBuilder;
 import br.com.killaliens.util.image.TextureCache;
 
-public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
+public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
 
-    private static final String[] ANIMATION_NORMAL_FRAMES = { "player" };
-    private static final String[] ANIMATION_DEAD_FRAMES = { "player" };
+    private static final String[] ANIMATION_NORMAL_FRAMES = { "alien05" };
+    private static final String[] ANIMATION_DEAD_FRAMES = { "alien05" };
     private static final float FRAMETIME_NORMAL = 0.2f;
     private static final float FRAMETIME_DEAD = 0.2f;
     
     private static final float INITIAL_POSITION_X = Gdx.graphics.getWidth()/2;
-    private static final float INITIAL_POSITION_Y = 10f;
+    private static final float INITIAL_POSITION_Y = Gdx.graphics.getHeight() - 50f;
     private static final float INITIAL_WIDTH = getWidthFromFrame();
     private static final float INITIAL_HEIGHT = getHeightFromFrame();
 
-    private static final float INITIAL_ROTATION = 0f;
+    private static final float INITIAL_ROTATION = 180f;
 
     private static final float INITIAL_SPEEDX = 0f;
-    private static final float INITIAL_SPEEDY = 0f;
+    private static final float INITIAL_SPEEDY = -4f;
 
-    private static final int INITIAL_MAXLIFE = 4;
-    private static final int INITIAL_SHIELD = 2;
+    private static final int INITIAL_MAXLIFE = 2;
+    private static final int INITIAL_SHIELD = 0;
 
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;
-
+    
     private static float getWidthFromFrame(){
         TextureRegion textureRegion = getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
         if (textureRegion == null) {
@@ -122,5 +122,4 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
     protected float getFrameTimeDeadAnimation() {
         return FRAMETIME_DEAD;
     }
-
 }

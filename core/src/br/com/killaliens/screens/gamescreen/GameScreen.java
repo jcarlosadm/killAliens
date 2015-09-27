@@ -3,8 +3,11 @@ package br.com.killaliens.screens.gamescreen;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.screens.gamescreen.background.Background;
 import br.com.killaliens.ship.enemy.EnemyShip;
+import br.com.killaliens.ship.enemy.factory.EnemyFactory;
+import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.accumulatorScroll.AccumulatorScrool;
 
@@ -21,6 +24,9 @@ public class GameScreen extends Stage {
     public GameScreen() {
         // TODO Auto-generated constructor stub
         this.addActor(new Background());
+        
+        this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
+        
         this.addPlayer(PlayerShip.getPlayerShip());
         
         Gdx.input.setInputProcessor(this);
@@ -32,9 +38,19 @@ public class GameScreen extends Stage {
         super.act(delta);
         this.getCamera().update();
         this.getCamera().translate(0, SCROLLDOWN_SPEED, 0);
+        
         for (Actor actor : this.getActors()) {
             if (actor instanceof AccumulatorScrool) {
                 ((AccumulatorScrool) actor).addAccumulatorScrollY(SCROLLDOWN_SPEED);
+            }
+        }
+        
+        for (Actor bullet : this.getActors()) {
+            if (bullet instanceof Bullet) {
+                for (EnemyShip enemyShip : enemyShips) {
+                    ((Bullet) bullet).colliding(enemyShip);
+                }
+                ((Bullet) bullet).colliding(playerShip);
             }
         }
     }
