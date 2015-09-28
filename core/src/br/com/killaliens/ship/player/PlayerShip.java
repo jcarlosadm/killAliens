@@ -58,7 +58,6 @@ public class PlayerShip extends Ship implements AccumulatorScrool {
     
     @Override
     public boolean remove() {
-        // TODO Auto-generated method stub
         Stage stage = this.getStage();
         if (stage != null && stage instanceof GameScreen) {
             ((GameScreen) stage).removePlayer();

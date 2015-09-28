@@ -2,6 +2,8 @@ package br.com.killaliens.ship.enemy.types.ufo;
 
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
+import br.com.killaliens.ship.enemy.types.ufo.states.UFODeadStatus;
+import br.com.killaliens.ship.enemy.types.ufo.states.UFONormalStatus;
 import br.com.killaliens.util.animation.AnimationTypes;
 
 public class UFO extends EnemyShip {

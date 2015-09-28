@@ -1,4 +1,4 @@
-package br.com.killaliens.ship.enemy.types.ufo;
+package br.com.killaliens.ship.enemy.types.ufo.states;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.EnemyStatus;
