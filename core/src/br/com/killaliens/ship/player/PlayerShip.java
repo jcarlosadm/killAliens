@@ -9,7 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 public class PlayerShip extends Ship implements AccumulatorScrool {
-    
+
     private boolean touched = false;
     
     private static PlayerShip playerShipInstance = null;

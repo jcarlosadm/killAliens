@@ -7,12 +7,14 @@ import br.com.killaliens.ammunition.AmmunitionTypes;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.bullet.BulletProperties;
 import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
  * BulletFactory Using pattern factory method (in getFactory) Using pattern
@@ -60,7 +62,10 @@ public abstract class BulletFactory {
         this.setAnimations(bulletProperties);
         
         Bullet bullet = new Bullet(bulletProperties);
-        createBulletParameter.getParentStage().addActor(bullet);
+        Stage stage = createBulletParameter.getParentStage();
+        if (stage != null && stage instanceof GameScreen) {
+            ((GameScreen)stage).addBullet(bullet);
+        }
     }
 
     private void setAnimations(BulletProperties bulletProperties) {

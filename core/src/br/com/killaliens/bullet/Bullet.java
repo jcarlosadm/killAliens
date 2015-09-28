@@ -3,6 +3,7 @@ package br.com.killaliens.bullet;
 import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.bullet.firepower.NullFirePower;
 import br.com.killaliens.explosion.Explosion;
+import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Bullet extends Actor {
     
@@ -67,6 +69,16 @@ public class Bullet extends Actor {
     }
     
     @Override
+    public boolean remove() {
+        Stage stage = this.getStage();
+        if (stage != null && stage instanceof GameScreen) {
+            ((GameScreen) this.getStage()).removeBullet(this);
+        }
+        
+        return super.remove();
+    }
+    
+    @Override
     public void setX(float x) {
         super.setX(x);
         this.limits.setX(x + this.getWidth()/2);
@@ -80,7 +92,6 @@ public class Bullet extends Actor {
     
     @Override
     public void setPosition(float x, float y) {
-        // TODO Auto-generated method stub
         super.setPosition(x, y);
         this.limits.setX(x);
         this.limits.setY(y);
@@ -119,7 +130,10 @@ public class Bullet extends Actor {
     private void explode() {
         Explosion explosion = new Explosion(this.getX() + this.getWidth()/2, 
                 this.getY() + this.getHeight()/2);
-        this.getStage().addActor(explosion);
+        Stage stage = this.getStage();
+        if (stage != null && stage instanceof GameScreen) {
+            ((GameScreen) stage).addExplosion(explosion);
+        }
         
         this.remove();
     }

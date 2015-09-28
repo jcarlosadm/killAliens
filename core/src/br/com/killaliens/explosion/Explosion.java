@@ -1,5 +1,6 @@
 package br.com.killaliens.explosion;
 
+import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
@@ -8,6 +9,7 @@ import br.com.killaliens.util.image.TextureCache;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Explosion extends Actor {
 
@@ -58,6 +60,15 @@ public class Explosion extends Actor {
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(),
                 this.getWidth(), this.getHeight(), this.getScaleX(),
                 this.getScaleY(), this.getRotation());
+    }
+    
+    @Override
+    public boolean remove() {
+        Stage stage = this.getStage();
+        if (stage != null && stage instanceof GameScreen) {
+            ((GameScreen) stage).removeExplosion(this);
+        }
+        return super.remove();
     }
 
 }

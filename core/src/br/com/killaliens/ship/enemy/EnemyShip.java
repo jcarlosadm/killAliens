@@ -8,7 +8,7 @@ import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.util.animation.AnimationTypes;
 
 public abstract class EnemyShip extends Ship {
-    
+
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
