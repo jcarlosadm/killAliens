@@ -1,6 +1,7 @@
 package br.com.killaliens.ship.player.statsbar;
 
 import br.com.killaliens.ship.player.PlayerShip;
+import br.com.killaliens.ship.player.statsbar.hpbar.HPBar;
 import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.image.TextureCache;
 
@@ -13,11 +14,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class StatusBar extends Actor implements AccumulatorScroolY {
 
     private static final String STATSBAR_NAME = "statsbar";
+    private static final float ALPHA_COLOR = 0.8f;
 
     private PlayerShip playerShip = null;
 
     private TextureRegion statusBarTexture = TextureCache
             .getTextureRegion(STATSBAR_NAME);
+    
+    private HPBar hpBar = null;
 
     private float accumulatorScrollY = 0f;
 
@@ -32,19 +36,21 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
                 - this.statusBarTexture.getRegionWidth());
         this.setY(Gdx.graphics.getHeight() - 10f
                 - this.statusBarTexture.getRegionHeight());
+        
+        this.hpBar = new HPBar(this, playerShip);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
 
         Color color = batch.getColor();
-        batch.setColor(color.r, color.g, color.b, 0.7f);
+        batch.setColor(color.r, color.g, color.b, ALPHA_COLOR);
 
+        this.hpBar.draw(batch, parentAlpha);
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
 
-        batch.setColor(color.r, color.g, color.b, 1f);
+        batch.setColor(color.r, color.g, color.b, color.a);
     }
 
     @Override
