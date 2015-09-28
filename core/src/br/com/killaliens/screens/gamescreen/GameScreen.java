@@ -24,16 +24,20 @@ public class GameScreen extends Stage {
     private Group bulletList = new Group();
     private Group background = new Group();
     private Group explosions = new Group();
+    private Group userInterface = new Group();
     
     public GameScreen() {
-        this.addActor(background);
-        this.addActor(enemyShips);
-        this.addActor(playerShip);
-        this.addActor(bulletList);
-        this.addActor(explosions);
+        this.addActor(this.background);
+        this.addActor(this.enemyShips);
+        this.addActor(this.playerShip);
+        this.addActor(this.bulletList);
+        this.addActor(this.explosions);
+        this.addActor(this.userInterface);
         
         this.addBackground(new Background());
         this.addPlayer(PlayerShip.getPlayerShip());
+        
+        // TODO add user interfaces
         
         // TODO for tests
         this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
