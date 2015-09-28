@@ -15,44 +15,47 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
     private static final String STATSBAR_NAME = "statsbar";
 
     private PlayerShip playerShip = null;
-    
-    private TextureRegion statusBarTexture = TextureCache.getTextureRegion(STATSBAR_NAME);
-    
+
+    private TextureRegion statusBarTexture = TextureCache
+            .getTextureRegion(STATSBAR_NAME);
+
     private float accumulatorScrollY = 0f;
-    
+
     public StatusBar(PlayerShip playerShip) {
         this.playerShip = playerShip;
         this.setup();
     }
-    
+
     private void setup() {
         // TODO Auto-generated method stub
-        this.setX(Gdx.graphics.getWidth()-10f-this.statusBarTexture.getRegionWidth());
-        this.setY(Gdx.graphics.getHeight()-10f-this.statusBarTexture.getRegionHeight());
+        this.setX(Gdx.graphics.getWidth() - 10f
+                - this.statusBarTexture.getRegionWidth());
+        this.setY(Gdx.graphics.getHeight() - 10f
+                - this.statusBarTexture.getRegionHeight());
     }
-    
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
-        
+
         Color color = batch.getColor();
         batch.setColor(color.r, color.g, color.b, 0.7f);
-        
+
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
-        
+
         batch.setColor(color.r, color.g, color.b, 1f);
     }
-    
+
     @Override
     public void addAccumulatorScrollY(float value) {
         this.accumulatorScrollY += value;
-        this.setY(this.getY()+value);
+        this.setY(this.getY() + value);
     }
 
     @Override
     public float getAccumulatorScrollY() {
         return this.accumulatorScrollY;
     }
-    
+
 }
