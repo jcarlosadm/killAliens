@@ -5,6 +5,7 @@ import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -34,7 +35,10 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
+        Color color = batch.getColor();
+        batch.setColor(color.r, color.g, color.b, 0.7f);
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
+        batch.setColor(color.r, color.g, color.b, 1f);
     }
     
     @Override
