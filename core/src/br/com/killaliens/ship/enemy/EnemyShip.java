@@ -1,5 +1,7 @@
 package br.com.killaliens.ship.enemy;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
@@ -28,7 +30,11 @@ public abstract class EnemyShip extends Ship {
     
     @Override
     public boolean remove() {
-        ((GameScreen) this.getStage()).removeShipFromEnemyList(this);
+        Stage stage = this.getStage();
+        if (stage != null && stage instanceof GameScreen) {
+            ((GameScreen) this.getStage()).removeShipFromEnemyList(this);
+        }
+        
         return super.remove();
     }
 
