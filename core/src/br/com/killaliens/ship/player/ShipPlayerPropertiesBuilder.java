@@ -20,7 +20,7 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
     private static final float INITIAL_SPEEDX = 0f;
     private static final float INITIAL_SPEEDY = 0f;
 
-    private static final int INITIAL_MAXLIFE = 4;
+    private static final int INITIAL_MAXLIFE = 40;
     private static final int INITIAL_SHIELD = 2;
 
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;

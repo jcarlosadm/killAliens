@@ -299,7 +299,7 @@ public abstract class Ship extends Actor {
         this.enemy = enemy;
     }
     
-    protected void moveToLocation(float x, float y, float timeInSeconds) {
+    public void moveToLocation(float x, float y, float timeInSeconds) {
         MoveToAction movAction = new MoveToAction();
         movAction.setPosition(x, y);
         movAction.setDuration(timeInSeconds);

@@ -60,7 +60,10 @@ public class GameScreen extends Stage {
             for (Actor enemyShip : enemyShips.getChildren()) {
                 ((Bullet) bullet).colliding((Ship) enemyShip);
             }
-            ((Bullet) bullet).colliding((PlayerShip) playerShip.getChildren().first());
+            if (this.playerShip.getChildren().size > 0) {
+                ((Bullet) bullet).colliding((PlayerShip) this.playerShip.getChildren().first());
+            }
+            
         }
     }
     
@@ -71,6 +74,10 @@ public class GameScreen extends Stage {
     private void addPlayer(PlayerShip playerShip) {
         this.playerShip.clear();
         this.playerShip.addActor(playerShip);
+    }
+    
+    public void removePlayer(){
+        this.playerShip.clear();
     }
     
     public void addEnemy(EnemyShip enemyShip){
