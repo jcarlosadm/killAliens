@@ -2,6 +2,7 @@ package br.com.killaliens.ship.player.statsbar.hpbar;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
+import br.com.killaliens.util.font.FontCache;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -28,7 +29,8 @@ public class HPBar {
     
     private PlayerShip playerShip = null;
     
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("fonts/hpFont.fnt"));
+    private static final String FONT_NAME = "statsFontSmall.fnt";
+    private BitmapFont font = FontCache.getFont(FONT_NAME);
     
     private float positionX = 0f, positionY = 0f;
     

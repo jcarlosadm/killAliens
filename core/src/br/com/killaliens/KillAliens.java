@@ -1,6 +1,7 @@
 package br.com.killaliens;
 
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -27,6 +28,7 @@ public class KillAliens extends ApplicationAdapter {
 	    // TODO Auto-generated method stub
 	    super.dispose();
 	    TextureCache.dispose();
+	    FontCache.dispose();
 	    // TODO dispose screens, sounds and musics
 	}
 

@@ -2,6 +2,7 @@ package br.com.killaliens.ship.player.statsbar;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.hpbar.HPBar;
+import br.com.killaliens.ship.player.statsbar.shieldmeter.ShieldMeter;
 import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.image.TextureCache;
 
@@ -22,6 +23,7 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
             .getTextureRegion(STATSBAR_NAME);
     
     private HPBar hpBar = null;
+    private ShieldMeter shieldMeter = null;
 
     private float accumulatorScrollY = 0f;
 
@@ -37,7 +39,8 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
         this.setY(Gdx.graphics.getHeight() - 10f
                 - this.statusBarTexture.getRegionHeight());
         
-        this.hpBar = new HPBar(this, playerShip);
+        this.hpBar = new HPBar(this, this.playerShip);
+        this.shieldMeter = new ShieldMeter(this, this.playerShip);
     }
 
     @Override
@@ -49,8 +52,9 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
 
         this.hpBar.draw(batch, parentAlpha);
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
+        this.shieldMeter.draw(batch, parentAlpha);
 
-        batch.setColor(color.r, color.g, color.b, color.a);
+        batch.setColor(color.r, color.g, color.b, 1f);
     }
 
     @Override
