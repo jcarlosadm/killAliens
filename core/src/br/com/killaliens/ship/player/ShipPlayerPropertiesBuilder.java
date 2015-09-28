@@ -1,11 +1,9 @@
 package br.com.killaliens.ship.player;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import br.com.killaliens.ammunition.AmmunitionTypes;
 import br.com.killaliens.ship.ShipPropertiesBuilder;
-import br.com.killaliens.util.image.TextureCache;
+
+import com.badlogic.gdx.Gdx;
 
 public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
 
@@ -16,9 +14,7 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
     
     private static final float INITIAL_POSITION_X = Gdx.graphics.getWidth()/2;
     private static final float INITIAL_POSITION_Y = 10f;
-    private static final float INITIAL_WIDTH = getWidthFromFrame();
-    private static final float INITIAL_HEIGHT = getHeightFromFrame();
-
+    
     private static final float INITIAL_ROTATION = 0f;
 
     private static final float INITIAL_SPEEDX = 0f;
@@ -29,30 +25,6 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
 
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;
 
-    private static float getWidthFromFrame(){
-        TextureRegion textureRegion = getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
-        if (textureRegion == null) {
-            return 0;
-        }
-        return textureRegion.getRegionWidth();
-    }
-    
-    private static float getHeightFromFrame(){
-        TextureRegion textureRegion = getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
-        if (textureRegion == null) {
-            return 0;
-        }
-        return textureRegion.getRegionHeight();
-    }
-    
-    private static TextureRegion getTextureRegion(String textureRegionName){
-        if(textureRegionName.isEmpty()){
-            return null;
-        }
-        
-        return TextureCache.getTextureRegion(textureRegionName);
-    }
-    
     @Override
     protected String[] getAnimationNormalFrameNames() {
         return ANIMATION_NORMAL_FRAMES;
@@ -71,16 +43,6 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
     @Override
     protected float getStartPositionY() {
         return INITIAL_POSITION_Y;
-    }
-
-    @Override
-    protected float getStartWidth() {
-        return INITIAL_WIDTH;
-    }
-
-    @Override
-    protected float getStartHeight() {
-        return INITIAL_HEIGHT;
     }
 
     @Override

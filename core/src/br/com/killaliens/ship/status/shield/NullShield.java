@@ -1,4 +1,5 @@
-package br.com.killaliens.ship.status;
+package br.com.killaliens.ship.status.shield;
+
 
 public class NullShield extends Shield{
 

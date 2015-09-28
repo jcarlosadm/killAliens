@@ -1,13 +1,16 @@
 package br.com.killaliens.ship;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
-import br.com.killaliens.ship.status.Life;
-import br.com.killaliens.ship.status.NullLife;
-import br.com.killaliens.ship.status.NullShield;
-import br.com.killaliens.ship.status.Shield;
+import br.com.killaliens.ship.status.life.Life;
+import br.com.killaliens.ship.status.life.NullLife;
+import br.com.killaliens.ship.status.management.StatusManagement;
+import br.com.killaliens.ship.status.shield.NullShield;
+import br.com.killaliens.ship.status.shield.Shield;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.collision.CollisionPolygonWithCircle;
@@ -23,6 +26,7 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 /**
  * Ship
@@ -47,6 +51,11 @@ public abstract class Ship extends Actor {
     private AnimationManagement animationData = new AnimationManagement();
 
     private boolean enemy = false;
+    
+    private Map<AnimationTypes, StatusManagement> statusTypes = 
+            new HashMap<AnimationTypes, StatusManagement>();
+
+    private StatusManagement currentStatus = null;
 
     /**
      * Constructor
@@ -288,5 +297,36 @@ public abstract class Ship extends Actor {
 
     public void setIfIsEnemy(boolean enemy) {
         this.enemy = enemy;
+    }
+    
+    protected void moveToLocation(float x, float y, float timeInSeconds) {
+        MoveToAction movAction = new MoveToAction();
+        movAction.setPosition(x, y);
+        movAction.setDuration(timeInSeconds);
+        
+        this.addAction(movAction);
+    }
+    
+    protected void addStatus(AnimationTypes type, StatusManagement status){
+        this.statusTypes.put(type, status);
+    }
+    
+    protected boolean setCurrentStatus(AnimationTypes key){
+        if (this.statusTypes.containsKey(key)) {
+            this.currentStatus = this.statusTypes.get(key);
+            return true;
+        }
+        
+        return false;
+    }
+    
+    protected StatusManagement getCurrentStatus(){
+        return this.currentStatus;
+    }
+    
+    public void resetAllStatus(){
+        for (StatusManagement status : this.statusTypes.values()) {
+            status.reset();
+        }
     }
 }

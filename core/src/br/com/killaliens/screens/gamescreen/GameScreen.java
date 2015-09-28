@@ -69,7 +69,7 @@ public class GameScreen extends Stage {
         this.addActor(enemyShip);
     }
     
-    public void removeEnemyShip(EnemyShip enemyShip){
+    public void removeShipFromEnemyList(EnemyShip enemyShip){
         this.enemyShips.remove(enemyShip);
     }
     

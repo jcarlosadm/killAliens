@@ -1,8 +1,11 @@
 package br.com.killaliens.ship;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import br.com.killaliens.ammunition.AmmunitionTypes;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.image.TextureCache;
 
 public abstract class ShipPropertiesBuilder {
     
@@ -54,9 +57,21 @@ public abstract class ShipPropertiesBuilder {
     
     protected abstract float getStartPositionY();
     
-    protected abstract float getStartWidth();
+    protected float getStartWidth(){
+        TextureRegion textureRegion = getTextureRegion(this.getAnimationNormalFrameNames()[0]);
+        if (textureRegion == null) {
+            return 0;
+        }
+        return textureRegion.getRegionWidth();
+    }
     
-    protected abstract float getStartHeight();
+    protected float getStartHeight(){
+        TextureRegion textureRegion = getTextureRegion(this.getAnimationNormalFrameNames()[0]);
+        if (textureRegion == null) {
+            return 0;
+        }
+        return textureRegion.getRegionHeight();
+    }
     
     protected abstract float getStartRotation();
     
@@ -73,4 +88,12 @@ public abstract class ShipPropertiesBuilder {
     protected abstract float getFrameTimeNormalAnimation();
     
     protected abstract float getFrameTimeDeadAnimation();
+    
+    private static TextureRegion getTextureRegion(String textureRegionName){
+        if(textureRegionName.isEmpty()){
+            return null;
+        }
+        
+        return TextureCache.getTextureRegion(textureRegionName);
+    }
 }

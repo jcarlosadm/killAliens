@@ -3,10 +3,10 @@ package br.com.killaliens.ship;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.ship.status.Life;
-import br.com.killaliens.ship.status.NullLife;
-import br.com.killaliens.ship.status.NullShield;
-import br.com.killaliens.ship.status.Shield;
+import br.com.killaliens.ship.status.life.Life;
+import br.com.killaliens.ship.status.life.NullLife;
+import br.com.killaliens.ship.status.shield.NullShield;
+import br.com.killaliens.ship.status.shield.Shield;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.speed.NullSpeed;

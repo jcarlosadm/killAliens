@@ -3,9 +3,9 @@ package br.com.killaliens.ship.enemy.factory;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.ShipPropertiesBuilder;
 import br.com.killaliens.ship.enemy.EnemyShip;
-import br.com.killaliens.ship.enemy.propertiesbuilders.UFOPropertiesBuilder;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
-import br.com.killaliens.ship.enemy.types.UFO;
+import br.com.killaliens.ship.enemy.types.ufo.UFO;
+import br.com.killaliens.ship.enemy.types.ufo.UFOPropertiesBuilder;
 
 public abstract class EnemyFactory {
     

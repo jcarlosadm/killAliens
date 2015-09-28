@@ -7,7 +7,6 @@ import br.com.killaliens.util.accumulatorScroll.AccumulatorScrool;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 public class PlayerShip extends Ship implements AccumulatorScrool {
     
@@ -41,20 +40,13 @@ public class PlayerShip extends Ship implements AccumulatorScrool {
         
         if (this.isTouched()) {
             this.setShooting(true);
-            this.moveToLocation(Gdx.input.getX(), Gdx.graphics.getHeight() 
-                    - Gdx.input.getY(), delta);
+            float x = Gdx.input.getX() - this.getWidth()/2;
+            float y = Gdx.graphics.getHeight()  - Gdx.input.getY()
+                    + this.accumulatorScrollY - this.getHeight()/2;
+            this.moveToLocation(x, y, delta);
         }
     }
     
-    public void moveToLocation(float x, float y, float timeInSeconds) {
-        MoveToAction movAction = new MoveToAction();
-        movAction.setPosition(x - this.getWidth()/2, 
-                y + this.accumulatorScrollY - this.getHeight()/2);
-        movAction.setDuration(timeInSeconds);
-        
-        this.addAction(movAction);
-    }
-
     /**
      * @return the touched
      */
@@ -65,7 +57,7 @@ public class PlayerShip extends Ship implements AccumulatorScrool {
     /**
      * @param touched the touched to set
      */
-    public void setTouched(boolean touched) {
+    protected void setTouched(boolean touched) {
         this.touched = touched;
     }
 
