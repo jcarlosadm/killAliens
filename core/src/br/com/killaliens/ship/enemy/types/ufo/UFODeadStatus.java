@@ -6,7 +6,7 @@ import br.com.killaliens.util.animation.AnimationTypes;
 
 public class UFODeadStatus extends EnemyStatus {
 
-    private static final float SECONDS_FOR_DEAD = 3f;
+    private static final float SECONDS_FOR_DEAD = 1.5f;
     private float currentCountForDead = 0f;
     
     public UFODeadStatus(EnemyShip enemyShip) {

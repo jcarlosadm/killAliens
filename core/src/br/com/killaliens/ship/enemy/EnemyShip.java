@@ -10,7 +10,6 @@ public abstract class EnemyShip extends Ship {
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
-        // TODO Auto-generated constructor stub
     }
     
     @Override
