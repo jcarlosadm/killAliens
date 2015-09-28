@@ -8,7 +8,7 @@ import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScrool;
+import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -54,8 +54,8 @@ public class GameScreen extends Stage {
         
         for (Actor group : this.getActors()) {
             for (Actor actor : (((Group) group).getChildren())) {
-                if (actor instanceof AccumulatorScrool) {
-                    ((AccumulatorScrool) actor).addAccumulatorScrollY(SCROLLDOWN_SPEED);
+                if (actor instanceof AccumulatorScroolY) {
+                    ((AccumulatorScroolY) actor).addAccumulatorScrollY(SCROLLDOWN_SPEED);
                 }
             }
         }

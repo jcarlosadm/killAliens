@@ -6,13 +6,13 @@ import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.ShipPropertiesBuilder;
 import br.com.killaliens.ship.player.states.PlayerDeadStatus;
 import br.com.killaliens.ship.player.states.PlayerNormalStatus;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScrool;
+import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.animation.AnimationTypes;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class PlayerShip extends Ship implements AccumulatorScrool {
+public class PlayerShip extends Ship implements AccumulatorScroolY {
 
     private boolean touched = false;
     
