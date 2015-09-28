@@ -8,6 +8,7 @@ import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
+import br.com.killaliens.ship.player.statsbar.StatusBar;
 import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 
 import com.badlogic.gdx.Gdx;
@@ -38,6 +39,8 @@ public class GameScreen extends Stage {
         this.addPlayer(PlayerShip.getPlayerShip());
         
         // TODO add user interfaces
+        this.userInterface.addActor(new StatusBar(
+                (PlayerShip) this.playerShip.getChildren().first()));
         
         // TODO for tests
         this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
