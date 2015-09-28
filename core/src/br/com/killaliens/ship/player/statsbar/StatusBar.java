@@ -35,9 +35,12 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
     public void draw(Batch batch, float parentAlpha) {
         // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
+        
         Color color = batch.getColor();
         batch.setColor(color.r, color.g, color.b, 0.7f);
+        
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
+        
         batch.setColor(color.r, color.g, color.b, 1f);
     }
     
