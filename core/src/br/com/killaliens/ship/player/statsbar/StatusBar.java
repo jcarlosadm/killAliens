@@ -1,6 +1,7 @@
 package br.com.killaliens.ship.player.statsbar;
 
 import br.com.killaliens.ship.player.PlayerShip;
+import br.com.killaliens.ship.player.statsbar.ammunitionmeter.AmmunitionMeter;
 import br.com.killaliens.ship.player.statsbar.hpbar.HPBar;
 import br.com.killaliens.ship.player.statsbar.shieldmeter.ShieldMeter;
 import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
@@ -24,6 +25,7 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
     
     private HPBar hpBar = null;
     private ShieldMeter shieldMeter = null;
+    private AmmunitionMeter ammunitionMeter = null;
 
     private float accumulatorScrollY = 0f;
 
@@ -41,6 +43,7 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
         
         this.hpBar = new HPBar(this, this.playerShip);
         this.shieldMeter = new ShieldMeter(this, this.playerShip);
+        this.ammunitionMeter = new AmmunitionMeter(this, playerShip);
     }
 
     @Override
@@ -53,6 +56,7 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
         this.hpBar.draw(batch, parentAlpha);
         batch.draw(this.statusBarTexture, this.getX(), this.getY());
         this.shieldMeter.draw(batch, parentAlpha);
+        this.ammunitionMeter.draw(batch, parentAlpha);
 
         batch.setColor(color.r, color.g, color.b, 1f);
     }

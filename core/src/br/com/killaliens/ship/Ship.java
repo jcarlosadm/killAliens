@@ -235,6 +235,10 @@ public abstract class Ship extends Actor {
 
         return false;
     }
+    
+    public Ammunition getTopAmmunition(){
+        return this.ammunitions.peek();
+    }
 
     /**
      * set shooting status
@@ -254,7 +258,7 @@ public abstract class Ship extends Actor {
         this.ammunitions.peek().makeBullets(createBulletParameters);
 
         if (!this.ammunitions.peek().hasAmmunition()) {
-            this.ammunitions.pop();
+            this.removeTopAmmunition();
         }
     }
 

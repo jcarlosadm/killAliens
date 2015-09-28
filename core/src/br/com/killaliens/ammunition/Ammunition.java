@@ -12,11 +12,13 @@ public class Ammunition {
     private AmmunitionCount ammoCount = new AmmunitionCount(MINBULLET, MINBULLET, false);
     private BulletFactory bulletFactory = null;
     private int level = MINLEVEL;
+    private AmmunitionTypes type = null;
     
     private int reloadTime = 0;
     private int currentReloadTime = 0;
     
     public Ammunition(AmmunitionTypes type, int level) {
+        this.type = type;
         this.bulletFactory = BulletFactory.getFactory(type);
         if (level >= MINLEVEL && level <= MAXLEVEL) {
             this.level = level;
@@ -130,6 +132,10 @@ public class Ammunition {
             return true;
         }
         return false;
+    }
+    
+    public AmmunitionTypes getType(){
+        return this.type;
     }
 
 }
