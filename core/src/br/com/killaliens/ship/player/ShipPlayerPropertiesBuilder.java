@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
 
     private static final String[] ANIMATION_NORMAL_FRAMES = { "player" };
-    private static final String[] ANIMATION_DEAD_FRAMES = { "player" };
+    private static final String[] ANIMATION_DEAD_FRAMES = { "player", "player_blank" };
     private static final float FRAMETIME_NORMAL = 0.2f;
     private static final float FRAMETIME_DEAD = 0.2f;
     
