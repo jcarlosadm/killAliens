@@ -20,8 +20,7 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
 
     private PlayerShip playerShip = null;
 
-    private TextureRegion statusBarTexture = TextureCache
-            .getTextureRegion(STATSBAR_NAME);
+    private TextureRegion statusBarTexture = TextureCache.getTextureRegion(STATSBAR_NAME);
     
     private HPBar hpBar = null;
     private ShieldMeter shieldMeter = null;
@@ -35,7 +34,6 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
     }
 
     private void setup() {
-        // TODO Auto-generated method stub
         this.setX(Gdx.graphics.getWidth() - 10f
                 - this.statusBarTexture.getRegionWidth());
         this.setY(Gdx.graphics.getHeight() - 10f

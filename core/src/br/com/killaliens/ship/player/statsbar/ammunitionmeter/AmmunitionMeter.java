@@ -28,7 +28,6 @@ public class AmmunitionMeter {
     private BitmapFont font = FontCache.getFont(FONT_NAME);
     
     public AmmunitionMeter(StatusBar statusBar, PlayerShip playerShip) {
-        // TODO Auto-generated constructor stub
         this.playerShip = playerShip;
         
         this.positionX = statusBar.getX() + RELATIVE_POSITIONX;
@@ -36,7 +35,6 @@ public class AmmunitionMeter {
     }
     
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         Ammunition ammunition = this.playerShip.getTopAmmunition();
         batch.draw(ammunition.getType().getTexture(), this.positionX, this.positionY 
                 + this.playerShip.getAccumulatorScrollY());
