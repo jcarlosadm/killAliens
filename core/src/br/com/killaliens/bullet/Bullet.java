@@ -114,7 +114,8 @@ public class Bullet extends Actor {
     }
     
     public boolean colliding(Ship ship){
-        if (ship.isEnemy() == this.isEnemyBullet()) {
+        if (ship.isEnemy() == this.isEnemyBullet()
+                || ship.isDead() == true) {
             return false;
         }
         
