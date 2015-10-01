@@ -3,6 +3,7 @@ package br.com.killaliens.screens.gamescreen;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gamescreen.background.Background;
+import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;
@@ -41,6 +42,7 @@ public class GameScreen extends Stage {
         // TODO add user interfaces
         this.userInterface.addActor(new StatusBar(
                 (PlayerShip) this.playerShip.getChildren().first()));
+        this.userInterface.addActor(new PauseButton(PlayerShip.getPlayerShip()));
         
         // TODO for tests
         this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
@@ -70,7 +72,6 @@ public class GameScreen extends Stage {
             if (this.playerShip.getChildren().size > 0) {
                 ((Bullet) bullet).colliding((PlayerShip) this.playerShip.getChildren().first());
             }
-            
         }
     }
     
