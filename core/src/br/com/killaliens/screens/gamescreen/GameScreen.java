@@ -1,5 +1,8 @@
 package br.com.killaliens.screens.gamescreen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gamescreen.background.Background;
@@ -10,14 +13,15 @@ import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
+import br.com.killaliens.util.scrollobserver.ScrollObserver;
+import br.com.killaliens.util.scrollobserver.ScrollSubject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class GameScreen extends Stage {
+public class GameScreen extends Stage implements ScrollSubject {
     
     private static final float SCROLLDOWN_SPEED = 1f;
     
@@ -27,6 +31,8 @@ public class GameScreen extends Stage {
     private Group background = new Group();
     private Group explosions = new Group();
     private Group userInterface = new Group();
+    
+    private List<ScrollObserver> scrollObservers = new ArrayList<ScrollObserver>();
     
     public GameScreen() {
         this.addActor(this.background);
@@ -39,13 +45,17 @@ public class GameScreen extends Stage {
         this.addBackground(new Background());
         this.addPlayer(PlayerShip.getPlayerShip());
         
-        // TODO add user interfaces
-        this.userInterface.addActor(new StatusBar(
-                (PlayerShip) this.playerShip.getChildren().first()));
-        this.userInterface.addActor(new PauseButton(PlayerShip.getPlayerShip()));
+        StatusBar statusBar = new StatusBar(PlayerShip.getPlayerShip());
+        this.userInterface.addActor(statusBar);
+        PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
+        this.userInterface.addActor(pauseButton);
         
         // TODO for tests
         this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
+        
+        this.registerScrollObserver(PlayerShip.getPlayerShip());
+        this.registerScrollObserver(statusBar);
+        this.registerScrollObserver(pauseButton);
         
         Gdx.input.setInputProcessor(this);
     }
@@ -57,20 +67,14 @@ public class GameScreen extends Stage {
         this.getCamera().update();
         this.getCamera().translate(0, SCROLLDOWN_SPEED, 0);
         
-        for (Actor group : this.getActors()) {
-            for (Actor actor : (((Group) group).getChildren())) {
-                if (actor instanceof AccumulatorScroolY) {
-                    ((AccumulatorScroolY) actor).addAccumulatorScrollY(SCROLLDOWN_SPEED);
-                }
-            }
-        }
+        this.notifyScrollObservers(0, SCROLLDOWN_SPEED);
         
         for (Actor bullet : this.bulletList.getChildren()) {
             for (Actor enemyShip : enemyShips.getChildren()) {
                 ((Bullet) bullet).colliding((Ship) enemyShip);
             }
             if (this.playerShip.getChildren().size > 0) {
-                ((Bullet) bullet).colliding((PlayerShip) this.playerShip.getChildren().first());
+                ((Bullet) bullet).colliding(PlayerShip.getPlayerShip());
             }
         }
     }
@@ -111,5 +115,21 @@ public class GameScreen extends Stage {
     public void removeExplosion(Explosion explosion){
         this.explosions.removeActor(explosion);
     }
-    
+
+    @Override
+    public void registerScrollObserver(ScrollObserver observer) {
+        this.scrollObservers.add(observer);
+    }
+
+    @Override
+    public void removeScrollObserver(ScrollObserver observer) {
+        this.scrollObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyScrollObservers(float deltaX, float deltaY) {
+        for (ScrollObserver scrollObserver : this.scrollObservers) {
+            scrollObserver.updateScroll(deltaX, deltaY);
+        }
+    }
 }

@@ -1,8 +1,8 @@
 package br.com.killaliens.screens.gamescreen.userinterface;
 
 import br.com.killaliens.ship.player.PlayerShip;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class PauseButton extends Actor implements AccumulatorScroolY {
+public class PauseButton extends Actor implements ScrollObserver {
     
     private static final float MINIMUM_DISTANCE_TO_ACTOR = 100f;
     private static final String PAUSE_ICON_IMAGE = "pause_icon";
@@ -75,18 +75,13 @@ public class PauseButton extends Actor implements AccumulatorScroolY {
         batch.draw(this.image, this.getX(), this.getY());
     }
     
-    @Override
-    public void addAccumulatorScrollY(float value) {
-        this.setY(this.getY() + value);
+    protected void setTouched(boolean state){
+        this.touched = state;
     }
 
     @Override
-    public float getAccumulatorScrollY() {
-        return 0;
-    }
-    
-    protected void setTouched(boolean state){
-        this.touched = state;
+    public void updateScroll(float xDelta, float yDelta) {
+        this.setY(this.getY() + yDelta);
     }
     
 }

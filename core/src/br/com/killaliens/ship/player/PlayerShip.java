@@ -6,13 +6,13 @@ import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.ShipPropertiesBuilder;
 import br.com.killaliens.ship.player.states.PlayerDeadStatus;
 import br.com.killaliens.ship.player.states.PlayerNormalStatus;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class PlayerShip extends Ship implements AccumulatorScroolY {
+public class PlayerShip extends Ship implements ScrollObserver {
 
     private boolean touched = false;
     
@@ -79,15 +79,14 @@ public class PlayerShip extends Ship implements AccumulatorScroolY {
         this.touched = touched;
     }
 
-    @Override
-    public void addAccumulatorScrollY(float value) {
-        this.accumulatorScrollY += value;
-        this.setY(this.getY()+value);
+    public float getAccumulatorScrollY() {
+        return this.accumulatorScrollY;
     }
 
     @Override
-    public float getAccumulatorScrollY() {
-        return this.accumulatorScrollY;
+    public void updateScroll(float xDelta, float yDelta) {
+        this.accumulatorScrollY += yDelta;
+        this.setY(this.getY()+yDelta);
     }
 
 }

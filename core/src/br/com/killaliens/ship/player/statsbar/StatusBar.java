@@ -4,8 +4,8 @@ import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.ammunitionmeter.AmmunitionMeter;
 import br.com.killaliens.ship.player.statsbar.hpbar.HPBar;
 import br.com.killaliens.ship.player.statsbar.shieldmeter.ShieldMeter;
-import br.com.killaliens.util.accumulatorScroll.AccumulatorScroolY;
 import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class StatusBar extends Actor implements AccumulatorScroolY {
+public class StatusBar extends Actor implements ScrollObserver {
 
     private static final String STATSBAR_NAME = "statsbar";
     private static final float ALPHA_COLOR = 0.8f;
@@ -59,15 +59,14 @@ public class StatusBar extends Actor implements AccumulatorScroolY {
         batch.setColor(color.r, color.g, color.b, 1f);
     }
 
-    @Override
-    public void addAccumulatorScrollY(float value) {
-        this.accumulatorScrollY += value;
-        this.setY(this.getY() + value);
+    public float getAccumulatorScrollY() {
+        return this.accumulatorScrollY;
     }
 
     @Override
-    public float getAccumulatorScrollY() {
-        return this.accumulatorScrollY;
+    public void updateScroll(float xDelta, float yDelta) {
+        this.accumulatorScrollY += yDelta;
+        this.setY(this.getY() + yDelta);
     }
 
 }
