@@ -6,9 +6,12 @@ import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.camera.CheckVisibleOnCamera;
 
 public abstract class EnemyShip extends Ship {
 
+    private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(this);
+    
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
@@ -18,6 +21,10 @@ public abstract class EnemyShip extends Ship {
     public void act(float delta) {
         super.act(delta);
         
+        if (!this.checkVisibleOnCamera.actorIsVisible()) {
+            this.remove();
+        }
+        
         if (!this.isDead()) {
             this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
         } else {
@@ -26,13 +33,15 @@ public abstract class EnemyShip extends Ship {
         
         this.getCurrentStatus().setup();
         this.getCurrentStatus().act(delta);
+        
+        
     }
     
     @Override
     public boolean remove() {
         Stage stage = this.getStage();
         if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) this.getStage()).removeShipFromEnemyList(this);
+            ((GameScreen) this.getStage()).removeEnemy(this);
         }
         
         return super.remove();

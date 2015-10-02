@@ -9,6 +9,7 @@ import br.com.killaliens.screens.gamescreen.background.Background;
 import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
+import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
@@ -34,6 +35,8 @@ public class GameScreen extends Stage implements ScrollSubject {
     
     private List<ScrollObserver> scrollObservers = new ArrayList<ScrollObserver>();
     
+    private EnemySpawnGenerator enemySpawnGenerator = null;
+    
     public GameScreen() {
         this.addActor(this.background);
         this.addActor(this.enemyShips);
@@ -52,10 +55,12 @@ public class GameScreen extends Stage implements ScrollSubject {
         
         // TODO for tests
         this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
+        this.enemySpawnGenerator = new EnemySpawnGenerator(this);
         
         this.registerScrollObserver(PlayerShip.getPlayerShip());
         this.registerScrollObserver(statusBar);
         this.registerScrollObserver(pauseButton);
+        this.registerScrollObserver(this.enemySpawnGenerator);
         
         Gdx.input.setInputProcessor(this);
     }
@@ -68,6 +73,11 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.getCamera().translate(0, SCROLLDOWN_SPEED, 0);
         
         this.notifyScrollObservers(0, SCROLLDOWN_SPEED);
+        
+        EnemyShip rndEnemyShip = this.enemySpawnGenerator.getRandomEnemyShip(delta);
+        if (rndEnemyShip != null) {
+            this.addEnemy(rndEnemyShip);
+        }
         
         for (Actor bullet : this.bulletList.getChildren()) {
             for (Actor enemyShip : enemyShips.getChildren()) {
@@ -96,8 +106,12 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.enemyShips.addActor(enemyShip);
     }
     
-    public void removeShipFromEnemyList(EnemyShip enemyShip){
+    public void removeEnemy(EnemyShip enemyShip){
         this.enemyShips.removeActor(enemyShip);
+    }
+    
+    public int getTotalEnemiesOnScreen(){
+        return this.enemyShips.getChildren().size;
     }
     
     public void addBullet(Bullet bullet){
