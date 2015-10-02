@@ -1,6 +1,6 @@
 package br.com.killaliens.ship.status.shield;
 
-import java.util.Random;
+import br.com.killaliens.util.random.StaticRandom;
 
 public class Shield {
     private static final int MIN_LIMIT = 1;
@@ -12,8 +12,7 @@ public class Shield {
     }
 
     public int calcProtectionValue(){
-        Random randomInstance = new Random();
-        return randomInstance.nextInt(MAX_LIMIT - MIN_LIMIT) + MIN_LIMIT + this.shieldLevel;
+        return StaticRandom.getRandomValue(MIN_LIMIT, MAX_LIMIT) + this.shieldLevel;
     }
 
     /**

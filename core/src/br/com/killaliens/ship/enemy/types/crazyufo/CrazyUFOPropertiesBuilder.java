@@ -15,9 +15,9 @@ public class CrazyUFOPropertiesBuilder extends ShipPropertiesBuilder {
     private static final int LIFE_VALUE = 15;
     private static final int SHIELD_VALUE = 0;
     
-    private static final int SPEED_X = 0;
-    private static final int SPEED_Y = -2;    
-    private static final int ROTATION = 180;
+    private static final float SPEED_X = 0f;
+    private static final float SPEED_Y = -2f;    
+    private static final float ROTATION = 90f;
     
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.FASTBULLET;
     

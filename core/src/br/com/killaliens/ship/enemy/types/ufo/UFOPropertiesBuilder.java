@@ -10,7 +10,7 @@ public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
     private static final float FRAMETIME_NORMAL = 0.2f;
     private static final float FRAMETIME_DEAD = 0.05f;
 
-    private static final float INITIAL_ROTATION = 180f;
+    private static final float INITIAL_ROTATION = 90f;
 
     private static final float INITIAL_SPEEDX = 0f;
     private static final float INITIAL_SPEEDY = 0f;

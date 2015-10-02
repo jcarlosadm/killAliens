@@ -1,6 +1,6 @@
 package br.com.killaliens.bullet.firepower;
 
-import java.util.Random;
+import br.com.killaliens.util.random.StaticRandom;
 
 public class FirePower {
     private static final int MIN_LIMIT = 1;
@@ -20,7 +20,6 @@ public class FirePower {
     }
     
     public int getDamage(){
-        Random randomInstance = new Random();
-        return randomInstance.nextInt(MAX_LIMIT - MIN_LIMIT) + MIN_LIMIT + this.firePower;
+        return StaticRandom.getRandomValue(MIN_LIMIT, MAX_LIMIT) + this.firePower;
     }
 }

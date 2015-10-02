@@ -1,8 +1,7 @@
 package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement;
 
-import java.util.Random;
-
 import br.com.killaliens.ship.enemy.EnemyShip;
+import br.com.killaliens.util.random.StaticRandom;
 
 public abstract class RandomGroupGenerator {
     
@@ -12,8 +11,7 @@ public abstract class RandomGroupGenerator {
     private static final int RANDOM_MAXIMUM = 10;
     
     public EnemyShip getEnemyShip(){
-        Random rnd = new Random();
-        int number = rnd.nextInt(RANDOM_MAXIMUM - RANDOM_MINIMUM) + RANDOM_MINIMUM;
+        int number = StaticRandom.getRandomValue(RANDOM_MINIMUM, RANDOM_MAXIMUM);
         
         if (number <= LIMIT_WEAK_ENEMY) {
             return this.getWeakEnemy();
