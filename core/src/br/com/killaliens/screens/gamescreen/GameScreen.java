@@ -10,8 +10,6 @@ import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
-import br.com.killaliens.ship.enemy.factory.EnemyFactory;
-import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -53,8 +51,6 @@ public class GameScreen extends Stage implements ScrollSubject {
         PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
         this.userInterface.addActor(pauseButton);
         
-        // TODO for tests
-        this.addEnemy(EnemyFactory.getEnemyInstance(EnemyTypes.UFO));
         this.enemySpawnGenerator = new EnemySpawnGenerator(this);
         
         this.registerScrollObserver(PlayerShip.getPlayerShip());
