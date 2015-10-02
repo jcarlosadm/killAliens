@@ -15,7 +15,7 @@ public class BasicEnemies extends RandomGroupGenerator {
     @Override
     protected EnemyShip getMiddleEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.UFO);
+        return EnemyFactory.getEnemyInstance(EnemyTypes.CRAZY_UFO);
     }
 
     @Override

@@ -160,12 +160,20 @@ public abstract class Ship extends Actor {
     public float getSpeedX() {
         return this.speed.getSpeedX();
     }
+    
+    public void setSpeedX(float speedX) {
+        this.speed.setSpeedX(speedX);
+    }
 
     /**
      * @return the speedY
      */
     public float getSpeedY() {
         return this.speed.getSpeedY();
+    }
+    
+    public void setSpeedY(float speedY){
+        this.speed.setSpeedY(speedY);
     }
 
     /**

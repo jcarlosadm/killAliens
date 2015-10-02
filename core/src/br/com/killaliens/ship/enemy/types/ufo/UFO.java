@@ -8,6 +8,8 @@ import br.com.killaliens.util.animation.AnimationTypes;
 
 public class UFO extends EnemyShip {
 
+    private static final float ROTATION_SPEED = 1f;
+
     public UFO(ShipProperties properties) {
         super(properties);
         
@@ -18,7 +20,7 @@ public class UFO extends EnemyShip {
 
     @Override
     public void runArtificialIntelligence(float delta) {
-        this.rotateBy(1f);
+        this.rotateBy(ROTATION_SPEED);
         this.setShooting(true);
 
         this.setX(this.getX() + this.getSpeedX());
