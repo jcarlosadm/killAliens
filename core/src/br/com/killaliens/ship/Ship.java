@@ -273,8 +273,8 @@ public abstract class Ship extends Actor {
     private void buildCreateBulletParameter(
             CreateBulletParameter createBulletParameters) {
         createBulletParameters.setBulletEnemy(this.isEnemy());
-        createBulletParameters.setOriginX(this.getX() + this.getWidth()/2);
-        createBulletParameters.setOriginY(this.getY() + this.getHeight());
+        createBulletParameters.setOriginX(this.getX() + this.getOriginX());
+        createBulletParameters.setOriginY(this.getY() + this.getOriginY());
         createBulletParameters.setRotation(this.getRotation());
         createBulletParameters.setParentStage(this.getStage());
     }

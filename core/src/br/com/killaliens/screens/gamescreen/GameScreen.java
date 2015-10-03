@@ -39,9 +39,9 @@ public class GameScreen extends Stage implements ScrollSubject {
     
     public GameScreen() {
         this.addActor(this.background);
+        this.addActor(this.bulletList);
         this.addActor(this.enemyShips);
         this.addActor(this.playerShip);
-        this.addActor(this.bulletList);
         this.addActor(this.explosions);
         this.addActor(this.userInterface);
         
