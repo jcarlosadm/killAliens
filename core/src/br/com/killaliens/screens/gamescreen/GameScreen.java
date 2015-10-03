@@ -6,10 +6,12 @@ import java.util.List;
 import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gamescreen.background.Background;
+import br.com.killaliens.screens.gamescreen.userinterface.InformationLevelPhase;
 import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
+import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -50,6 +52,8 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.userInterface.addActor(statusBar);
         PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
         this.userInterface.addActor(pauseButton);
+        InformationLevelPhase inPhase = new InformationLevelPhase();
+        this.userInterface.addActor(inPhase);
         
         this.enemySpawnGenerator = new EnemySpawnGenerator(this);
         
@@ -57,6 +61,7 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.registerScrollObserver(statusBar);
         this.registerScrollObserver(pauseButton);
         this.registerScrollObserver(this.enemySpawnGenerator);
+        this.registerScrollObserver(inPhase);
         
         Gdx.input.setInputProcessor(this);
     }
@@ -65,10 +70,7 @@ public class GameScreen extends Stage implements ScrollSubject {
     public void act(float delta) {
         super.act(delta);
         
-        this.getCamera().update();
-        this.getCamera().translate(0, SCROLLDOWN_SPEED, 0);
-        
-        this.notifyScrollObservers(0, SCROLLDOWN_SPEED);
+        this.changeCameraPosition(SCROLLDOWN_SPEED);
         
         EnemyShip rndEnemyShip = this.enemySpawnGenerator.getRandomEnemyShip(delta);
         if (rndEnemyShip != null) {
@@ -83,6 +85,13 @@ public class GameScreen extends Stage implements ScrollSubject {
                 ((Bullet) bullet).colliding(PlayerShip.getPlayerShip());
             }
         }
+    }
+
+    private void changeCameraPosition(float deltaY) {
+        this.getCamera().update();
+        this.getCamera().translate(0, deltaY, 0);
+        
+        this.notifyScrollObservers(0, deltaY);
     }
     
     private void addBackground(Background background) {
@@ -141,5 +150,9 @@ public class GameScreen extends Stage implements ScrollSubject {
         for (ScrollObserver scrollObserver : this.scrollObservers) {
             scrollObserver.updateScroll(deltaX, deltaY);
         }
+    }
+    
+    public EnemySpawnLevel getEnemySpawnLevel(){
+        return this.enemySpawnGenerator.getEnemySpawnLevel();
     }
 }

@@ -69,4 +69,8 @@ public class EnemySpawnGenerator implements ScrollObserver{
     public void updateScroll(float xDelta, float yDelta) {
         this.scrollTotalY += yDelta;
     }
+    
+    public EnemySpawnLevel getEnemySpawnLevel(){
+        return this.spawnLevel;
+    }
 }
