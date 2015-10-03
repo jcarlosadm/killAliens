@@ -3,7 +3,6 @@ package br.com.killaliens.ship.player;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
-import br.com.killaliens.ship.ShipPropertiesBuilder;
 import br.com.killaliens.ship.player.states.PlayerDeadStatus;
 import br.com.killaliens.ship.player.states.PlayerNormalStatus;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -34,7 +33,7 @@ public class PlayerShip extends Ship implements ScrollObserver {
     
     public static synchronized PlayerShip getPlayerShip(){
         if (playerShipInstance == null) {
-            ShipPropertiesBuilder builder = new ShipPlayerPropertiesBuilder();
+            ShipPlayerPropertiesBuilder builder = new ShipPlayerPropertiesBuilder();
             ShipProperties properties = builder.getShipProperties();
             playerShipInstance = new PlayerShip(properties);
         }

@@ -1,10 +1,12 @@
-package br.com.killaliens.ship.enemy.types.ufo;
+package br.com.killaliens.ship.enemy.factory;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.ship.ShipPropertiesBuilder;
+import br.com.killaliens.ship.ShipProperties;
+import br.com.killaliens.ship.enemy.EnemyShip;
+import br.com.killaliens.ship.enemy.types.ufo.UFO;
 
-public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
-
+public class UFOFactory extends EnemyFactory {
+    
     private static final String[] ANIMATION_NORMAL_FRAMES = { "alien05" };
     private static final String[] ANIMATION_DEAD_FRAMES = { "alien05", "alien05_blank"};
     private static final float FRAMETIME_NORMAL = 0.2f;
@@ -20,48 +22,50 @@ public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
 
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.SLOWBULLET;
     
+    protected UFOFactory() {}
+    
     @Override
     protected String[] getAnimationNormalFrameNames() {
         return ANIMATION_NORMAL_FRAMES;
     }
 
     @Override
-    protected String[] getAnimationDeadFrameNames() {
+    protected String[] getAnimationDeadFrames() {
         return ANIMATION_DEAD_FRAMES;
     }
 
     @Override
-    protected float getStartPositionX() {
-        return 0;
+    protected float getAnimationNormalFrameTime() {
+        return FRAMETIME_NORMAL;
     }
 
     @Override
-    protected float getStartPositionY() {
-        return 0;
+    protected float getAnimationDeadFrameTime() {
+        return FRAMETIME_DEAD;
     }
 
     @Override
-    protected float getStartRotation() {
+    protected float getRotation() {
         return INITIAL_ROTATION;
     }
 
     @Override
-    protected float getStartSpeedX() {
+    protected float getSpeedX() {
         return INITIAL_SPEEDX;
     }
 
     @Override
-    protected float getStartSpeedY() {
+    protected float getSpeedY() {
         return INITIAL_SPEEDY;
     }
 
     @Override
-    protected int getStartLife() {
+    protected int getLifeValue() {
         return INITIAL_MAXLIFE;
     }
 
     @Override
-    protected int getStartShield() {
+    protected int getShieldValue() {
         return INITIAL_SHIELD;
     }
 
@@ -71,12 +75,8 @@ public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
     }
 
     @Override
-    protected float getFrameTimeNormalAnimation() {
-        return FRAMETIME_NORMAL;
+    protected EnemyShip getShipInstance(ShipProperties shipProperties) {
+        return new UFO(shipProperties);
     }
 
-    @Override
-    protected float getFrameTimeDeadAnimation() {
-        return FRAMETIME_DEAD;
-    }
 }

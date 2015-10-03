@@ -15,13 +15,13 @@ public class ExpertEnemies extends RandomGroupGenerator {
     @Override
     protected EnemyShip getMiddleEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.CRAZY_UFO);
+        return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
     }
 
     @Override
     protected EnemyShip getWeakEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.UFO);
+        return EnemyFactory.getFactory(EnemyTypes.UFO).getShip();
     }
 
 }

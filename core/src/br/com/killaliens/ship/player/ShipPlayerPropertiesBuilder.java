@@ -1,11 +1,15 @@
 package br.com.killaliens.ship.player;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.ship.ShipPropertiesBuilder;
+import br.com.killaliens.ship.ShipProperties;
+import br.com.killaliens.util.animation.AnimationTypes;
+import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
+public class ShipPlayerPropertiesBuilder {
 
     private static final String[] ANIMATION_NORMAL_FRAMES = { "player" };
     private static final String[] ANIMATION_DEAD_FRAMES = { "player", "player_blank" };
@@ -25,64 +29,40 @@ public class ShipPlayerPropertiesBuilder extends ShipPropertiesBuilder {
 
     private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;
 
-    @Override
-    protected String[] getAnimationNormalFrameNames() {
-        return ANIMATION_NORMAL_FRAMES;
+    public ShipProperties getShipProperties(){
+        
+        ShipProperties properties = new ShipProperties();
+        
+        properties.addAnimation(AnimationTypes.NORMAL_STATE, BuildAnimation
+                .build(FRAMETIME_NORMAL, ANIMATION_NORMAL_FRAMES));
+        properties.addAnimation(AnimationTypes.DEAD, BuildAnimation
+                .build(FRAMETIME_DEAD, ANIMATION_DEAD_FRAMES));
+        
+        properties.setBasicAmmunition(BASIC_AMMUNITION);
+        
+        properties.setPositionX(INITIAL_POSITION_X);
+        properties.setPositionY(INITIAL_POSITION_Y);
+        properties.setHeight(this.getStartHeight());
+        properties.setWidth(this.getStartWidth());
+        
+        properties.setOrigin(this.getStartWidth()/2, this.getStartHeight()/2);
+        properties.setRotation(INITIAL_ROTATION);
+        
+        properties.setLife(INITIAL_MAXLIFE);
+        properties.setShield(INITIAL_SHIELD);
+        
+        properties.setSpeed(INITIAL_SPEEDX, INITIAL_SPEEDY);
+        
+        return properties;
     }
-
-    @Override
-    protected String[] getAnimationDeadFrameNames() {
-        return ANIMATION_DEAD_FRAMES;
+    
+    protected float getStartWidth(){
+        TextureRegion textureRegion = TextureCache.getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
+        return (textureRegion == null ? 0 : textureRegion.getRegionWidth());
     }
-
-    @Override
-    protected float getStartPositionX() {
-        return INITIAL_POSITION_X;
+    
+    protected float getStartHeight(){
+        TextureRegion textureRegion = TextureCache.getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
+        return (textureRegion == null ? 0 : textureRegion.getRegionHeight());
     }
-
-    @Override
-    protected float getStartPositionY() {
-        return INITIAL_POSITION_Y;
-    }
-
-    @Override
-    protected float getStartRotation() {
-        return INITIAL_ROTATION;
-    }
-
-    @Override
-    protected float getStartSpeedX() {
-        return INITIAL_SPEEDX;
-    }
-
-    @Override
-    protected float getStartSpeedY() {
-        return INITIAL_SPEEDY;
-    }
-
-    @Override
-    protected int getStartLife() {
-        return INITIAL_MAXLIFE;
-    }
-
-    @Override
-    protected int getStartShield() {
-        return INITIAL_SHIELD;
-    }
-
-    @Override
-    protected AmmunitionTypes getBasicAmmunition() {
-        return BASIC_AMMUNITION;
-    }
-
-    @Override
-    protected float getFrameTimeNormalAnimation() {
-        return FRAMETIME_NORMAL;
-    }
-
-    @Override
-    protected float getFrameTimeDeadAnimation() {
-        return FRAMETIME_DEAD;
-    }
-
 }

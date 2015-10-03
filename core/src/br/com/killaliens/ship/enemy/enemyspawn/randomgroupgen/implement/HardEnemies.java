@@ -21,7 +21,7 @@ public class HardEnemies extends RandomGroupGenerator {
     @Override
     protected EnemyShip getWeakEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.CRAZY_UFO);
+        return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
     }
 
 }

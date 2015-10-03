@@ -5,17 +5,17 @@ import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 
 public class BasicEnemies extends RandomGroupGenerator {
-
+    
     @Override
     protected EnemyShip getStrongEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.CRAZY_UFO);
+        return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
     }
 
     @Override
     protected EnemyShip getMiddleEnemy() {
         // TODO Auto-generated method stub
-        return EnemyFactory.getEnemyInstance(EnemyTypes.UFO);
+        return EnemyFactory.getFactory(EnemyTypes.UFO).getShip();
     }
 
     @Override
