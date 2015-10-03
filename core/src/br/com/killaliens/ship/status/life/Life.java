@@ -8,16 +8,8 @@ public class Life {
         this.maxLife = maxLife;
         this.currentLife = maxLife;
     }
-    
-    public void modifyCurrentLife(int amount){
-        if ( amount > 0 ) {
-            this.downLife(amount);
-        } else {
-            this.upLife(amount);
-        }
-    }
 
-    private void upLife(int amount) {
+    public void upLife(int amount) {
         if (this.currentLife + amount <= this.maxLife) {
             this.currentLife += amount;
         } else {
@@ -25,7 +17,7 @@ public class Life {
         }
     }
 
-    private void downLife(int amount) {
+    public void downLife(int amount) {
         if (this.currentLife >= amount) {
             this.currentLife -= amount;
         } else {

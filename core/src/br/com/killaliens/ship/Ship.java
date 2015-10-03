@@ -197,7 +197,7 @@ public abstract class Ship extends Actor {
         int totalDamage = damage - this.shield.calcProtectionValue();
 
         if (totalDamage > 0) {
-            this.life.modifyCurrentLife(totalDamage * (-1));
+            this.life.downLife(totalDamage);
         }
     }
 
@@ -208,7 +208,7 @@ public abstract class Ship extends Actor {
      */
     public void getHeal(int heal) {
         if (heal > 0) {
-            this.life.modifyCurrentLife(heal);
+            this.life.upLife(heal);
         }
     }
 
