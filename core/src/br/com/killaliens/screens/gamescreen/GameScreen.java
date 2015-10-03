@@ -11,7 +11,6 @@ import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
-import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -48,14 +47,14 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.addBackground(new Background());
         this.addPlayer(PlayerShip.getPlayerShip());
         
+        this.enemySpawnGenerator = new EnemySpawnGenerator(this);
+        
         StatusBar statusBar = new StatusBar(PlayerShip.getPlayerShip());
         this.userInterface.addActor(statusBar);
         PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
         this.userInterface.addActor(pauseButton);
-        InformationLevelPhase inPhase = new InformationLevelPhase();
+        InformationLevelPhase inPhase = new InformationLevelPhase(this.enemySpawnGenerator);
         this.userInterface.addActor(inPhase);
-        
-        this.enemySpawnGenerator = new EnemySpawnGenerator(this);
         
         this.registerScrollObserver(PlayerShip.getPlayerShip());
         this.registerScrollObserver(statusBar);
@@ -150,9 +149,5 @@ public class GameScreen extends Stage implements ScrollSubject {
         for (ScrollObserver scrollObserver : this.scrollObservers) {
             scrollObserver.updateScroll(deltaX, deltaY);
         }
-    }
-    
-    public EnemySpawnLevel getEnemySpawnLevel(){
-        return this.enemySpawnGenerator.getEnemySpawnLevel();
     }
 }

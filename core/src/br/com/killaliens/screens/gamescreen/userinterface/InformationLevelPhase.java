@@ -1,13 +1,12 @@
 package br.com.killaliens.screens.gamescreen.userinterface;
 
+import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
+import br.com.killaliens.util.scrollobserver.ScrollObserver;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 public class InformationLevelPhase extends Actor implements ScrollObserver{
 
@@ -16,21 +15,20 @@ public class InformationLevelPhase extends Actor implements ScrollObserver{
     
     private BitmapFont font = new BitmapFont(Gdx.files.internal("fonts/statsFontSmall.fnt"));
     
-    public InformationLevelPhase() {
+    private EnemySpawnGenerator enSpawnGenerator = null;
+    
+    public InformationLevelPhase(EnemySpawnGenerator enSpawnGenerator) {
         this.setX(POSITION_X);
         this.setY(POSITION_Y);
+        
+        this.enSpawnGenerator = enSpawnGenerator;
     }
     
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         
-        String level = "";
-        Stage stage = this.getStage();
-        if (stage != null && stage instanceof GameScreen) {
-            level = ((GameScreen) stage).getEnemySpawnLevel().toString();
-        }
-        
+        String level = this.enSpawnGenerator.getEnemySpawnLevel().toString();
         font.draw(batch, "Phase level: "+ level, this.getX(), this.getY());
     }
     
