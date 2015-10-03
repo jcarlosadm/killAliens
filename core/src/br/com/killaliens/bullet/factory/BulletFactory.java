@@ -36,6 +36,8 @@ public abstract class BulletFactory {
             return new BigBulletFactory();
         } else if (type.equals(AmmunitionTypes.FASTBULLET)) {
             return new FastBulletFactory();
+        } else if (type.equals(AmmunitionTypes.SLOWBULLET)) {
+            return new SlowBulletFactory();
         }
 
         return NullBulletFactory.getInstance();

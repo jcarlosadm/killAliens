@@ -5,25 +5,36 @@ import br.com.killaliens.util.image.TextureCache;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public enum AmmunitionTypes {
+    
+    SLOWBULLET {
+        @Override
+        public TextureRegion getTexture() {
+            return TextureCache.getTextureRegion(NORMALBULLET_ICON);
+        }
+    },
     NORMALBULLET {
         @Override
         public TextureRegion getTexture() {
-            return TextureCache.getTextureRegion("normalbullet_icon");
+            return TextureCache.getTextureRegion(NORMALBULLET_ICON);
         }
     },
     BIGBULLET {
         @Override
         public TextureRegion getTexture() {
-            return TextureCache.getTextureRegion("bigbullet_icon");
+            return TextureCache.getTextureRegion(BIGBULLET_ICON);
         }
     },
     FASTBULLET {
         @Override
         public TextureRegion getTexture() {
-            return TextureCache.getTextureRegion("fastbullet_icon");
+            return TextureCache.getTextureRegion(FASTBULLET_ICON);
         }
     };
     
+    private static final String FASTBULLET_ICON = "fastbullet_icon";
+    private static final String BIGBULLET_ICON = "bigbullet_icon";
+    private static final String NORMALBULLET_ICON = "normalbullet_icon";
+
     /**
      * Get texture relative to type
      * @return texture

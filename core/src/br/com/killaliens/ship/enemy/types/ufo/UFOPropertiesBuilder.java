@@ -18,7 +18,7 @@ public class UFOPropertiesBuilder extends ShipPropertiesBuilder {
     private static final int INITIAL_MAXLIFE = 15;
     private static final int INITIAL_SHIELD = 0;
 
-    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;
+    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.SLOWBULLET;
     
     @Override
     protected String[] getAnimationNormalFrameNames() {

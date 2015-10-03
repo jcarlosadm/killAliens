@@ -11,17 +11,18 @@ import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 public class InformationLevelPhase extends Actor implements ScrollObserver{
 
+    private static final float POSITION_Y = Gdx.graphics.getHeight() - 10f;
+    private static final float POSITION_X = 0f;
+    
     private BitmapFont font = new BitmapFont(Gdx.files.internal("fonts/statsFontSmall.fnt"));
     
     public InformationLevelPhase() {
-        // TODO Auto-generated constructor stub
-        this.setX(0);
-        this.setY(Gdx.graphics.getHeight() - 10f);
+        this.setX(POSITION_X);
+        this.setY(POSITION_Y);
     }
     
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        // TODO Auto-generated method stub
         super.draw(batch, parentAlpha);
         
         String level = "";

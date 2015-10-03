@@ -19,7 +19,7 @@ public class CrazyUFOPropertiesBuilder extends ShipPropertiesBuilder {
     private static final float SPEED_Y = -2f;    
     private static final float ROTATION = 90f;
     
-    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.FASTBULLET;
+    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.SLOWBULLET;
     
     @Override
     protected String[] getAnimationNormalFrameNames() {
