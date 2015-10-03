@@ -58,7 +58,7 @@ public class EnemySpawnGenerator implements ScrollObserver{
 
     private void putInRandomLocation(EnemyShip enemyShip) {
         Random rnd = new Random();
-        float x = rnd.nextInt(Gdx.graphics.getWidth());
+        float x = rnd.nextInt(Gdx.graphics.getWidth() - (int) enemyShip.getWidth());
         float y = Gdx.graphics.getHeight() - 10 + this.scrollTotalY;
         
         enemyShip.setX(x);
