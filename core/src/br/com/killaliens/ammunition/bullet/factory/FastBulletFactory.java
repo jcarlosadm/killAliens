@@ -10,8 +10,7 @@ public class FastBulletFactory extends BulletFactory {
     private static final float SPEEDX = 20f;
     private static final float SPEEDY = 20f;
     
-    private static final String[] ANIMATION_NORMAL_FRAMENAMES = {"bullet_normal"};
-    private static final String[] ANIMATION_DEAD_FRAMENAMES = {"bullet_normal"};
+    private static final String[] ANIMATION_FRAMENAMES = {"bullet_normal"};
     
     protected FastBulletFactory() {}
 
@@ -26,12 +25,7 @@ public class FastBulletFactory extends BulletFactory {
     }
 
     @Override
-    protected String[] getAnimationNormalFramesName() {
-        return ANIMATION_NORMAL_FRAMENAMES;
-    }
-
-    @Override
-    protected String[] getAnimationDeadFramesName() {
-        return ANIMATION_DEAD_FRAMENAMES;
+    protected String[] getAnimationFramesName() {
+        return ANIMATION_FRAMENAMES;
     }
 }

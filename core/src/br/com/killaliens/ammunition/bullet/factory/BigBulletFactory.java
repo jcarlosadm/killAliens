@@ -10,8 +10,7 @@ public class BigBulletFactory extends BulletFactory {
     private static final float SPEEDX = 10f;
     private static final float SPEEDY = 10f;
     
-    private static final String[] ANIMATION_NORMAL_FRAMENAMES = {"bigbullet"};
-    private static final String[] ANIMATION_DEAD_FRAMENAMES = {"bigbullet"};
+    private static final String[] ANIMATION_FRAMENAMES = {"bigbullet"};
     
     protected BigBulletFactory() {}
 
@@ -26,12 +25,7 @@ public class BigBulletFactory extends BulletFactory {
     }
 
     @Override
-    protected String[] getAnimationNormalFramesName() {
-        return ANIMATION_NORMAL_FRAMENAMES;
-    }
-
-    @Override
-    protected String[] getAnimationDeadFramesName() {
-        return ANIMATION_DEAD_FRAMENAMES;
+    protected String[] getAnimationFramesName() {
+        return ANIMATION_FRAMENAMES;
     }
 }

@@ -9,10 +9,7 @@ public class SlowBulletFactory extends BulletFactory {
     private static final float SPEED_Y = 3f;
     private static final int FIREPOWER = 1;
     
-    private static final String[] ANIMATION_NORMAL_FRAME_NAMES =
-        {"bullet_normal"};
-    private static final String[] ANIMATION_DEAD_FRAME_NAMES = 
-        {"bullet_normal"};
+    private static final String[] ANIMATION_FRAME_NAMES = {"bullet_normal"};
 
     @Override
     protected FirePower getFirePower() {
@@ -25,13 +22,7 @@ public class SlowBulletFactory extends BulletFactory {
     }
 
     @Override
-    protected String[] getAnimationNormalFramesName() {
-        return ANIMATION_NORMAL_FRAME_NAMES;
+    protected String[] getAnimationFramesName() {
+        return ANIMATION_FRAME_NAMES;
     }
-
-    @Override
-    protected String[] getAnimationDeadFramesName() {
-        return ANIMATION_DEAD_FRAME_NAMES;
-    }
-
 }

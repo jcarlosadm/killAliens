@@ -31,12 +31,7 @@ public class NullBulletFactory extends BulletFactory {
     }
 
     @Override
-    protected String[] getAnimationNormalFramesName() {
-        return null;
-    }
-
-    @Override
-    protected String[] getAnimationDeadFramesName() {
+    protected String[] getAnimationFramesName() {
         return null;
     }
 

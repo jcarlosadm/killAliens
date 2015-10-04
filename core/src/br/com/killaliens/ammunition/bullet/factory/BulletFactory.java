@@ -106,21 +106,17 @@ public abstract class BulletFactory {
     protected abstract Speed getSpeed();
 
     protected float getRadius(){
-        return TextureCache.getTextureRegion(this.getAnimationNormalFramesName()[0])
+        return TextureCache.getTextureRegion(this.getAnimationFramesName()[0])
                 .getRegionWidth()/2;
     }
 
-    protected abstract String[] getAnimationNormalFramesName();
-
-    protected abstract String[] getAnimationDeadFramesName();
+    protected abstract String[] getAnimationFramesName();
 
     protected Map<AnimationTypes, Animation> getAnimations() {
         Map<AnimationTypes, Animation> animations = new HashMap<AnimationTypes, Animation>();
 
-        this.buildAnimationType(animations, getAnimationNormalFramesName(),
+        this.buildAnimationType(animations, getAnimationFramesName(),
                 AnimationTypes.NORMAL_STATE);
-        this.buildAnimationType(animations, getAnimationDeadFramesName(),
-                AnimationTypes.DEAD);
 
         return animations;
     }
