@@ -11,6 +11,7 @@ import br.com.killaliens.util.camera.CheckVisibleOnCamera;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
@@ -50,18 +51,25 @@ public class Bullet extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
-        this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
-        this.animationData.advanceTime(delta);
-        
+        this.performActions();
+        this.move();
         if (!this.checkVisibleOnCamera.actorIsVisible()) {
             this.remove();
         }
     }
 
+    protected void performActions(){
+        // TODO uses strategy pattern
+    }
+
+    protected void move() {
+        this.setPosition(this.getX()+this.getSpeedX(), this.getY()+this.getSpeedY());
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        
+        this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
         batch.draw(this.animationData.getCurrentTextureRegion(true), 
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), 
                 this.getWidth(), this.getHeight(), this.getScaleX(), 

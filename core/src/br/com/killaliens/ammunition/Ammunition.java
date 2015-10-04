@@ -1,8 +1,8 @@
 package br.com.killaliens.ammunition;
 
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ammunition.bullet.factory.BulletFactory;
 import br.com.killaliens.ammunition.bullet.factory.CreateBulletParameter;
-import br.com.killaliens.ammunition.bullet.types.BulletType;
 
 public class Ammunition {
 

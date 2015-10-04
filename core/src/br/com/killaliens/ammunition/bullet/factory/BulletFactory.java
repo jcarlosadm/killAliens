@@ -1,19 +1,15 @@
 package br.com.killaliens.ammunition.bullet.factory;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.ammunition.bullet.BulletProperties;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
-import br.com.killaliens.ammunition.bullet.types.BulletType;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.speed.Speed;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
@@ -26,8 +22,7 @@ public abstract class BulletFactory {
 
     private static final float INCREMENT_BULLET_DISTANCE = 15f;
 
-    protected BulletFactory() {
-    }
+    protected BulletFactory() {}
 
     public static BulletFactory getFactory(BulletType type) {
         if (type.equals(BulletType.NORMALBULLET)) {
@@ -53,15 +48,14 @@ public abstract class BulletFactory {
                 * ((float) Math.cos(radians));
         float positionY = createBulletParameter.getOriginY() - this.getRadius() + increment
                 * ((float) Math.sin(radians));
-
-        Speed speed = this.getSpeed();
-        speed.setSpeedX(speed.getSpeedX() * ((float) Math.sin(radians)) * (-1));
-        speed.setSpeedY(speed.getSpeedY() * ((float) Math.cos(radians)));
+        
+        Speed speed = setSpeed(radians);
 
         BulletProperties bulletProperties = this.buildBulletProperties(
                 createBulletParameter, positionX, positionY, speed);
 
-        this.setAnimations(bulletProperties);
+        bulletProperties.addAnimation(AnimationTypes.NORMAL_STATE, BuildAnimation
+                .build(ANIMATION_FRAMETIME, getAnimationFramesName()));
         
         Bullet bullet = new Bullet(bulletProperties);
         Stage stage = createBulletParameter.getParentStage();
@@ -70,12 +64,11 @@ public abstract class BulletFactory {
         }
     }
 
-    private void setAnimations(BulletProperties bulletProperties) {
-        Map<AnimationTypes, Animation> animations = this.getAnimations();
-        
-        for (AnimationTypes type : AnimationTypes.values()) {
-            bulletProperties.addAnimation(type, animations.get(type));
-        }
+    protected Speed setSpeed(float radians) {
+        Speed speed = this.getSpeed();
+        speed.setSpeedX(speed.getSpeedX() * ((float) Math.sin(radians)) * (-1));
+        speed.setSpeedY(speed.getSpeedY() * ((float) Math.cos(radians)));
+        return speed;
     }
 
     private BulletProperties buildBulletProperties(
@@ -101,33 +94,14 @@ public abstract class BulletFactory {
         return (((numBullet - 1) / 2) * INCREMENT_BULLET_DISTANCE * (-1));
     }
 
-    protected abstract FirePower getFirePower();
-
-    protected abstract Speed getSpeed();
-
     protected float getRadius(){
         return TextureCache.getTextureRegion(this.getAnimationFramesName()[0])
                 .getRegionWidth()/2;
     }
+    
+    protected abstract FirePower getFirePower();
 
+    protected abstract Speed getSpeed();
+    
     protected abstract String[] getAnimationFramesName();
-
-    protected Map<AnimationTypes, Animation> getAnimations() {
-        Map<AnimationTypes, Animation> animations = new HashMap<AnimationTypes, Animation>();
-
-        this.buildAnimationType(animations, getAnimationFramesName(),
-                AnimationTypes.NORMAL_STATE);
-
-        return animations;
-    }
-
-    private void buildAnimationType(Map<AnimationTypes, Animation> animations,
-            String[] frameNames, AnimationTypes stateName) {
-
-        Animation animation = BuildAnimation.build(ANIMATION_FRAMETIME,
-                frameNames);
-        if (animation != null) {
-            animations.put(stateName, animation);
-        }
-    }
 }

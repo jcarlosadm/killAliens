@@ -1,6 +1,6 @@
 package br.com.killaliens.ship.player;
 
-import br.com.killaliens.ammunition.bullet.types.BulletType;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
