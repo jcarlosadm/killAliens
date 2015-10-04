@@ -1,6 +1,6 @@
 package br.com.killaliens.ship.player;
 
-import br.com.killaliens.ammunition.AmmunitionTypes;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
@@ -27,7 +27,7 @@ public class ShipPlayerPropertiesBuilder {
     private static final int INITIAL_MAXLIFE = 40;
     private static final int INITIAL_SHIELD = 0;
 
-    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.NORMALBULLET;
+    private static final BulletType BASIC_AMMUNITION = BulletType.NORMALBULLET;
 
     public ShipProperties getShipProperties(){
         

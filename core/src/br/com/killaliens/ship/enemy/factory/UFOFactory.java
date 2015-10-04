@@ -1,6 +1,6 @@
 package br.com.killaliens.ship.enemy.factory;
 
-import br.com.killaliens.ammunition.AmmunitionTypes;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.types.ufo.UFO;
@@ -20,7 +20,7 @@ public class UFOFactory extends EnemyFactory {
     private static final int INITIAL_MAXLIFE = 15;
     private static final int INITIAL_SHIELD = 0;
 
-    private static final AmmunitionTypes BASIC_AMMUNITION = AmmunitionTypes.SLOWBULLET;
+    private static final BulletType BASIC_AMMUNITION = BulletType.SLOWBULLET;
     
     protected UFOFactory() {}
     
@@ -70,7 +70,7 @@ public class UFOFactory extends EnemyFactory {
     }
 
     @Override
-    protected AmmunitionTypes getBasicAmmunition() {
+    protected BulletType getBasicAmmunition() {
         return BASIC_AMMUNITION;
     }
 

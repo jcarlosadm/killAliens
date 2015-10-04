@@ -1,5 +1,6 @@
 package br.com.killaliens.ammunition;
 
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ammunition.bullet.factory.BulletFactory;
 import br.com.killaliens.ammunition.bullet.factory.CreateBulletParameter;
 
@@ -12,31 +13,31 @@ public class Ammunition {
     private AmmunitionCount ammoCount = new AmmunitionCount(MINBULLET, MINBULLET, false);
     private BulletFactory bulletFactory = null;
     private int level = MINLEVEL;
-    private AmmunitionTypes type = null;
+    private BulletType type = null;
     
     private int reloadTime = 0;
     private int currentReloadTime = 0;
     
-    public Ammunition(AmmunitionTypes type, int level) {
+    public Ammunition(BulletType type, int level) {
         this.type = type;
         this.bulletFactory = BulletFactory.getFactory(type);
         if (level >= MINLEVEL && level <= MAXLEVEL) {
             this.level = level;
         }
         
-        if (type.equals(AmmunitionTypes.FASTBULLET)) {
+        if (type.equals(BulletType.FASTBULLET)) {
             this.reloadTime = 5;
         } else {
             this.reloadTime = 15;
         }
     }
     
-    public Ammunition(AmmunitionTypes type) {
+    public Ammunition(BulletType type) {
         this(type, MINLEVEL);
     }
     
     public Ammunition() {
-        this(AmmunitionTypes.NORMALBULLET, MINLEVEL);
+        this(BulletType.NORMALBULLET, MINLEVEL);
     }
     
     /**
@@ -134,7 +135,7 @@ public class Ammunition {
         return false;
     }
     
-    public AmmunitionTypes getType(){
+    public BulletType getType(){
         return this.type;
     }
 

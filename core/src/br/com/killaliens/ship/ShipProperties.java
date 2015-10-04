@@ -2,7 +2,7 @@ package br.com.killaliens.ship;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 
-import br.com.killaliens.ammunition.AmmunitionTypes;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ship.status.life.Life;
 import br.com.killaliens.ship.status.life.NullLife;
 import br.com.killaliens.ship.status.shield.NullShield;
@@ -28,7 +28,7 @@ public class ShipProperties {
     private Life life = NullLife.getNullLifeInstance();
     private Shield shield = NullShield.getNullShieldInstance();
     
-    private AmmunitionTypes basicAmmunition = AmmunitionTypes.NORMALBULLET;
+    private BulletType basicAmmunition = BulletType.NORMALBULLET;
     
     private AnimationManagement aniManagement = new AnimationManagement();
 
@@ -130,7 +130,7 @@ public class ShipProperties {
     /**
      * @return the basicAmmunition
      */
-    public AmmunitionTypes getBasicAmmunition() {
+    public BulletType getBasicAmmunition() {
         return this.basicAmmunition;
     }
 
@@ -138,7 +138,7 @@ public class ShipProperties {
      * @param basicAmmunition
      *            the basicAmmunition to set
      */
-    public void setBasicAmmunition(AmmunitionTypes basicAmmunition) {
+    public void setBasicAmmunition(BulletType basicAmmunition) {
         this.basicAmmunition = basicAmmunition;
     }
 

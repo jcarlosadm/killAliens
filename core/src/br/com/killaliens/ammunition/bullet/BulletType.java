@@ -1,10 +1,10 @@
-package br.com.killaliens.ammunition;
+package br.com.killaliens.ammunition.bullet;
 
 import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public enum AmmunitionTypes {
+public enum BulletType {
     
     SLOWBULLET {
         @Override

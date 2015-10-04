@@ -3,7 +3,7 @@ package br.com.killaliens.ammunition.bullet.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.killaliens.ammunition.AmmunitionTypes;
+import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.ammunition.bullet.BulletProperties;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
@@ -29,14 +29,14 @@ public abstract class BulletFactory {
     protected BulletFactory() {
     }
 
-    public static BulletFactory getFactory(AmmunitionTypes type) {
-        if (type.equals(AmmunitionTypes.NORMALBULLET)) {
+    public static BulletFactory getFactory(BulletType type) {
+        if (type.equals(BulletType.NORMALBULLET)) {
             return new NormalBulletFactory();
-        } else if (type.equals(AmmunitionTypes.BIGBULLET)) {
+        } else if (type.equals(BulletType.BIGBULLET)) {
             return new BigBulletFactory();
-        } else if (type.equals(AmmunitionTypes.FASTBULLET)) {
+        } else if (type.equals(BulletType.FASTBULLET)) {
             return new FastBulletFactory();
-        } else if (type.equals(AmmunitionTypes.SLOWBULLET)) {
+        } else if (type.equals(BulletType.SLOWBULLET)) {
             return new SlowBulletFactory();
         }
 
