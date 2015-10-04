@@ -47,7 +47,6 @@ public class CrazyUFO extends EnemyShip {
     private void move(float delta) {
         this.setX(this.getX() + this.getSpeedX());
         this.setY(this.getY() + this.getSpeedY());
-        this.moveToLocation(this.getX(), this.getY(), delta);
     }
 
     private void changeSpeeds() {

@@ -2,7 +2,7 @@ package br.com.killaliens.ship;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 
-import br.com.killaliens.ammunition.bullet.BulletType;
+import br.com.killaliens.ammunition.bullet.types.BulletType;
 import br.com.killaliens.ship.status.life.Life;
 import br.com.killaliens.ship.status.life.NullLife;
 import br.com.killaliens.ship.status.shield.NullShield;
