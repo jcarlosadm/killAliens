@@ -3,7 +3,7 @@ package br.com.killaliens.screens.gamescreen;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.killaliens.bullet.Bullet;
+import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gamescreen.background.Background;
 import br.com.killaliens.screens.gamescreen.userinterface.InformationLevelPhase;

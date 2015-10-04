@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Stack;
 
 import br.com.killaliens.ammunition.Ammunition;
-import br.com.killaliens.bullet.factory.CreateBulletParameter;
+import br.com.killaliens.ammunition.bullet.factory.CreateBulletParameter;
 import br.com.killaliens.ship.status.life.Life;
 import br.com.killaliens.ship.status.life.NullLife;
 import br.com.killaliens.ship.status.management.StatusManagement;

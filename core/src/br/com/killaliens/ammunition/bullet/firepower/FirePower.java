@@ -1,4 +1,4 @@
-package br.com.killaliens.bullet.firepower;
+package br.com.killaliens.ammunition.bullet.firepower;
 
 import br.com.killaliens.util.random.StaticRandom;
 

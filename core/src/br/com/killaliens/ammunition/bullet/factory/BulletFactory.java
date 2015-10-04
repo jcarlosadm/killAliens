@@ -1,12 +1,12 @@
-package br.com.killaliens.bullet.factory;
+package br.com.killaliens.ammunition.bullet.factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import br.com.killaliens.ammunition.AmmunitionTypes;
-import br.com.killaliens.bullet.Bullet;
-import br.com.killaliens.bullet.BulletProperties;
-import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.ammunition.bullet.Bullet;
+import br.com.killaliens.ammunition.bullet.BulletProperties;
+import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;

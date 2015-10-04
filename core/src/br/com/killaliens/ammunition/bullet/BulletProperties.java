@@ -1,9 +1,9 @@
-package br.com.killaliens.bullet;
+package br.com.killaliens.ammunition.bullet;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 
-import br.com.killaliens.bullet.firepower.FirePower;
-import br.com.killaliens.bullet.firepower.NullFirePower;
+import br.com.killaliens.ammunition.bullet.firepower.FirePower;
+import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.speed.NullSpeed;

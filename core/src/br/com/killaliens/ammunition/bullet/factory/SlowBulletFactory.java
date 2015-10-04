@@ -1,6 +1,6 @@
-package br.com.killaliens.bullet.factory;
+package br.com.killaliens.ammunition.bullet.factory;
 
-import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.util.speed.Speed;
 
 public class SlowBulletFactory extends BulletFactory {
