@@ -14,7 +14,7 @@ public enum BulletType {
 
         @Override
         public float getReloadTimeInSeconds() {
-            return 0.35f;
+            return RELOAD_NORMAL;
         }
     },
     BIGBULLET {
@@ -25,7 +25,7 @@ public enum BulletType {
 
         @Override
         public float getReloadTimeInSeconds() {
-            return 0.7f;
+            return RELOAD_SLOW;
         }
     },
     FASTBULLET {
@@ -36,9 +36,13 @@ public enum BulletType {
 
         @Override
         public float getReloadTimeInSeconds() {
-            return 0.2f;
+            return RELOAD_FAST;
         }
     };
+    
+    private static final float RELOAD_NORMAL = 0.35f;
+    private static final float RELOAD_SLOW = 0.7f;
+    private static final float RELOAD_FAST = 0.2f;
     
     private static final String FASTBULLET_ICON = "fastbullet_icon";
     private static final String BIGBULLET_ICON = "bigbullet_icon";
