@@ -6,12 +6,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public enum BulletType {
     
-    SLOWBULLET {
-        @Override
-        public TextureRegion getTexture() {
-            return TextureCache.getTextureRegion(NORMALBULLET_ICON);
-        }
-    },
     NORMALBULLET {
         @Override
         public TextureRegion getTexture() {

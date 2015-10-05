@@ -20,7 +20,7 @@ public class UFOFactory extends EnemyFactory {
     private static final int INITIAL_MAXLIFE = 15;
     private static final int INITIAL_SHIELD = 0;
 
-    private static final BulletType BASIC_AMMUNITION = BulletType.SLOWBULLET;
+    private static final BulletType BASIC_AMMUNITION = BulletType.NORMALBULLET;
     
     protected UFOFactory() {}
     

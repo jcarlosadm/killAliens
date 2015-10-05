@@ -21,7 +21,7 @@ public class CrazyUFOFactory extends EnemyFactory {
     private static final float SPEED_Y = -2f;    
     private static final float ROTATION = 90f;
     
-    private static final BulletType BASIC_AMMUNITION = BulletType.SLOWBULLET;
+    private static final BulletType BASIC_AMMUNITION = BulletType.NORMALBULLET;
     
     protected CrazyUFOFactory() {}
     

@@ -1,12 +1,18 @@
 package br.com.killaliens.ammunition.bullet.factory;
 
+import br.com.killaliens.ammunition.bullet.actions.BulletAction;
+import br.com.killaliens.ammunition.bullet.actions.NullBulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
+import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
+import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
 
 public class NullBulletFactory extends BulletFactory {
 
     private static NullBulletFactory instance = null;
+    
+    private static final String[] nullString = {""};
     
     private NullBulletFactory() {}
     
@@ -22,21 +28,26 @@ public class NullBulletFactory extends BulletFactory {
 
     @Override
     protected FirePower getFirePower() {
-        return null;
+        return NullFirePower.getNullFirePowerInstance();
     }
 
     @Override
-    protected Speed getSpeed() {
-        return null;
+    protected Speed getSpeed(CreateBulletParameter createBulletParameter) {
+        return NullSpeed.getNullSpeedInstance();
     }
 
     @Override
     protected String[] getAnimationFramesName() {
-        return null;
+        return nullString;
     }
 
     @Override
     protected float getRadius() {
         return 0;
+    }
+
+    @Override
+    protected BulletAction getActionToBePerformed() {
+        return new NullBulletAction();
     }
 }

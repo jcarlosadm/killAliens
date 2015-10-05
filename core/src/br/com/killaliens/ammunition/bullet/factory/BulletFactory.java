@@ -3,6 +3,7 @@ package br.com.killaliens.ammunition.bullet.factory;
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.ammunition.bullet.BulletProperties;
 import br.com.killaliens.ammunition.bullet.BulletType;
+import br.com.killaliens.ammunition.bullet.actions.BulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -31,8 +32,6 @@ public abstract class BulletFactory {
             return new BigBulletFactory();
         } else if (type.equals(BulletType.FASTBULLET)) {
             return new FastBulletFactory();
-        } else if (type.equals(BulletType.SLOWBULLET)) {
-            return new SlowBulletFactory();
         }
 
         return NullBulletFactory.getInstance();
@@ -40,16 +39,15 @@ public abstract class BulletFactory {
 
     public void createBullet(CreateBulletParameter createBulletParameter) {
 
-        float increment = this.getIncrementFromNumBullet(createBulletParameter
-                .getNumBullet());
-        float radians = (float) Math.toRadians(createBulletParameter.getRotation());
+        float increment = setDistanceBetweenBullets(createBulletParameter);
+        float radians = setAngleInRadians(createBulletParameter);
 
         float positionX = createBulletParameter.getOriginX() - this.getRadius() + increment
                 * ((float) Math.cos(radians));
         float positionY = createBulletParameter.getOriginY() - this.getRadius() + increment
                 * ((float) Math.sin(radians));
         
-        Speed speed = setSpeed(radians);
+        Speed speed = setSpeed(radians, createBulletParameter);
 
         BulletProperties bulletProperties = this.buildBulletProperties(
                 createBulletParameter, positionX, positionY, speed);
@@ -57,15 +55,35 @@ public abstract class BulletFactory {
         bulletProperties.addAnimation(AnimationTypes.NORMAL_STATE, BuildAnimation
                 .build(ANIMATION_FRAMETIME, getAnimationFramesName()));
         
-        Bullet bullet = new Bullet(bulletProperties);
+        Bullet bullet = this.getBulletInstance(bulletProperties);
+        
+        bullet.setActionToBePerformed(this.getActionToBePerformed());
+        
         Stage stage = createBulletParameter.getParentStage();
         if (stage != null && stage instanceof GameScreen) {
             ((GameScreen)stage).addBullet(bullet);
         }
     }
 
-    protected Speed setSpeed(float radians) {
-        Speed speed = this.getSpeed();
+    protected float setAngleInRadians(
+            CreateBulletParameter createBulletParameter) {
+        float radians = (float) Math.toRadians(createBulletParameter.getRotation());
+        return radians;
+    }
+
+    protected float setDistanceBetweenBullets(
+            CreateBulletParameter createBulletParameter) {
+        float increment = this.getIncrementFromNumBullet(createBulletParameter
+                .getNumBullet());
+        return increment;
+    }
+
+    protected Bullet getBulletInstance(BulletProperties bulletProperties){
+        return new Bullet(bulletProperties);
+    }
+
+    protected Speed setSpeed(float radians, CreateBulletParameter cBulletParameter) {
+        Speed speed = this.getSpeed(cBulletParameter);
         speed.setSpeedX(speed.getSpeedX() * ((float) Math.sin(radians)) * (-1));
         speed.setSpeedY(speed.getSpeedY() * ((float) Math.cos(radians)));
         return speed;
@@ -101,7 +119,9 @@ public abstract class BulletFactory {
     
     protected abstract FirePower getFirePower();
 
-    protected abstract Speed getSpeed();
+    protected abstract Speed getSpeed(CreateBulletParameter cBulletParameter);
     
     protected abstract String[] getAnimationFramesName();
+    
+    protected abstract BulletAction getActionToBePerformed();
 }

@@ -1,7 +1,6 @@
 package br.com.killaliens.ammunition.bullet;
 
 import br.com.killaliens.ammunition.bullet.actions.BulletAction;
-import br.com.killaliens.ammunition.bullet.actions.NullBulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
 import br.com.killaliens.explosion.Explosion;
@@ -32,7 +31,7 @@ public class Bullet extends Actor {
     
     private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(this);
     
-    private BulletAction actionStrategy = new NullBulletAction();
+    private BulletAction actionStrategy = null;
 
     public Bullet(BulletProperties properties) {
         this.limits.setRadius(properties.getRadius());
@@ -66,7 +65,7 @@ public class Bullet extends Actor {
         this.actionStrategy.act();
     }
     
-    public void changeAction(BulletAction action){
+    public void setActionToBePerformed(BulletAction action){
         this.actionStrategy = action;
     }
 
