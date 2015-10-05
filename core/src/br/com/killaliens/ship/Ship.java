@@ -139,7 +139,7 @@ public abstract class Ship extends Actor {
         super.act(delta);
 
         if (this.shooting == true) {
-            this.shoot();
+            this.shoot(delta);
             this.shooting = false;
         }
     }
@@ -258,12 +258,12 @@ public abstract class Ship extends Actor {
         this.shooting = shooting;
     }
 
-    private void shoot() {
+    private void shoot(float deltaTime) {
         CreateBulletParameter createBulletParameters = new CreateBulletParameter();
         
         this.buildCreateBulletParameter(createBulletParameters);
         
-        this.ammunitions.peek().makeBullets(createBulletParameters);
+        this.ammunitions.peek().makeBullets(deltaTime, createBulletParameters);
 
         if (!this.ammunitions.peek().hasAmmunition()) {
             this.removeTopAmmunition();

@@ -15,8 +15,8 @@ public class Ammunition {
     private int level = MINLEVEL;
     private BulletType type = null;
     
-    private int reloadTime = 0;
-    private int currentReloadTime = 0;
+    private float reloadTime = 0;
+    private float currentReloadTime = 0;
     
     public Ammunition(BulletType type, int level) {
         this.type = type;
@@ -25,11 +25,7 @@ public class Ammunition {
             this.level = level;
         }
         
-        if (type.equals(BulletType.FASTBULLET)) {
-            this.reloadTime = 5;
-        } else {
-            this.reloadTime = 15;
-        }
+        this.reloadTime = type.getReloadTimeInSeconds();
     }
     
     public Ammunition(BulletType type) {
@@ -104,14 +100,13 @@ public class Ammunition {
         }
     }
     
-    public void makeBullets(CreateBulletParameter cParameter){
+    public void makeBullets(float deltaTime, CreateBulletParameter cParameter){
         
+        this.currentReloadTime += deltaTime;
         if (this.currentReloadTime < this.reloadTime) {
-            this.currentReloadTime++;
             return;
-        } else {
-            this.currentReloadTime = 0;
         }
+        this.currentReloadTime = 0f;
         
         for (int currentNumBullet = 1; currentNumBullet <= this.level; 
                 currentNumBullet++) {

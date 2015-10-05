@@ -11,17 +11,32 @@ public enum BulletType {
         public TextureRegion getTexture() {
             return TextureCache.getTextureRegion(NORMALBULLET_ICON);
         }
+
+        @Override
+        public float getReloadTimeInSeconds() {
+            return 0.35f;
+        }
     },
     BIGBULLET {
         @Override
         public TextureRegion getTexture() {
             return TextureCache.getTextureRegion(BIGBULLET_ICON);
         }
+
+        @Override
+        public float getReloadTimeInSeconds() {
+            return 0.7f;
+        }
     },
     FASTBULLET {
         @Override
         public TextureRegion getTexture() {
             return TextureCache.getTextureRegion(FASTBULLET_ICON);
+        }
+
+        @Override
+        public float getReloadTimeInSeconds() {
+            return 0.2f;
         }
     };
     
@@ -34,4 +49,6 @@ public enum BulletType {
      * @return texture
      */
     public abstract TextureRegion getTexture();
+    
+    public abstract float getReloadTimeInSeconds();
 }
