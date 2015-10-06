@@ -8,8 +8,7 @@ public class HardEnemies extends RandomGroupGenerator {
 
     @Override
     protected EnemyShip getStrongEnemy() {
-        // TODO Auto-generated method stub
-        return null;
+        return EnemyFactory.getFactory(EnemyTypes.DESTROYER).getShip();
     }
 
     @Override
