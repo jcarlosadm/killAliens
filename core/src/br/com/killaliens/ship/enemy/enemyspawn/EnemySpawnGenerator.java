@@ -2,12 +2,12 @@ package br.com.killaliens.ship.enemy.enemyspawn;
 
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
-
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.RandomEnemy;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
+
+import com.badlogic.gdx.Gdx;
 
 public class EnemySpawnGenerator implements ScrollObserver{
     
@@ -27,12 +27,21 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     private float scrollTotalY = 0f;
     
+    private boolean bossLock = false;
+    
     public EnemySpawnGenerator(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
+        
+        //TODO tests
+        this.spawnLevel = EnemySpawnLevel.BOSS;
     }
     
     public EnemyShip getRandomEnemyShip(float deltaTime){
         this.totalTime += deltaTime;
+        
+        if (this.bossLock) {
+            return null;
+        }
         
         if (this.totalTime < TIME_LIMIT_TO_SPAWN_IN_SECONDS
                 || this.gameScreen.getTotalEnemiesOnScreen() >= MAX_ENEMIES_ON_SCREEN) {
@@ -47,6 +56,10 @@ public class EnemySpawnGenerator implements ScrollObserver{
         this.totalTime = 0;
         this.totalEnemies += 1;
         this.putInRandomLocation(enemyShip);
+        
+        if (this.spawnLevel.equals(EnemySpawnLevel.BOSS)) {
+            this.bossLock = true;
+        }
         
         if (this.totalEnemies >= TOTAL_ENEMIES_TO_UP_LEVEL) {
             this.totalEnemies = 0;

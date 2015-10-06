@@ -32,6 +32,9 @@ public abstract class EnemyFactory {
         else if (type.equals(EnemyTypes.DESTROYER)) {
             return new DestroyerFactory();
         }
+        else if (type.equals(EnemyTypes.BOSS)) {
+            return new BossFactory();
+        }
         
         return null;
     }

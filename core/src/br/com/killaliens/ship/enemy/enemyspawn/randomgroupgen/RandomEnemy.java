@@ -6,7 +6,7 @@ import java.util.Map;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.BasicEnemies;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.Boss;
+import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.BossEnemy;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.ExpertEnemies;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.HardEnemies;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.RandomGroupGenerator;
@@ -20,7 +20,7 @@ public class RandomEnemy {
         this.rndGroup.put(EnemySpawnLevel.BASIC, new BasicEnemies());
         this.rndGroup.put(EnemySpawnLevel.EXPERT, new ExpertEnemies());
         this.rndGroup.put(EnemySpawnLevel.HARD, new HardEnemies());
-        this.rndGroup.put(EnemySpawnLevel.BOSS, new Boss());
+        this.rndGroup.put(EnemySpawnLevel.BOSS, new BossEnemy());
     }
     
     public EnemyShip getRandomEnemyShip(EnemySpawnLevel esLevel){
