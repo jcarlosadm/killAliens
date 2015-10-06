@@ -31,9 +31,6 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     public EnemySpawnGenerator(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
-        
-        //TODO tests
-        this.spawnLevel = EnemySpawnLevel.BOSS;
     }
     
     public EnemyShip getRandomEnemyShip(float deltaTime){
