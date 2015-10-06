@@ -23,6 +23,9 @@ public abstract class EnemyFactory {
         else if (type.equals(EnemyTypes.CRAZY_UFO)) {
             return new CrazyUFOFactory();
         }
+        else if (type.equals(EnemyTypes.KEEPER)) {
+            return new KeeperFactory();
+        }
         
         return null;
     }

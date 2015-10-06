@@ -32,6 +32,8 @@ public abstract class BulletFactory {
             return new BigBulletFactory();
         } else if (type.equals(BulletType.FASTBULLET)) {
             return new FastBulletFactory();
+        } else if (type.equals(BulletType.FLOWERBULLET)) {
+            return new FlowerBulletFactory();
         }
 
         return NullBulletFactory.getInstance();
@@ -103,7 +105,7 @@ public abstract class BulletFactory {
         return bulletProperties;
     };
 
-    private float getIncrementFromNumBullet(int numBullet) {
+    protected float getIncrementFromNumBullet(int numBullet) {
         if (numBullet == 1) { return 0; }
 
         if (numBullet % 2 == 0) {

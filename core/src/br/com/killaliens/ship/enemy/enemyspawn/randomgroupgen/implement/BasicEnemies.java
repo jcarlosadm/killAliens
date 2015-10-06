@@ -20,8 +20,7 @@ public class BasicEnemies extends RandomGroupGenerator {
 
     @Override
     protected EnemyShip getWeakEnemy() {
-        // TODO Auto-generated method stub
-        return null;
+        return EnemyFactory.getFactory(EnemyTypes.KEEPER).getShip();
     }
 
 }

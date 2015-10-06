@@ -67,6 +67,7 @@ public class Bullet extends Actor {
     
     public void setActionToBePerformed(BulletAction action){
         this.actionStrategy = action;
+        this.actionStrategy.setBullet(this);
     }
 
     protected void move() {

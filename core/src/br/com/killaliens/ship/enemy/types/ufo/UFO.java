@@ -25,6 +25,5 @@ public class UFO extends EnemyShip {
 
         this.setX(this.getX() + this.getSpeedX());
         this.setY(this.getY() + this.getSpeedY());
-        this.moveToLocation(this.getX(), this.getY(), delta);
     }
 }

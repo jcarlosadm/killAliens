@@ -38,6 +38,17 @@ public enum BulletType {
         public float getReloadTimeInSeconds() {
             return RELOAD_FAST;
         }
+    },
+    FLOWERBULLET {
+        @Override
+        public TextureRegion getTexture() {
+            return TextureCache.getTextureRegion(NORMALBULLET_ICON);
+        }
+
+        @Override
+        public float getReloadTimeInSeconds() {
+            return RELOAD_SLOW;
+        }
     };
     
     private static final float RELOAD_NORMAL = 0.35f;
