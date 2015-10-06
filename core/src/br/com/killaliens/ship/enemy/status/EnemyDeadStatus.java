@@ -1,15 +1,15 @@
-package br.com.killaliens.ship.enemy.types.crazyufo.states;
+package br.com.killaliens.ship.enemy.status;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.EnemyStatus;
 import br.com.killaliens.util.animation.AnimationTypes;
 
-public class CrazyUFODeadStatus extends EnemyStatus {
-    
+public class EnemyDeadStatus extends EnemyStatus {
+
     private static final float LIMIT_TIME_TO_DEAD = 1.5f;
     private float currentTime = 0;
     
-    public CrazyUFODeadStatus(EnemyShip enemyShip) {
+    public EnemyDeadStatus(EnemyShip enemyShip) {
         super(enemyShip);
     }
 

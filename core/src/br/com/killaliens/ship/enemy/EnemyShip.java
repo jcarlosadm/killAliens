@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
+import br.com.killaliens.ship.enemy.status.EnemyDeadStatus;
+import br.com.killaliens.ship.enemy.status.EnemyNormalStatus;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.camera.CheckVisibleOnCamera;
 
@@ -15,6 +17,10 @@ public abstract class EnemyShip extends Ship {
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
+        
+        this.addStatus(AnimationTypes.NORMAL_STATE, new EnemyNormalStatus(this));
+        this.addStatus(AnimationTypes.DEAD, new EnemyDeadStatus(this));
+        this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
     }
     
     @Override

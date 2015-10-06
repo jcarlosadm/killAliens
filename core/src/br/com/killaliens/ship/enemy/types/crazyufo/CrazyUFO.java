@@ -2,9 +2,6 @@ package br.com.killaliens.ship.enemy.types.crazyufo;
 
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
-import br.com.killaliens.ship.enemy.types.crazyufo.states.CrazyUFODeadStatus;
-import br.com.killaliens.ship.enemy.types.crazyufo.states.CrazyUFONormalStatus;
-import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.random.StaticRandom;
 
 public class CrazyUFO extends EnemyShip {
@@ -25,10 +22,6 @@ public class CrazyUFO extends EnemyShip {
     
     public CrazyUFO(ShipProperties properties) {
         super(properties);
-        
-        this.addStatus(AnimationTypes.NORMAL_STATE, new CrazyUFONormalStatus(this));
-        this.addStatus(AnimationTypes.DEAD, new CrazyUFODeadStatus(this));
-        this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
     }
 
     @Override

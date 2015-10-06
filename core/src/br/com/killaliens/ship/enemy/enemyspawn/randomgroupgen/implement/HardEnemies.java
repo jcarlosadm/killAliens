@@ -14,13 +14,11 @@ public class HardEnemies extends RandomGroupGenerator {
 
     @Override
     protected EnemyShip getMiddleEnemy() {
-        // TODO Auto-generated method stub
-        return null;
+        return EnemyFactory.getFactory(EnemyTypes.CANNON).getShip();
     }
 
     @Override
     protected EnemyShip getWeakEnemy() {
-        // TODO Auto-generated method stub
         return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
     }
 

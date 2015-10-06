@@ -1,12 +1,12 @@
-package br.com.killaliens.ship.enemy.types.crazyufo.states;
+package br.com.killaliens.ship.enemy.status;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.EnemyStatus;
 import br.com.killaliens.util.animation.AnimationTypes;
 
-public class CrazyUFONormalStatus extends EnemyStatus{
+public class EnemyNormalStatus extends EnemyStatus{
 
-    public CrazyUFONormalStatus(EnemyShip enemyShip) {
+    public EnemyNormalStatus(EnemyShip enemyShip) {
         super(enemyShip);
     }
 

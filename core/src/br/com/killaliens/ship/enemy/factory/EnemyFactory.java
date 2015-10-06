@@ -26,6 +26,9 @@ public abstract class EnemyFactory {
         else if (type.equals(EnemyTypes.KEEPER)) {
             return new KeeperFactory();
         }
+        else if (type.equals(EnemyTypes.CANNON)) {
+            return new CannonFactory();
+        }
         
         return null;
     }

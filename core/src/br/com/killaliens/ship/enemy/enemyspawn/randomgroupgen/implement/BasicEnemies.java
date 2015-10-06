@@ -8,13 +8,11 @@ public class BasicEnemies extends RandomGroupGenerator {
     
     @Override
     protected EnemyShip getStrongEnemy() {
-        // TODO Auto-generated method stub
         return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
     }
 
     @Override
     protected EnemyShip getMiddleEnemy() {
-        // TODO Auto-generated method stub
         return EnemyFactory.getFactory(EnemyTypes.UFO).getShip();
     }
 
