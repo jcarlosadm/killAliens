@@ -5,5 +5,6 @@ public enum EnemyTypes {
     CRAZY_UFO,
     KEEPER,
     CANNON,
-    
+    DESTROYER,
+    BOSS
 }

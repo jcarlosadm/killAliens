@@ -3,7 +3,7 @@ package br.com.killaliens.ship.enemy.factory;
 import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
-import br.com.killaliens.ship.enemy.types.crazyufo.CrazyUFO;
+import br.com.killaliens.ship.enemy.types.CrazyUFO;
 
 public class CrazyUFOFactory extends EnemyFactory {
 

@@ -1,4 +1,4 @@
-package br.com.killaliens.ship.enemy.types.crazyufo;
+package br.com.killaliens.ship.enemy.types;
 
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
