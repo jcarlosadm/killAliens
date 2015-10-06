@@ -1,7 +1,5 @@
 package br.com.killaliens.ammunition.bullet.factory;
 
-import br.com.killaliens.ammunition.bullet.actions.BulletAction;
-import br.com.killaliens.ammunition.bullet.actions.NullBulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.util.speed.Speed;
 
@@ -33,10 +31,5 @@ public class NormalBulletFactory extends BulletFactory {
     @Override
     protected String[] getAnimationFramesName() {
         return ANIMATION_FRAMENAMES;
-    }
-
-    @Override
-    protected BulletAction getActionToBePerformed() {
-        return new NullBulletAction();
     }
 }

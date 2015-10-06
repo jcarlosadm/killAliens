@@ -3,7 +3,6 @@ package br.com.killaliens.ammunition.bullet.factory;
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.ammunition.bullet.BulletProperties;
 import br.com.killaliens.ammunition.bullet.BulletType;
-import br.com.killaliens.ammunition.bullet.actions.BulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -58,8 +57,6 @@ public abstract class BulletFactory {
                 .build(ANIMATION_FRAMETIME, getAnimationFramesName()));
         
         Bullet bullet = this.getBulletInstance(bulletProperties);
-        
-        bullet.setActionToBePerformed(this.getActionToBePerformed());
         
         Stage stage = createBulletParameter.getParentStage();
         if (stage != null && stage instanceof GameScreen) {
@@ -124,6 +121,4 @@ public abstract class BulletFactory {
     protected abstract Speed getSpeed(CreateBulletParameter cBulletParameter);
     
     protected abstract String[] getAnimationFramesName();
-    
-    protected abstract BulletAction getActionToBePerformed();
 }

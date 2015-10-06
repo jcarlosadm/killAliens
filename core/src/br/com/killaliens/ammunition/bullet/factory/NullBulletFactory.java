@@ -1,7 +1,5 @@
 package br.com.killaliens.ammunition.bullet.factory;
 
-import br.com.killaliens.ammunition.bullet.actions.BulletAction;
-import br.com.killaliens.ammunition.bullet.actions.NullBulletAction;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
 import br.com.killaliens.util.speed.NullSpeed;
@@ -44,10 +42,5 @@ public class NullBulletFactory extends BulletFactory {
     @Override
     protected float getRadius() {
         return 0;
-    }
-
-    @Override
-    protected BulletAction getActionToBePerformed() {
-        return new NullBulletAction();
     }
 }
