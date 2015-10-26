@@ -39,7 +39,7 @@ public class Keeper extends EnemyShip {
 
     @Override
     protected BonusType getMiddleBonusType() {
-        return BonusType.UPATTACK;
+        return BonusType.UPLIFE;
     }
 
     @Override

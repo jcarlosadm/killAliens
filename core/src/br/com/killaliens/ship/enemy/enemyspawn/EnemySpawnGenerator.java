@@ -13,7 +13,7 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     public static final float TIME_LIMIT_TO_SPAWN_IN_SECONDS = 2;
     public static final int MAX_ENEMIES_ON_SCREEN = 5;
-    public static final int TOTAL_ENEMIES_TO_UP_LEVEL = 10;
+    public static final int TOTAL_ENEMIES_TO_UP_LEVEL = 25;
     
     private float totalTime = 0f;
     

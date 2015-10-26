@@ -67,11 +67,11 @@ public class CrazyUFO extends EnemyShip {
 
     @Override
     protected BonusType getMiddleBonusType() {
-        return BonusType.FASTBULLET;
+        return BonusType.UPATTACK;
     }
 
     @Override
     protected BonusType getHighBonusType() {
-        return BonusType.UPATTACK;
+        return BonusType.FASTBULLET;
     }
 }

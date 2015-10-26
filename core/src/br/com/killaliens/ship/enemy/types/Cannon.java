@@ -37,12 +37,12 @@ public class Cannon extends EnemyShip {
 
     @Override
     protected BonusType getLowBonusType() {
-        return BonusType.UPATTACK;
+        return BonusType.UPLIFE;
     }
 
     @Override
     protected BonusType getMiddleBonusType() {
-        return BonusType.UPSHIELD;
+        return BonusType.UPATTACK;
     }
 
     @Override
