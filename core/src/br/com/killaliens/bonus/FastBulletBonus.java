@@ -7,7 +7,6 @@ import br.com.killaliens.ship.Ship;
 public class FastBulletBonus extends Bonus {
     
     private static final int TOTAL_BULLETS = 300;
-    private static final int FASTBULLET_LEVEL = 3;
     private static final String[] ANIMATION_FRAME_NAMES = {"fastbullet_icon"};
     private static final float ANIMATION_FRAME_TIME = 0.2f;
 
@@ -17,7 +16,7 @@ public class FastBulletBonus extends Bonus {
 
     @Override
     protected void addBonusToShip(Ship ship) {
-        Ammunition ammo = new Ammunition(BulletType.FASTBULLET, FASTBULLET_LEVEL);
+        Ammunition ammo = new Ammunition(BulletType.FASTBULLET, ship.getTopAmmunition().getLevel());
         ammo.setTotalBullets(TOTAL_BULLETS);
         ammo.setCurrentBullets(TOTAL_BULLETS);
         ship.addAmmunition(ammo);
