@@ -1,5 +1,6 @@
 package br.com.killaliens.ship.enemy.types;
 
+import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 
@@ -40,6 +41,21 @@ public class Destroyer extends EnemyShip{
         
         this.setY(this.getY() + this.getSpeedY());
         this.setShooting(true);
+    }
+
+    @Override
+    protected BonusType getLowBonusType() {
+        return BonusType.UPLIFE;
+    }
+
+    @Override
+    protected BonusType getMiddleBonusType() {
+        return BonusType.UPSHIELD;
+    }
+
+    @Override
+    protected BonusType getHighBonusType() {
+        return BonusType.BIGBULLET;
     }
 
 }

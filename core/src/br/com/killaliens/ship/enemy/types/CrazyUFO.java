@@ -1,5 +1,6 @@
 package br.com.killaliens.ship.enemy.types;
 
+import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.util.random.StaticRandom;
@@ -57,5 +58,20 @@ public class CrazyUFO extends EnemyShip {
                     getRandomValue(MIN_RANDOM_ROTATION, MAX_RANDOM_ROTATION);
             this.currentTimeToChangeRotationDirection = 0;
         }
+    }
+
+    @Override
+    protected BonusType getLowBonusType() {
+        return BonusType.UPLIFE;
+    }
+
+    @Override
+    protected BonusType getMiddleBonusType() {
+        return BonusType.FASTBULLET;
+    }
+
+    @Override
+    protected BonusType getHighBonusType() {
+        return BonusType.UPATTACK;
     }
 }

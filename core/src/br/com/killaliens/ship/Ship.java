@@ -24,6 +24,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
@@ -222,6 +223,10 @@ public abstract class Ship extends Actor {
     public int getShieldLevel() {
         return this.shield.getShieldLevel();
     }
+    
+    public void upShieldLevel() {
+        this.shield.setShieldLevel(this.getShieldLevel() + 1);
+    }
 
     /**
      * Add ammunition to ammunition stack
@@ -289,6 +294,18 @@ public abstract class Ship extends Actor {
     
     public boolean colliding(Vector2 point){
         return this.limits.contains(point.x, point.y);
+    }
+    
+    public boolean colliding(Rectangle rectangle){
+        Polygon rPoly = new Polygon(new float[] { 0, 0, rectangle.width, 0, rectangle.width,
+                rectangle.height, 0, rectangle.height });
+        rPoly.setPosition(rectangle.x, rectangle.y);
+        
+        if (Intersector.overlapConvexPolygons(rPoly, this.limits)){
+            return true;
+        }
+        
+        return false;
     }
 
     public void addAnimation(AnimationTypes key, Animation animation) {

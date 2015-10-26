@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.ammunition.bullet.BulletType;
+import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.screens.gamescreen.GameScreen;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
@@ -123,6 +124,21 @@ public class Boss extends EnemyShip {
             this.moveLeft = false;
             this.setSpeedX(RIGHT_SPEED_X);
         }
+    }
+
+    @Override
+    protected BonusType getLowBonusType() {
+        return null;
+    }
+
+    @Override
+    protected BonusType getMiddleBonusType() {
+        return null;
+    }
+
+    @Override
+    protected BonusType getHighBonusType() {
+        return null;
     }
 
 }

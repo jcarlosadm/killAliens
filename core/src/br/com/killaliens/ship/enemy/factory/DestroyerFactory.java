@@ -9,7 +9,7 @@ public class DestroyerFactory extends EnemyFactory {
 
     private static final BulletType BASIC_BULLET = BulletType.FLOWERBULLET;
     private static final int LIFE_VALUE = 30;
-    private static final int SHIELD_VALUE = 3;
+    private static final int SHIELD_VALUE = 2;
     private static final float SPEED_X = 0f;
     private static final float SPEED_Y = 0f;
     private static final float ROTATION = 180f;

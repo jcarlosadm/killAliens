@@ -1,5 +1,6 @@
 package br.com.killaliens.ship.enemy.types;
 
+import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.player.PlayerShip;
@@ -32,5 +33,20 @@ public class Cannon extends EnemyShip {
         
         this.setShooting(true);
 
+    }
+
+    @Override
+    protected BonusType getLowBonusType() {
+        return BonusType.UPATTACK;
+    }
+
+    @Override
+    protected BonusType getMiddleBonusType() {
+        return BonusType.UPSHIELD;
+    }
+
+    @Override
+    protected BonusType getHighBonusType() {
+        return BonusType.BIGBULLET;
     }
 }

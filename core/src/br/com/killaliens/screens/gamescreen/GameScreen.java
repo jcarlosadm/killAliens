@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.killaliens.ammunition.bullet.Bullet;
+import br.com.killaliens.bonus.Bonus;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gamescreen.background.Background;
 import br.com.killaliens.screens.gamescreen.userinterface.InformationLevelPhase;
@@ -31,6 +32,7 @@ public class GameScreen extends Stage implements ScrollSubject {
     private Group background = new Group();
     private Group explosions = new Group();
     private Group userInterface = new Group();
+    private Group bonus = new Group();
     
     private List<ScrollObserver> scrollObservers = new ArrayList<ScrollObserver>();
     
@@ -40,6 +42,7 @@ public class GameScreen extends Stage implements ScrollSubject {
         this.addActor(this.background);
         this.addActor(this.bulletList);
         this.addActor(this.enemyShips);
+        this.addActor(this.bonus);
         this.addActor(this.playerShip);
         this.addActor(this.explosions);
         this.addActor(this.userInterface);
@@ -82,6 +85,12 @@ public class GameScreen extends Stage implements ScrollSubject {
             }
             if (this.playerShip.getChildren().size > 0) {
                 ((Bullet) bullet).colliding(PlayerShip.getPlayerShip());
+            }
+        }
+        
+        for (Actor bonus : this.bonus.getChildren()) {
+            if (this.playerShip.getChildren().size > 0) {
+                ((Bonus) bonus).colliding(PlayerShip.getPlayerShip());
             }
         }
     }
@@ -132,6 +141,14 @@ public class GameScreen extends Stage implements ScrollSubject {
     
     public void removeExplosion(Explosion explosion){
         this.explosions.removeActor(explosion);
+    }
+    
+    public void addBonus(Bonus bonus){
+        this.bonus.addActor(bonus);
+    }
+    
+    public void removeBonus(Bonus bonus){
+        this.bonus.removeActor(bonus);
     }
 
     @Override
