@@ -3,6 +3,7 @@ package br.com.killaliens.ship.enemy.enemyspawn;
 import java.util.Random;
 
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gamescreen.GameScreenUnits;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.RandomEnemy;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -41,7 +42,8 @@ public class EnemySpawnGenerator implements ScrollObserver{
         }
         
         if (this.totalTime < TIME_LIMIT_TO_SPAWN_IN_SECONDS
-                || this.gameScreen.getTotalEnemiesOnScreen() >= MAX_ENEMIES_ON_SCREEN) {
+                || this.gameScreen.getTotalObjectsOnGroup(GameScreenUnits.ENEMY_SHIPS)
+                    >= MAX_ENEMIES_ON_SCREEN) {
             return null;
         }
         

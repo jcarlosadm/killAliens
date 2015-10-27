@@ -1,6 +1,7 @@
 package br.com.killaliens.ship.player;
 
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gamescreen.GameScreenUnits;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.player.states.PlayerDeadStatus;
@@ -59,7 +60,7 @@ public class PlayerShip extends Ship implements ScrollObserver {
     public boolean remove() {
         Stage stage = this.getStage();
         if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) stage).removePlayer();
+            ((GameScreen) stage).removeObjectFromGroup(GameScreenUnits.PLAYER_SHIP, this);
         }
         return super.remove();
     }

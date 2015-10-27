@@ -1,6 +1,7 @@
 package br.com.killaliens.bonus;
 
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gamescreen.GameScreenUnits;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.animation.AnimationManagement;
@@ -86,7 +87,7 @@ public abstract class Bonus extends Actor {
         Stage stage = this.getStage();
         
         if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) stage).removeBonus(this);
+            ((GameScreen) stage).removeObjectFromGroup(GameScreenUnits.BONUS_LIST, this);
         }
         
         return super.remove();

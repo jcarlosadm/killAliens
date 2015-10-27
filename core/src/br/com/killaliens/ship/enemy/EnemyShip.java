@@ -6,6 +6,7 @@ import br.com.killaliens.bonus.Bonus;
 import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.bonus.factory.BonusFactory;
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gamescreen.GameScreenUnits;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.status.EnemyDeadStatus;
@@ -16,79 +17,78 @@ import br.com.killaliens.util.random.StaticRandom;
 
 public abstract class EnemyShip extends Ship {
 
-    private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(this);
-    
+    private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(
+            this);
+
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
-        
+
         this.addStatus(AnimationTypes.NORMAL_STATE, new EnemyNormalStatus(this));
         this.addStatus(AnimationTypes.DEAD, new EnemyDeadStatus(this));
         this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
     }
-    
+
     @Override
     public void act(float delta) {
         super.act(delta);
-        
+
         if (!this.checkVisibleOnCamera.actorIsVisible()) {
             this.remove();
         }
-        
+
         if (!this.isDead()) {
             this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
         } else {
             this.setCurrentStatus(AnimationTypes.DEAD);
         }
-        
+
         this.getCurrentStatus().setup();
         this.getCurrentStatus().act(delta);
     }
-    
+
     @Override
     public boolean remove() {
         Stage stage = this.getStage();
-        
+
         if (stage != null && stage instanceof GameScreen) {
             this.createBonus((GameScreen) stage);
-            ((GameScreen) this.getStage()).removeEnemy(this);
+            ((GameScreen) this.getStage()).removeObjectFromGroup(
+                    GameScreenUnits.ENEMY_SHIPS, this);
         }
-        
+
         return super.remove();
     }
-    
-    private void createBonus(GameScreen gameScreen){
+
+    private void createBonus(GameScreen gameScreen) {
         int randomNumber = StaticRandom.getRandomValue(1, 10);
-        
+
         Bonus bonus = null;
         BonusType type = null;
-        
-        if (randomNumber <= 2){
+
+        if (randomNumber <= 2) {
             return;
-        }
-        else if (randomNumber <= 6) {
+        } else if (randomNumber <= 6) {
             type = this.getLowBonusType();
-        }
-        else if (randomNumber <= 9){
+        } else if (randomNumber <= 9) {
             type = this.getMiddleBonusType();
-        }
-        else {
+        } else {
             type = this.getHighBonusType();
         }
-        
+
         bonus = BonusFactory.getBonus(type, this.getX(), this.getY());
         if (bonus == null) {
             return;
         }
-        
-        gameScreen.addBonus(bonus);
+
+        gameScreen.addObjectToGroup(GameScreenUnits.BONUS_LIST, bonus);
     }
-    
+
     protected abstract BonusType getLowBonusType();
-    
+
     protected abstract BonusType getMiddleBonusType();
-    
+
     protected abstract BonusType getHighBonusType();
-    
+
     public abstract void runArtificialIntelligence(float delta);
 }

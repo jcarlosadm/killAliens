@@ -10,6 +10,7 @@ import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gamescreen.GameScreenUnits;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
@@ -65,7 +66,7 @@ public class Boss extends EnemyShip {
             enemyShip.setY(y);
             
             if (stage != null && stage instanceof GameScreen) {
-                ((GameScreen)stage).addEnemy(enemyShip);
+                ((GameScreen)stage).addObjectToGroup(GameScreenUnits.ENEMY_SHIPS, enemyShip);
             }
         }
     }
