@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gamescreen.userinterface;
+package br.com.killaliens.screens.gamescreen.userinterface.pause;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.image.TextureCache;

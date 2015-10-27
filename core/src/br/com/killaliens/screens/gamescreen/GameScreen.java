@@ -1,14 +1,18 @@
 package br.com.killaliens.screens.gamescreen;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.bonus.Bonus;
 import br.com.killaliens.explosion.Explosion;
+import br.com.killaliens.screens.ScreenManager;
+import br.com.killaliens.screens.ScreenType;
 import br.com.killaliens.screens.gamescreen.background.Background;
 import br.com.killaliens.screens.gamescreen.userinterface.InformationLevelPhase;
-import br.com.killaliens.screens.gamescreen.userinterface.PauseButton;
+import br.com.killaliens.screens.gamescreen.userinterface.pause.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
@@ -26,38 +30,35 @@ public class GameScreen extends Stage implements ScrollSubject {
     
     private static final float SCROLLDOWN_SPEED = 1f;
     
-    private Group playerShip = new Group();
-    private Group enemyShips = new Group();
-    private Group bulletList = new Group();
-    private Group background = new Group();
-    private Group explosions = new Group();
-    private Group userInterface = new Group();
-    private Group bonus = new Group();
+    private Map<GameScreenUnits, Group> gameScreenGroups = new HashMap<GameScreenUnits, Group>();
     
     private List<ScrollObserver> scrollObservers = new ArrayList<ScrollObserver>();
     
     private EnemySpawnGenerator enemySpawnGenerator = null;
     
-    public GameScreen() {
-        this.addActor(this.background);
-        this.addActor(this.bulletList);
-        this.addActor(this.enemyShips);
-        this.addActor(this.bonus);
-        this.addActor(this.playerShip);
-        this.addActor(this.explosions);
-        this.addActor(this.userInterface);
+    private ScreenManager screenManager = null;
+    
+    public GameScreen(ScreenManager screenManager) {
+        this.screenManager = screenManager;
+        
+        for (GameScreenUnits unit : GameScreenUnits.values()) {
+            Group group = new Group();
+            this.gameScreenGroups.put(unit, group);
+            this.addActor(group);
+        }
         
         this.addBackground(new Background());
         this.addPlayer(PlayerShip.getPlayerShip());
         
         this.enemySpawnGenerator = new EnemySpawnGenerator(this);
         
+        Group userInterface = this.gameScreenGroups.get(GameScreenUnits.USER_INTERFACE);
         StatusBar statusBar = new StatusBar(PlayerShip.getPlayerShip());
-        this.userInterface.addActor(statusBar);
+        userInterface.addActor(statusBar);
         PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
-        this.userInterface.addActor(pauseButton);
+        userInterface.addActor(pauseButton);
         InformationLevelPhase inPhase = new InformationLevelPhase(this.enemySpawnGenerator);
-        this.userInterface.addActor(inPhase);
+        userInterface.addActor(inPhase);
         
         this.registerScrollObserver(PlayerShip.getPlayerShip());
         this.registerScrollObserver(statusBar);
@@ -79,17 +80,22 @@ public class GameScreen extends Stage implements ScrollSubject {
             this.addEnemy(rndEnemyShip);
         }
         
-        for (Actor bullet : this.bulletList.getChildren()) {
+        Group bulletList = this.gameScreenGroups.get(GameScreenUnits.BULLET_LIST);
+        Group enemyShips = this.gameScreenGroups.get(GameScreenUnits.ENEMY_SHIPS);
+        Group playerShip = this.gameScreenGroups.get(GameScreenUnits.PLAYER_SHIP);
+        Group bonusList = this.gameScreenGroups.get(GameScreenUnits.BONUS_LIST);
+        
+        for (Actor bullet : bulletList.getChildren()) {
             for (Actor enemyShip : enemyShips.getChildren()) {
                 ((Bullet) bullet).colliding((Ship) enemyShip);
             }
-            if (this.playerShip.getChildren().size > 0) {
+            if (playerShip.getChildren().size > 0) {
                 ((Bullet) bullet).colliding(PlayerShip.getPlayerShip());
             }
         }
         
-        for (Actor bonus : this.bonus.getChildren()) {
-            if (this.playerShip.getChildren().size > 0) {
+        for (Actor bonus : bonusList.getChildren()) {
+            if (playerShip.getChildren().size > 0) {
                 ((Bonus) bonus).colliding(PlayerShip.getPlayerShip());
             }
         }
@@ -103,52 +109,63 @@ public class GameScreen extends Stage implements ScrollSubject {
     }
     
     private void addBackground(Background background) {
-        this.background.addActor(background);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.BACKGROUND);
+        group.addActor(background);
     }
     
     private void addPlayer(PlayerShip playerShip) {
-        this.playerShip.clear();
-        this.playerShip.addActor(playerShip);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.PLAYER_SHIP);
+        group.clear();
+        group.addActor(playerShip);
     }
     
     public void removePlayer(){
-        this.playerShip.clear();
+        this.gameScreenGroups.get(GameScreenUnits.PLAYER_SHIP).clear();
     }
     
     public void addEnemy(EnemyShip enemyShip){
-        this.enemyShips.addActor(enemyShip);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.ENEMY_SHIPS);
+        group.addActor(enemyShip);
     }
     
     public void removeEnemy(EnemyShip enemyShip){
-        this.enemyShips.removeActor(enemyShip);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.ENEMY_SHIPS);
+        group.removeActor(enemyShip);
     }
     
     public int getTotalEnemiesOnScreen(){
-        return this.enemyShips.getChildren().size;
+        Group group = this.gameScreenGroups.get(GameScreenUnits.ENEMY_SHIPS);
+        return group.getChildren().size;
     }
     
     public void addBullet(Bullet bullet){
-        this.bulletList.addActor(bullet);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.BULLET_LIST);
+        group.addActor(bullet);
     }
     
     public void removeBullet(Bullet bullet){
-        this.bulletList.removeActor(bullet);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.BULLET_LIST);
+        group.removeActor(bullet);
     }
     
     public void addExplosion(Explosion explosion){
-        this.explosions.addActor(explosion);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.EXPLOSIONS);
+        group.addActor(explosion);
     }
     
     public void removeExplosion(Explosion explosion){
-        this.explosions.removeActor(explosion);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.EXPLOSIONS);
+        group.removeActor(explosion);
     }
     
     public void addBonus(Bonus bonus){
-        this.bonus.addActor(bonus);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.BONUS_LIST);
+        group.addActor(bonus);
     }
     
     public void removeBonus(Bonus bonus){
-        this.bonus.removeActor(bonus);
+        Group group = this.gameScreenGroups.get(GameScreenUnits.BONUS_LIST);
+        group.removeActor(bonus);
     }
 
     @Override
@@ -166,5 +183,17 @@ public class GameScreen extends Stage implements ScrollSubject {
         for (ScrollObserver scrollObserver : this.scrollObservers) {
             scrollObserver.updateScroll(deltaX, deltaY);
         }
+    }
+    
+    public EnemySpawnGenerator getEnemySpawnGenerator(){
+        return this.enemySpawnGenerator;
+    }
+    
+    public Map<GameScreenUnits, Group> getGameScreenGroups(){
+        return this.gameScreenGroups;
+    }
+    
+    public void pause() {
+        this.screenManager.changeCurrentScreen(ScreenType.PAUSE_MENU);
     }
 }

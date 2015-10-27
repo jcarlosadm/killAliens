@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gamescreen.userinterface;
+package br.com.killaliens.screens.gamescreen.userinterface.pause;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
