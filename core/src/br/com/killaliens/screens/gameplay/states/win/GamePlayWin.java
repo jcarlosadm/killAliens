@@ -1,22 +1,22 @@
-package br.com.killaliens.screens.gameplay.states.pause;
+package br.com.killaliens.screens.gameplay.states.win;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.killaliens.screens.options.OptionsScreen;
 import br.com.killaliens.util.buttons.Button;
-import br.com.killaliens.util.buttons.implementations.PauseLabel;
 import br.com.killaliens.util.buttons.implementations.QuitButton;
-import br.com.killaliens.util.buttons.implementations.ResumeButton;
+import br.com.killaliens.util.buttons.implementations.RestartButton;
+import br.com.killaliens.util.buttons.implementations.WinLabel;
 
-public class GamePlayPause extends OptionsScreen {
+public class GamePlayWin extends OptionsScreen {
     
-    public GamePlayPause() {
+    public GamePlayWin() {
         List<Button> buttons = new ArrayList<Button>();
         
         buttons.add(new QuitButton());
-        buttons.add(new ResumeButton());
-        buttons.add(new PauseLabel());
+        buttons.add(new RestartButton());
+        buttons.add(new WinLabel());
         
         this.setButtons(buttons);
     }

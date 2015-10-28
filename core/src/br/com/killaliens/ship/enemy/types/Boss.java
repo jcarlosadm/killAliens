@@ -2,10 +2,6 @@ package br.com.killaliens.ship.enemy.types;
 
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.bonus.BonusType;
@@ -15,7 +11,13 @@ import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.RandomEnemy;
+import br.com.killaliens.ship.enemy.status.BossDeadStatus;
+import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.random.StaticRandom;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Boss extends EnemyShip {
 
@@ -38,6 +40,7 @@ public class Boss extends EnemyShip {
     
     public Boss(ShipProperties properties) {
         super(properties);
+        this.addStatus(AnimationTypes.DEAD, new BossDeadStatus(this));
         this.getTopAmmunition().addLevel();
         this.getTopAmmunition().addLevel();
     }

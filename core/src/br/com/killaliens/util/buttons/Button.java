@@ -5,6 +5,7 @@ import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -38,6 +39,8 @@ public abstract class Button extends Actor {
         layout.setText(this.font, this.getName());
         this.textWidth = layout.width;
         this.textHeight = layout.height;
+        
+        this.font.setColor(Color.BLACK);
     }
 
     @Override

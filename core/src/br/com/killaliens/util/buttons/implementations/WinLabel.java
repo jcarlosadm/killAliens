@@ -1,19 +1,14 @@
 package br.com.killaliens.util.buttons.implementations;
 
-import com.badlogic.gdx.Gdx;
-
 import br.com.killaliens.util.buttons.Button;
 
-public class QuitButton extends Button {
+public class WinLabel extends Button {
 
-    private static final String IMAGE_NAME = "blue_button";
-
-    private static final String NAME = "Quit";
-
+    private static final String IMAGE_NAME = "grey_button";
+    private static final String NAME = "You Win!";
+    
     @Override
     protected void action() {
-        // TODO Auto-generated method stub
-        Gdx.app.exit();
     }
 
     @Override

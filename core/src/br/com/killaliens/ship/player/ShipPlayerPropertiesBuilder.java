@@ -25,7 +25,7 @@ public class ShipPlayerPropertiesBuilder {
     private static final float INITIAL_SPEEDY = 0f;
 
     private static final int INITIAL_MAXLIFE = 40;
-    private static final int INITIAL_SHIELD = 0;
+    private static final int INITIAL_SHIELD = 1;
 
     private static final BulletType BASIC_AMMUNITION = BulletType.NORMALBULLET;
 
