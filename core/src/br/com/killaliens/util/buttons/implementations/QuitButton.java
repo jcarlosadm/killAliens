@@ -12,7 +12,6 @@ public class QuitButton extends Button {
 
     @Override
     protected void action() {
-        // TODO Auto-generated method stub
         Gdx.app.exit();
     }
 
