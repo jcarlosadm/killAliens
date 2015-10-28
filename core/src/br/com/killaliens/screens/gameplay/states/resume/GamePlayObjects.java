@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gameplay;
+package br.com.killaliens.screens.gameplay.states.resume;
 
 public enum GamePlayObjects {
     BACKGROUND,

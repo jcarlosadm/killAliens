@@ -1,7 +1,7 @@
 package br.com.killaliens.bonus;
 
-import br.com.killaliens.screens.gameplay.GamePlayObjects;
-import br.com.killaliens.screens.gameplay.states.GamePlayResume;
+import br.com.killaliens.screens.gameplay.states.resume.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.animation.AnimationManagement;

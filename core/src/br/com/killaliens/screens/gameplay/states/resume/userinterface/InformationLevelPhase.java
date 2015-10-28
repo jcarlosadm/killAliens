@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gameplay.userinterface;
+package br.com.killaliens.screens.gameplay.states.resume.userinterface;
 
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
 import br.com.killaliens.util.font.FontCache;

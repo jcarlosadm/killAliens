@@ -1,8 +1,8 @@
 package br.com.killaliens.screens.gameplay;
 
 import br.com.killaliens.screens.Screen;
-import br.com.killaliens.screens.gameplay.states.GamePlayPause;
-import br.com.killaliens.screens.gameplay.states.GamePlayResume;
+import br.com.killaliens.screens.gameplay.states.pause.GamePlayPause;
+import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 

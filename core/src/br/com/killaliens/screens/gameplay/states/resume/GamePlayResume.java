@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gameplay.states;
+package br.com.killaliens.screens.gameplay.states.resume;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +7,9 @@ import java.util.Map;
 
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.bonus.Bonus;
-import br.com.killaliens.screens.gameplay.GamePlayObjects;
-import br.com.killaliens.screens.gameplay.background.Background;
-import br.com.killaliens.screens.gameplay.userinterface.InformationLevelPhase;
-import br.com.killaliens.screens.gameplay.userinterface.pause.PauseButton;
+import br.com.killaliens.screens.gameplay.states.resume.background.Background;
+import br.com.killaliens.screens.gameplay.states.resume.userinterface.InformationLevelPhase;
+import br.com.killaliens.screens.gameplay.states.resume.userinterface.PauseButton;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;

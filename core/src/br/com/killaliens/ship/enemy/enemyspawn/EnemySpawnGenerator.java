@@ -2,8 +2,8 @@ package br.com.killaliens.ship.enemy.enemyspawn;
 
 import java.util.Random;
 
-import br.com.killaliens.screens.gameplay.GamePlayObjects;
-import br.com.killaliens.screens.gameplay.states.GamePlayResume;
+import br.com.killaliens.screens.gameplay.states.resume.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.RandomEnemy;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;

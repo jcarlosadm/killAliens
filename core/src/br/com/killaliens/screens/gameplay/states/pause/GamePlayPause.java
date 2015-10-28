@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gameplay.states;
+package br.com.killaliens.screens.gameplay.states.pause;
 
 import br.com.killaliens.util.buttons.Button;
 import br.com.killaliens.util.buttons.implementations.QuitButton;

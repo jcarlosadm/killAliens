@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gameplay.userinterface.pause;
+package br.com.killaliens.screens.gameplay.states.resume.userinterface;
 
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.ship.player.PlayerShip;
