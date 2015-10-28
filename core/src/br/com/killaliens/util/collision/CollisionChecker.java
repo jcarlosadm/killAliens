@@ -3,12 +3,13 @@ package br.com.killaliens.util.collision;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public class CollisionPolygonWithCircle {
-    
-    public static boolean checkCollision(Polygon polygon, Circle circle){
-        
+public class CollisionChecker {
+
+    public static boolean check(Polygon polygon, Circle circle) {
+
         float[] vertices = polygon.getTransformedVertices();
         Vector2 center = new Vector2(circle.x, circle.y);
         float squareRadius = circle.radius * circle.radius;
@@ -27,7 +28,20 @@ public class CollisionPolygonWithCircle {
                     return true;
             }
         }
-        
+
         return polygon.contains(circle.x, circle.y);
     }
+    
+    public static boolean check(Rectangle rectangle, float pointX, float pointY){
+        return rectangle.contains(pointX, pointY);
+    }
+    
+    public static boolean check(Polygon polygon1, Polygon polygon2) {
+        return (Intersector.overlapConvexPolygons(polygon1, polygon2));
+    }
+    
+    public static boolean check(Polygon polygon, float pointX, float pointY){
+        return polygon.contains(pointX, pointY);
+    }
+
 }

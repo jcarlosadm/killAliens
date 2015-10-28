@@ -1,6 +1,7 @@
 package br.com.killaliens.screens.gameplay;
 
 import br.com.killaliens.screens.Screen;
+import br.com.killaliens.screens.gameplay.states.GamePlayPause;
 import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -8,12 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class GamePlayScreen implements Screen {
     
     private Stage resumeState = new GamePlayResume();
+    private Stage pauseState = new GamePlayPause();
     
-    private Stage currentState = this.resumeState;
+    private Stage currentState = null;
     
     private static GamePlayScreen instance = new GamePlayScreen();
     
     private GamePlayScreen() {
+        this.resume();
     }
     
     public static GamePlayScreen getInstance(){
@@ -41,7 +44,7 @@ public class GamePlayScreen implements Screen {
     
     public void pause() {
         // TODO Auto-generated method stub
-        
+        this.currentState = this.pauseState;
     }
     
     public void gameover() {

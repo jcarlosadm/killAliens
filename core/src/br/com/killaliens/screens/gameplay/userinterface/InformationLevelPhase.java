@@ -1,6 +1,7 @@
 package br.com.killaliens.screens.gameplay.userinterface;
 
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
+import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;
@@ -13,7 +14,7 @@ public class InformationLevelPhase extends Actor implements ScrollObserver{
     private static final float POSITION_Y = Gdx.graphics.getHeight() - 10f;
     private static final float POSITION_X = 0f;
     
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("fonts/statsFontSmall.fnt"));
+    private BitmapFont font = FontCache.getFont("statsFontSmall.fnt");
     
     private EnemySpawnGenerator enSpawnGenerator = null;
     

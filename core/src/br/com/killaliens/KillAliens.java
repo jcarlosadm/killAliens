@@ -3,6 +3,7 @@ package br.com.killaliens;
 import br.com.killaliens.screens.ScreenManager;
 import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.mouse.TouchAndMouseState;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -16,6 +17,8 @@ public class KillAliens extends ApplicationAdapter {
 	public void create () {
 		// TODO implement
 	    this.screenManager = ScreenManager.getInstance();
+	    
+	    Gdx.input.setInputProcessor(TouchAndMouseState.getInstance());
 	}
 	
 	@Override
@@ -34,6 +37,7 @@ public class KillAliens extends ApplicationAdapter {
 		
 		this.screenManager.act();
 		this.screenManager.draw();
+		TouchAndMouseState.getInstance().update();
 	}
 	
 	@Override

@@ -19,7 +19,6 @@ import br.com.killaliens.ship.player.statsbar.StatusBar;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 import br.com.killaliens.util.scrollobserver.ScrollSubject;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -53,8 +52,6 @@ public class GamePlayResume extends Stage implements ScrollSubject {
         this.addObjectToGroup(GamePlayObjects.USER_INTERFACE, inPhase);
 
         this.registerObservers(statusBar, pauseButton, inPhase);
-
-        Gdx.input.setInputProcessor(this);
     }
 
     protected void addGroups() {

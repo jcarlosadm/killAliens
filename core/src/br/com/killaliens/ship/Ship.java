@@ -13,7 +13,6 @@ import br.com.killaliens.ship.status.shield.NullShield;
 import br.com.killaliens.ship.status.shield.Shield;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
-import br.com.killaliens.util.collision.CollisionPolygonWithCircle;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 import br.com.killaliens.util.vertices.VerticesBuilder;
@@ -21,11 +20,9 @@ import br.com.killaliens.util.vertices.VerticesBuilder;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
@@ -283,17 +280,9 @@ public abstract class Ship extends Actor {
         createBulletParameters.setRotation(this.getRotation());
         createBulletParameters.setParentStage(this.getStage());
     }
-
-    public boolean colliding(Circle circle) {
-        return CollisionPolygonWithCircle.checkCollision(this.limits, circle);
-    }
-
-    public boolean colliding(Polygon polygon) {
-        return (Intersector.overlapConvexPolygons(this.limits, polygon));
-    }
     
-    public boolean colliding(Vector2 point){
-        return this.limits.contains(point.x, point.y);
+    public Polygon getLimits(){
+        return this.limits;
     }
     
     public boolean colliding(Rectangle rectangle){

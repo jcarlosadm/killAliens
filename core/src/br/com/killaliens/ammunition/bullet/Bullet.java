@@ -9,6 +9,7 @@ import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.camera.CheckVisibleOnCamera;
+import br.com.killaliens.util.collision.CollisionChecker;
 import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
@@ -125,8 +126,8 @@ public class Bullet extends Actor {
         if (ship.isEnemy() == this.isEnemyBullet() || ship.isDead() == true) {
             return false;
         }
-
-        if (ship.colliding(this.limits)) {
+        
+        if (CollisionChecker.check(ship.getLimits(),this.limits)) {
             ship.getDamage(this.firePower.getDamage());
             this.explode();
 
