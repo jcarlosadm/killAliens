@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import br.com.killaliens.bonus.Bonus;
 import br.com.killaliens.bonus.BonusType;
 import br.com.killaliens.bonus.factory.BonusFactory;
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.screens.gamescreen.GameScreenUnits;
+import br.com.killaliens.screens.gameplay.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.ship.enemy.status.EnemyDeadStatus;
@@ -51,16 +51,16 @@ public abstract class EnemyShip extends Ship {
     public boolean remove() {
         Stage stage = this.getStage();
 
-        if (stage != null && stage instanceof GameScreen) {
-            this.createBonus((GameScreen) stage);
-            ((GameScreen) this.getStage()).removeObjectFromGroup(
-                    GameScreenUnits.ENEMY_SHIPS, this);
+        if (stage != null && stage instanceof GamePlayResume) {
+            this.createBonus((GamePlayResume) stage);
+            ((GamePlayResume) this.getStage()).removeObjectFromGroup(
+                    GamePlayObjects.ENEMY_SHIPS, this);
         }
 
         return super.remove();
     }
 
-    private void createBonus(GameScreen gameScreen) {
+    private void createBonus(GamePlayResume gameScreen) {
         int randomNumber = StaticRandom.getRandomValue(1, 10);
 
         Bonus bonus = null;
@@ -81,7 +81,7 @@ public abstract class EnemyShip extends Ship {
             return;
         }
 
-        gameScreen.addObjectToGroup(GameScreenUnits.BONUS_LIST, bonus);
+        gameScreen.addObjectToGroup(GamePlayObjects.BONUS_LIST, bonus);
     }
 
     protected abstract BonusType getLowBonusType();

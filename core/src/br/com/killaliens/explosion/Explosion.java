@@ -1,7 +1,7 @@
 package br.com.killaliens.explosion;
 
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.screens.gamescreen.GameScreenUnits;
+import br.com.killaliens.screens.gameplay.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
@@ -66,8 +66,8 @@ public class Explosion extends Actor {
     @Override
     public boolean remove() {
         Stage stage = this.getStage();
-        if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) stage).removeObjectFromGroup(GameScreenUnits.EXPLOSIONS, this);
+        if (stage != null && stage instanceof GamePlayResume) {
+            ((GamePlayResume) stage).removeObjectFromGroup(GamePlayObjects.EXPLOSIONS, this);
         }
         return super.remove();
     }

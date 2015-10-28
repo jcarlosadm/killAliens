@@ -1,6 +1,6 @@
-package br.com.killaliens.screens.gamescreen;
+package br.com.killaliens.screens.gameplay;
 
-public enum GameScreenUnits {
+public enum GamePlayObjects {
     BACKGROUND,
     BULLET_LIST,
     BONUS_LIST,

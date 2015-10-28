@@ -2,8 +2,8 @@ package br.com.killaliens.ship.enemy.enemyspawn;
 
 import java.util.Random;
 
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.screens.gamescreen.GameScreenUnits;
+import br.com.killaliens.screens.gameplay.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.RandomEnemy;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -22,7 +22,7 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     private EnemySpawnLevel spawnLevel = EnemySpawnLevel.BASIC;
     
-    private GameScreen gameScreen = null;
+    private GamePlayResume gameScreen = null;
     
     private RandomEnemy rndEnemy = new RandomEnemy();
     
@@ -30,7 +30,7 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     private boolean bossLock = false;
     
-    public EnemySpawnGenerator(GameScreen gameScreen) {
+    public EnemySpawnGenerator(GamePlayResume gameScreen) {
         this.gameScreen = gameScreen;
     }
     
@@ -42,7 +42,7 @@ public class EnemySpawnGenerator implements ScrollObserver{
         }
         
         if (this.totalTime < TIME_LIMIT_TO_SPAWN_IN_SECONDS
-                || this.gameScreen.getTotalObjectsOnGroup(GameScreenUnits.ENEMY_SHIPS)
+                || this.gameScreen.getTotalObjectsOnGroup(GamePlayObjects.ENEMY_SHIPS)
                     >= MAX_ENEMIES_ON_SCREEN) {
             return null;
         }

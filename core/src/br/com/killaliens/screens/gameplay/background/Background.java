@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gamescreen.background;
+package br.com.killaliens.screens.gameplay.background;
 
 import br.com.killaliens.util.image.TextureCache;
 

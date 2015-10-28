@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gamescreen.background;
+package br.com.killaliens.screens.gameplay.background;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;

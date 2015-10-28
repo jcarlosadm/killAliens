@@ -1,6 +1,6 @@
-package br.com.killaliens.screens.gamescreen.userinterface.pause;
+package br.com.killaliens.screens.gameplay.userinterface.pause;
 
-import br.com.killaliens.screens.gamescreen.GameScreen;
+import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 public class PauseButton extends Actor implements ScrollObserver {
@@ -48,10 +47,7 @@ public class PauseButton extends Actor implements ScrollObserver {
 
     private void touchedAction() {
         if (this.touched == true) {
-            Stage stage = this.getStage();
-            if (stage != null && stage instanceof GameScreen) {
-                ((GameScreen) stage).pause();
-            }
+            GamePlayScreen.getInstance().pause();
         }
     }
 

@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.gamescreen.userinterface;
+package br.com.killaliens.screens.gameplay.userinterface;
 
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;

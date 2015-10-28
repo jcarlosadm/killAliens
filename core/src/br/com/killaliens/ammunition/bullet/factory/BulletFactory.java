@@ -4,8 +4,8 @@ import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.ammunition.bullet.BulletProperties;
 import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.screens.gamescreen.GameScreenUnits;
+import br.com.killaliens.screens.gameplay.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.image.TextureCache;
@@ -62,8 +62,8 @@ public abstract class BulletFactory {
         Bullet bullet = this.getBulletInstance(bulletProperties);
 
         Stage stage = createBulletParameter.getParentStage();
-        if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) stage).addObjectToGroup(GameScreenUnits.BULLET_LIST,
+        if (stage != null && stage instanceof GamePlayResume) {
+            ((GamePlayResume) stage).addObjectToGroup(GamePlayObjects.BULLET_LIST,
                     bullet);
         }
     }

@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.titlescreen;
+package br.com.killaliens.screens.title;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 

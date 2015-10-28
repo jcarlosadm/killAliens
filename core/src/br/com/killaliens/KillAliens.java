@@ -15,7 +15,7 @@ public class KillAliens extends ApplicationAdapter {
 	@Override
 	public void create () {
 		// TODO implement
-	    this.screenManager = new ScreenManager();
+	    this.screenManager = ScreenManager.getInstance();
 	}
 	
 	@Override

@@ -3,8 +3,8 @@ package br.com.killaliens.ammunition.bullet;
 import br.com.killaliens.ammunition.bullet.firepower.FirePower;
 import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
 import br.com.killaliens.explosion.Explosion;
-import br.com.killaliens.screens.gamescreen.GameScreen;
-import br.com.killaliens.screens.gamescreen.GameScreenUnits;
+import br.com.killaliens.screens.gameplay.GamePlayObjects;
+import br.com.killaliens.screens.gameplay.states.GamePlayResume;
 import br.com.killaliens.ship.Ship;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -78,9 +78,9 @@ public class Bullet extends Actor {
     @Override
     public boolean remove() {
         Stage stage = this.getStage();
-        if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) this.getStage()).removeObjectFromGroup(
-                    GameScreenUnits.BULLET_LIST, this);
+        if (stage != null && stage instanceof GamePlayResume) {
+            ((GamePlayResume) this.getStage()).removeObjectFromGroup(
+                    GamePlayObjects.BULLET_LIST, this);
         }
 
         return super.remove();
@@ -139,8 +139,8 @@ public class Bullet extends Actor {
         Explosion explosion = new Explosion(this.getX() + this.getWidth() / 2,
                 this.getY() + this.getHeight() / 2);
         Stage stage = this.getStage();
-        if (stage != null && stage instanceof GameScreen) {
-            ((GameScreen) stage).addObjectToGroup(GameScreenUnits.EXPLOSIONS,
+        if (stage != null && stage instanceof GamePlayResume) {
+            ((GamePlayResume) stage).addObjectToGroup(GamePlayObjects.EXPLOSIONS,
                     explosion);
         }
 
