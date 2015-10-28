@@ -7,6 +7,7 @@ import br.com.killaliens.util.mouse.TouchAndMouseState;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -18,6 +19,8 @@ public abstract class Button extends Actor {
     private Rectangle limits = new Rectangle();
     
     private BitmapFont font = FontCache.getFont("buttonFont.fnt");
+    private float textWidth = 0f;
+    private float textHeight = 0f;
 
     public Button(float positionX, float positionY) {
         this.image = TextureCache.getTextureRegion(this.getImageName());
@@ -30,6 +33,11 @@ public abstract class Button extends Actor {
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
         this.setBounds(this.getX(), this.getY(), this.getWidth(),
                 this.getHeight());
+        
+        GlyphLayout layout = new GlyphLayout();
+        layout.setText(this.font, this.getName());
+        this.textWidth = layout.width;
+        this.textHeight = layout.height;
     }
 
     @Override
@@ -71,12 +79,12 @@ public abstract class Button extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        
-        float width = font.getSpaceWidth() * this.getName().length();
-        font.draw(batch, this.getName(), this.getX() + this.getOriginX() - width / 2, 
-                this.getY() + this.getOriginY() - font.getLineHeight()/2);
 
         batch.draw(this.image, this.getX(), this.getY());
+        
+        this.font.draw(batch, this.getName(), this.getX() + this.getOriginX()
+                - this.textWidth / 2, this.getY() + this.getOriginY()
+                + this.textHeight / 2);
     }
 
     protected abstract void action();

@@ -30,6 +30,9 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void draw() {
+        if (!(this.currentState instanceof GamePlayResume)) {
+            this.resumeState.draw();
+        }
         this.currentState.draw();
     }
 
@@ -43,7 +46,6 @@ public class GamePlayScreen implements Screen {
     }
     
     public void pause() {
-        // TODO Auto-generated method stub
         this.currentState = this.pauseState;
     }
     

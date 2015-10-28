@@ -14,6 +14,7 @@ public class GamePlayPause extends Stage {
     
     public GamePlayPause() {
         // TODO Auto-generated constructor stub
+        
         Button resumeButton = new ResumeButton(0, 0);
         Button quitButton = new QuitButton(0, 0);
         this.addActor(quitButton);
@@ -22,13 +23,17 @@ public class GamePlayPause extends Stage {
         float centerX = Gdx.graphics.getWidth() / 2;
         float centerY = Gdx.graphics.getHeight() / 2;
         
-        float totalHeightButtons = (this.getActors().size - 1) * SPACE_BETWEEN_BUTTONS;
+        float totalHeightButtons = 0f;
         
         for (Actor button : this.getActors()) {
-            totalHeightButtons += button.getHeight();
+            if (button instanceof Button) {
+                totalHeightButtons += button.getHeight();
+                totalHeightButtons += SPACE_BETWEEN_BUTTONS;
+            }
         }
+        totalHeightButtons -= SPACE_BETWEEN_BUTTONS;
         
-        float currentY = centerY + totalHeightButtons / 2;
+        float currentY = centerY - totalHeightButtons / 2;
         
         for (Actor button : this.getActors()) {
             button.setX(centerX - button.getWidth() / 2);

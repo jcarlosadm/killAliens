@@ -36,7 +36,7 @@ public class GamePlayResume extends Stage implements ScrollSubject {
 
     public GamePlayResume() {
         this.addGroups();
-
+        
         this.addObjectToGroup(GamePlayObjects.BACKGROUND, new Background());
         this.addObjectToGroup(GamePlayObjects.PLAYER_SHIP,
                 PlayerShip.getPlayerShip());
