@@ -1,8 +1,10 @@
 package br.com.killaliens.screens.gameplay;
 
 import br.com.killaliens.screens.Screen;
+import br.com.killaliens.screens.gameplay.states.gameover.GamePlayOver;
 import br.com.killaliens.screens.gameplay.states.pause.GamePlayPause;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
+import br.com.killaliens.ship.player.PlayerShip;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -10,6 +12,7 @@ public class GamePlayScreen implements Screen {
     
     private Stage resumeState = new GamePlayResume();
     private Stage pauseState = new GamePlayPause();
+    private Stage gameoverState = new GamePlayOver();
     
     private Stage currentState = null;
     
@@ -50,8 +53,7 @@ public class GamePlayScreen implements Screen {
     }
     
     public void gameover() {
-        // TODO Auto-generated method stub
-        
+        this.currentState = this.gameoverState;
     }
     
     public void win(){
@@ -60,6 +62,8 @@ public class GamePlayScreen implements Screen {
     
     public void reset() {
         this.resumeState.dispose();
+        PlayerShip.reset();
+        
         this.resumeState = new GamePlayResume();
     }
 }

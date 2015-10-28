@@ -22,12 +22,12 @@ public abstract class Button extends Actor {
     private float textWidth = 0f;
     private float textHeight = 0f;
 
-    public Button(float positionX, float positionY) {
+    public Button() {
         this.image = TextureCache.getTextureRegion(this.getImageName());
         this.setName(this.getButtonName());
 
-        this.setX(positionX);
-        this.setY(positionY);
+        this.setX(0);
+        this.setY(0);
         this.setWidth(this.image.getRegionWidth());
         this.setHeight(this.image.getRegionHeight());
         this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);

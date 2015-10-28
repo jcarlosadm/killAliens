@@ -1,5 +1,6 @@
 package br.com.killaliens.ship.player.states;
 
+import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.status.management.StatusManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
@@ -37,6 +38,7 @@ public class PlayerDeadStatus implements StatusManagement {
         this.currentTimeForDead += delta;
         if (this.currentTimeForDead >= TIME_FOR_DEAD) {
             this.playerShip.remove();
+            GamePlayScreen.getInstance().gameover();
         }
         // TODO add continue option
     }

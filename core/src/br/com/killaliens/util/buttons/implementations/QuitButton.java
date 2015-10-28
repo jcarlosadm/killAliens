@@ -8,10 +8,6 @@ public class QuitButton extends Button {
 
     private static final String NAME = "Quit";
 
-    public QuitButton(float positionX, float positionY) {
-        super(positionX, positionY);
-    }
-
     @Override
     protected void action() {
         // TODO Auto-generated method stub

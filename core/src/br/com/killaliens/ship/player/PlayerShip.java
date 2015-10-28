@@ -40,6 +40,10 @@ public class PlayerShip extends Ship implements ScrollObserver {
 
         return playerShipInstance;
     }
+    
+    public static synchronized void reset(){
+        playerShipInstance = null;
+    }
 
     @Override
     public void act(float delta) {
