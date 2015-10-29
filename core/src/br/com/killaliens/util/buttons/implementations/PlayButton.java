@@ -1,18 +1,19 @@
 package br.com.killaliens.util.buttons.implementations;
 
-import com.badlogic.gdx.Gdx;
-
+import br.com.killaliens.screens.ScreenManager;
+import br.com.killaliens.screens.ScreenType;
+import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.util.buttons.Button;
 
-public class QuitButton extends Button {
+public class PlayButton extends Button {
 
     private static final String IMAGE_NAME = "blue_button";
-
-    private static final String NAME = "Quit";
-
+    private static final String NAME = "Play";
+    
     @Override
     protected void action() {
-        Gdx.app.exit();
+        ScreenManager.getInstance().changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
+        GamePlayScreen.getInstance().resume();
     }
 
     @Override

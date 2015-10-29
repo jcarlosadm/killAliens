@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
+import br.com.killaliens.screens.title.TitleScreen;
 
 public class ScreenManager {
     
@@ -16,8 +17,9 @@ public class ScreenManager {
     private ScreenManager() {
         // TODO Auto-generated constructor stub
         this.screens.put(ScreenType.GAMEPLAY_SCREEN, GamePlayScreen.getInstance());
+        this.screens.put(ScreenType.TITLE_SCREEN, TitleScreen.getInstance());
         
-        this.currentScreen = this.screens.get(ScreenType.GAMEPLAY_SCREEN);
+        this.currentScreen = this.screens.get(ScreenType.TITLE_SCREEN);
     }
     
     public static ScreenManager getInstance(){
