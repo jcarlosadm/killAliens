@@ -3,18 +3,22 @@ package br.com.killaliens.screens.title;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import br.com.killaliens.screens.Screen;
+import br.com.killaliens.screens.ScreenManager;
+import br.com.killaliens.screens.ScreenType;
+import br.com.killaliens.screens.gameplay.GamePlayScreen;
+import br.com.killaliens.screens.title.states.Credits;
 import br.com.killaliens.screens.title.states.MainTitle;
 
 public class TitleScreen implements Screen {
 
     private Stage mainState = new MainTitle();
+    private Stage creditsState = new Credits();
     
     private Stage currentState = null;
     
     private static TitleScreen instance = new TitleScreen();
     
     private TitleScreen() {
-        // TODO Auto-generated constructor stub
         this.mainTitle();
     }
     
@@ -42,12 +46,11 @@ public class TitleScreen implements Screen {
     }
     
     public void startGame() {
-        // TODO Auto-generated method stub
-
+        ScreenManager.getInstance().changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
+        GamePlayScreen.getInstance().resume();
     }
     
     public void credits() {
-        // TODO Auto-generated method stub
-
+        this.currentState = this.creditsState;
     }
 }

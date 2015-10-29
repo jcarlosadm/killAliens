@@ -1,5 +1,6 @@
 package br.com.killaliens.util.buttons.implementations;
 
+import br.com.killaliens.screens.title.TitleScreen;
 import br.com.killaliens.util.buttons.Button;
 
 public class CreditsButton extends Button {
@@ -9,8 +10,7 @@ public class CreditsButton extends Button {
 
     @Override
     protected void action() {
-        // TODO Auto-generated method stub
-        
+        TitleScreen.getInstance().credits();
     }
 
     @Override

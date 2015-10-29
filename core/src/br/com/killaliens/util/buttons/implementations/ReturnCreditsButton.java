@@ -3,14 +3,14 @@ package br.com.killaliens.util.buttons.implementations;
 import br.com.killaliens.screens.title.TitleScreen;
 import br.com.killaliens.util.buttons.Button;
 
-public class PlayButton extends Button {
+public class ReturnCreditsButton extends Button {
 
-    private static final String IMAGE_NAME = "blue_button";
-    private static final String NAME = "Play";
-    
+    private static final String NAME = "";
+    private static final String IMAGE_NAME = "blue_sliderLeft";
+
     @Override
     protected void action() {
-        TitleScreen.getInstance().startGame();
+        TitleScreen.getInstance().mainTitle();
     }
 
     @Override
