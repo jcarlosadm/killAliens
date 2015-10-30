@@ -11,18 +11,33 @@ import br.com.killaliens.screens.title.states.MainTitle;
 
 public class TitleScreen implements Screen {
 
-    private Stage mainState = new MainTitle();
-    private Stage creditsState = new Credits();
+    private Stage mainState = null;
+    private Stage creditsState = null;
     
     private Stage currentState = null;
     
-    private static TitleScreen instance = new TitleScreen();
+    private ScreenManager screenManager = null;
     
-    private TitleScreen() {
+    private GamePlayScreen gamePlayScreen = null;
+    
+    private static TitleScreen instance = null;
+    
+    private TitleScreen(ScreenManager screenManager, GamePlayScreen gamePlayScreen) {
+        this.screenManager = screenManager;
+        this.gamePlayScreen = gamePlayScreen;
+        
+        this.mainState = new MainTitle(this);
+        this.creditsState = new Credits(this);
+        
         this.mainTitle();
     }
     
-    public static TitleScreen getInstance(){
+    public static TitleScreen getInstance(ScreenManager screenManager,
+            GamePlayScreen gamePlayScreen){
+        if (instance == null) {
+            instance = new TitleScreen(screenManager, gamePlayScreen);
+        }
+        
         return instance;
     }
     
@@ -46,8 +61,8 @@ public class TitleScreen implements Screen {
     }
     
     public void startGame() {
-        ScreenManager.getInstance().changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
-        GamePlayScreen.getInstance().resume();
+        this.screenManager.changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
+        this.gamePlayScreen.resume();
     }
     
     public void credits() {

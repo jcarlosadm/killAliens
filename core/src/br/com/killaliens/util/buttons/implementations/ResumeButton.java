@@ -8,11 +8,16 @@ public class ResumeButton extends Button {
     private static final String IMAGE_NAME = "blue_button";
     
     private static final String NAME = "Resume";
+    
+    private GamePlayScreen gamePlayScreen = null;
+    
+    public ResumeButton(GamePlayScreen gamePlayScreen) {
+        this.gamePlayScreen = gamePlayScreen;
+    }
 
     @Override
     protected void action() {
-        GamePlayScreen.getInstance().resume();
-        //this.setTouched(false);
+        this.gamePlayScreen.resume();
     }
 
     @Override

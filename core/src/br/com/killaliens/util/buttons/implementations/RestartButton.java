@@ -8,10 +8,16 @@ public class RestartButton extends Button{
     private static final String IMAGE_NAME = "blue_button";
     private static final String NAME = "Restart";
 
+    private GamePlayScreen gamePlayScreen = null;
+    
+    public RestartButton(GamePlayScreen gamePlayScreen) {
+        this.gamePlayScreen = gamePlayScreen;
+    }
+    
     @Override
     protected void action() {
-        GamePlayScreen.getInstance().reset();
-        GamePlayScreen.getInstance().resume();
+        this.gamePlayScreen.reset();
+        this.gamePlayScreen.resume();
     }
 
     @Override

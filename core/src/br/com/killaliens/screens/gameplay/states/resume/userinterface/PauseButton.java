@@ -26,9 +26,12 @@ public class PauseButton extends Actor implements ScrollObserver {
     private PlayerShip playerShip = null;
 
     private Rectangle limits = new Rectangle();
+    
+    private GamePlayScreen gamePlayScreen = null;
 
-    public PauseButton(PlayerShip playerShip) {
+    public PauseButton(PlayerShip playerShip, GamePlayScreen gamePlayScreen) {
         this.playerShip = playerShip;
+        this.gamePlayScreen = gamePlayScreen;
 
         this.setX(0);
         this.setY(0);
@@ -76,7 +79,7 @@ public class PauseButton extends Actor implements ScrollObserver {
             float pointX = touch.getPoint().x;
             float pointY = touch.getPoint().y + this.accumulatorScrollY;
             if (CollisionChecker.check(this.limits, pointX, pointY)) {
-                GamePlayScreen.getInstance().pause();
+                this.gamePlayScreen.pause();
             }
         }
     }

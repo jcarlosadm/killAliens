@@ -7,6 +7,7 @@ import java.util.Map;
 
 import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.bonus.Bonus;
+import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.gameplay.states.resume.background.Background;
 import br.com.killaliens.screens.gameplay.states.resume.userinterface.InformationLevelPhase;
 import br.com.killaliens.screens.gameplay.states.resume.userinterface.PauseButton;
@@ -33,7 +34,7 @@ public class GamePlayResume extends Stage implements ScrollSubject {
 
     private EnemySpawnGenerator enemySpawnGenerator = null;
 
-    public GamePlayResume() {
+    public GamePlayResume(GamePlayScreen gamePlayScreen) {
         this.addGroups();
         
         this.addObjectToGroup(GamePlayObjects.BACKGROUND, new Background());
@@ -43,7 +44,7 @@ public class GamePlayResume extends Stage implements ScrollSubject {
         this.enemySpawnGenerator = new EnemySpawnGenerator(this);
 
         StatusBar statusBar = new StatusBar(PlayerShip.getPlayerShip());
-        PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip());
+        PauseButton pauseButton = new PauseButton(PlayerShip.getPlayerShip(), gamePlayScreen);
         InformationLevelPhase inPhase = new InformationLevelPhase(
                 this.enemySpawnGenerator);
         this.addObjectToGroup(GamePlayObjects.USER_INTERFACE, statusBar);

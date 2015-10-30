@@ -8,9 +8,15 @@ public class PlayButton extends Button {
     private static final String IMAGE_NAME = "blue_button";
     private static final String NAME = "Play";
     
+    private TitleScreen titleScreen = null;
+    
+    public PlayButton(TitleScreen titleScreen) {
+        this.titleScreen = titleScreen;
+    }
+    
     @Override
     protected void action() {
-        TitleScreen.getInstance().startGame();
+        this.titleScreen.startGame();
     }
 
     @Override

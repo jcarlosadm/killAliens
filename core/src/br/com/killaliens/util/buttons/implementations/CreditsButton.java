@@ -7,10 +7,16 @@ public class CreditsButton extends Button {
 
     private static final String IMAGE_NAME = "blue_button";
     private static final String NAME = "Credits";
+    
+    private TitleScreen titleScreen = null;
 
+    public CreditsButton(TitleScreen titleScreen) {
+        this.titleScreen = titleScreen;
+    }
+    
     @Override
     protected void action() {
-        TitleScreen.getInstance().credits();
+        this.titleScreen.credits();
     }
 
     @Override

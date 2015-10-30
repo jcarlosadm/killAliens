@@ -19,8 +19,9 @@ public class ScreenManager {
     private static ScreenManager instance = new ScreenManager();
     
     private ScreenManager() {
-        this.screens.put(ScreenType.GAMEPLAY_SCREEN, GamePlayScreen.getInstance());
-        this.screens.put(ScreenType.TITLE_SCREEN, TitleScreen.getInstance());
+        GamePlayScreen gamePlayScreen = GamePlayScreen.getInstance(this);
+        this.screens.put(ScreenType.GAMEPLAY_SCREEN, gamePlayScreen);
+        this.screens.put(ScreenType.TITLE_SCREEN, TitleScreen.getInstance(this, gamePlayScreen));
         
         this.currentScreen = this.screens.get(ScreenType.TITLE_SCREEN);
     }

@@ -1,6 +1,7 @@
 package br.com.killaliens.screens.gameplay;
 
 import br.com.killaliens.screens.Screen;
+import br.com.killaliens.screens.ScreenManager;
 import br.com.killaliens.screens.gameplay.states.gameover.GamePlayOver;
 import br.com.killaliens.screens.gameplay.states.pause.GamePlayPause;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
@@ -11,29 +12,38 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class GamePlayScreen implements Screen {
-    
+
     private static final float TIMELIMIT_TO_WIN = 3f;
-    
-    private Stage resumeState = new GamePlayResume();
-    private Stage pauseState = new GamePlayPause();
-    private Stage gameoverState = new GamePlayOver();
-    private Stage winState = new GamePlayWin();
-    
+
+    private Stage resumeState = null;
+    private Stage pauseState = null;
+    private Stage gameoverState = null;
+    private Stage winState = null;
+
     private Stage currentState = null;
-    
-    private static GamePlayScreen instance = new GamePlayScreen();
-    
+
+    private static GamePlayScreen instance = null;
+
     private boolean winTimerOn = false;
     private float winTimer = 0f;
-    
-    private GamePlayScreen() {
+
+    private GamePlayScreen(ScreenManager screenManager) {
+        this.resumeState = new GamePlayResume(this);
+        this.pauseState = new GamePlayPause(this, screenManager);
+        this.gameoverState = new GamePlayOver(this, screenManager);
+        this.winState = new GamePlayWin(this, screenManager);
+        
         this.resume();
     }
-    
-    public static GamePlayScreen getInstance(){
+
+    public static GamePlayScreen getInstance(ScreenManager screenManager) {
+        if (instance == null) {
+            instance = new GamePlayScreen(screenManager);
+        }
+        
         return instance;
     }
-    
+
     @Override
     public void act() {
         if (this.winTimerOn) {
@@ -44,7 +54,7 @@ public class GamePlayScreen implements Screen {
             this.winTimerOn = false;
             this.winTimer = 0f;
         }
-        
+
         this.currentState.act();
     }
 
@@ -60,27 +70,27 @@ public class GamePlayScreen implements Screen {
     public void resize(int width, int height) {
         this.currentState.getViewport().update(width, height);
     }
-    
+
     public void resume() {
         this.currentState = this.resumeState;
     }
-    
+
     public void pause() {
         this.currentState = this.pauseState;
     }
-    
+
     public void gameover() {
         this.currentState = this.gameoverState;
     }
-    
-    public void win(){
+
+    public void win() {
         this.winTimerOn = true;
     }
-    
+
     public void reset() {
         this.resumeState.dispose();
         PlayerShip.reset();
-        
-        this.resumeState = new GamePlayResume();
+
+        this.resumeState = new GamePlayResume(this);
     }
 }

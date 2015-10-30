@@ -8,9 +8,15 @@ public class ReturnCreditsButton extends Button {
     private static final String NAME = "";
     private static final String IMAGE_NAME = "blue_sliderLeft";
 
+    private TitleScreen titleScreen = null;
+    
+    public ReturnCreditsButton(TitleScreen titleScreen) {
+        this.titleScreen = titleScreen;
+    }
+    
     @Override
     protected void action() {
-        TitleScreen.getInstance().mainTitle();
+        this.titleScreen.mainTitle();
     }
 
     @Override

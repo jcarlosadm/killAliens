@@ -8,13 +8,21 @@ import br.com.killaliens.util.buttons.Button;
 public class QuitGamePlayButton extends Button {
 
     private static final String IMAGE_NAME = "blue_button";
-
     private static final String NAME = "Quit";
+    
+    private GamePlayScreen gamePlayScreen = null;
+    
+    private ScreenManager screenManager = null;
 
+    public QuitGamePlayButton(GamePlayScreen gamePlayScreen, ScreenManager screenManager) {
+        this.gamePlayScreen = gamePlayScreen;
+        this.screenManager = screenManager;
+    }
+    
     @Override
     protected void action() {
-        GamePlayScreen.getInstance().reset();
-        ScreenManager.getInstance().changeCurrentScreen(ScreenType.TITLE_SCREEN);
+        this.gamePlayScreen.reset();
+        this.screenManager.changeCurrentScreen(ScreenType.TITLE_SCREEN);
     }
 
     @Override
