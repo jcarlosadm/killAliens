@@ -15,7 +15,6 @@ public class ScreenManager {
     private static ScreenManager instance = new ScreenManager();
     
     private ScreenManager() {
-        // TODO Auto-generated constructor stub
         this.screens.put(ScreenType.GAMEPLAY_SCREEN, GamePlayScreen.getInstance());
         this.screens.put(ScreenType.TITLE_SCREEN, TitleScreen.getInstance());
         
