@@ -6,6 +6,10 @@ import java.util.Map;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.title.TitleScreen;
 
+/**
+ * Screen Manager
+ * Manage the screens
+ */
 public class ScreenManager {
     
     private Map<ScreenType, Screen> screens = new HashMap<ScreenType, Screen>();
