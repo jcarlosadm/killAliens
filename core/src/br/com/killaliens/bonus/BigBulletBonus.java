@@ -1,7 +1,7 @@
 package br.com.killaliens.bonus;
 
 import br.com.killaliens.ammunition.Ammunition;
-import br.com.killaliens.ammunition.bullet.BulletType;
+import br.com.killaliens.bullet.BulletType;
 import br.com.killaliens.ship.Ship;
 
 public class BigBulletBonus extends Bonus {

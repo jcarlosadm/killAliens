@@ -3,8 +3,8 @@ package br.com.killaliens.ship.enemy.types;
 import java.util.Random;
 
 import br.com.killaliens.ammunition.Ammunition;
-import br.com.killaliens.ammunition.bullet.BulletType;
 import br.com.killaliens.bonus.BonusType;
+import br.com.killaliens.bullet.BulletType;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayObjects;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.ship.ShipProperties;

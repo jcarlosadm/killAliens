@@ -1,4 +1,4 @@
-package br.com.killaliens.ammunition.bullet.factory;
+package br.com.killaliens.bullet.factory;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 

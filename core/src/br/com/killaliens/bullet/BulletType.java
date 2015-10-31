@@ -1,4 +1,4 @@
-package br.com.killaliens.ammunition.bullet;
+package br.com.killaliens.bullet;
 
 import br.com.killaliens.util.image.TextureCache;
 

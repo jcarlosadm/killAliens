@@ -1,7 +1,7 @@
-package br.com.killaliens.ammunition.bullet;
+package br.com.killaliens.bullet;
 
-import br.com.killaliens.ammunition.bullet.firepower.FirePower;
-import br.com.killaliens.ammunition.bullet.firepower.NullFirePower;
+import br.com.killaliens.bullet.firepower.FirePower;
+import br.com.killaliens.bullet.firepower.NullFirePower;
 import br.com.killaliens.explosion.Explosion;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayObjects;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;

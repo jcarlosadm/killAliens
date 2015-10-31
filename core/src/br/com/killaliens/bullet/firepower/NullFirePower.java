@@ -1,4 +1,4 @@
-package br.com.killaliens.ammunition.bullet.firepower;
+package br.com.killaliens.bullet.firepower;
 
 public class NullFirePower extends FirePower{
 

@@ -1,20 +1,20 @@
-package br.com.killaliens.ammunition.bullet.factory;
+package br.com.killaliens.bullet.factory;
 
-import br.com.killaliens.ammunition.bullet.firepower.FirePower;
+import br.com.killaliens.bullet.firepower.FirePower;
 import br.com.killaliens.util.speed.Speed;
 
 
-public class BigBulletFactory extends BulletFactory {
+public class FastBulletFactory extends BulletFactory {
 
-    private static final int FIREPOWER = 3;
-    private static final float SPEEDX = 10f;
-    private static final float SPEEDY = 10f;
-    private static final float SPEEDX_ENEMY = 3f;
-    private static final float SPEEDY_ENEMY = 3f;
+    private static final int FIREPOWER = 1;
+    private static final float SPEEDX = 20f;
+    private static final float SPEEDY = 20f;
+    private static final float SPEEDX_ENEMY = 6f;
+    private static final float SPEEDY_ENEMY = 6f;
     
-    private static final String[] ANIMATION_FRAMENAMES = {"bigbullet"};
+    private static final String[] ANIMATION_FRAMENAMES = {"bullet_normal"};
     
-    protected BigBulletFactory() {}
+    protected FastBulletFactory() {}
 
     @Override
     protected FirePower getFirePower() {

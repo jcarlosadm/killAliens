@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.killaliens.ammunition.bullet.Bullet;
 import br.com.killaliens.bonus.Bonus;
+import br.com.killaliens.bullet.Bullet;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.gameplay.states.resume.background.Background;
 import br.com.killaliens.screens.gameplay.states.resume.userinterface.InformationLevelPhase;
