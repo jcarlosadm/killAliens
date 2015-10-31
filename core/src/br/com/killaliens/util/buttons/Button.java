@@ -4,11 +4,11 @@ import br.com.killaliens.util.collision.CollisionChecker;
 import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
+import br.com.killaliens.util.text.TextMetrics;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -35,10 +35,10 @@ public abstract class Button extends Actor {
         this.setBounds(this.getX(), this.getY(), this.getWidth(),
                 this.getHeight());
         
-        GlyphLayout layout = new GlyphLayout();
-        layout.setText(this.font, this.getName());
-        this.textWidth = layout.width;
-        this.textHeight = layout.height;
+        TextMetrics textMetrics = new TextMetrics();
+        textMetrics.setText(font, getButtonName());
+        this.textWidth = textMetrics.getWidth();
+        this.textHeight = textMetrics.getHeight();
         
         this.font.setColor(Color.BLACK);
     }
