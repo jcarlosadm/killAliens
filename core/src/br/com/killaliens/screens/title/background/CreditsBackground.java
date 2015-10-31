@@ -24,17 +24,20 @@ public class CreditsBackground extends Actor {
     
     private BitmapFont font = FontCache.getFont("creditsFont.fnt");
     
-    // TODO define credits
-    private static final String[] TEXTS = {
-        "Test 1",
-        "Test 2"
+    private static final String[] TEXT = {
+        "http://opengameart.org",
+        "https://libgdx.badlogicgames.com/",
+        "https://libgdx.badlogicgames.com/tools.html",
+        "http://stackoverflow.com/",
+        "http://gamedev.stackexchange.com/",
+        "https://github.com/"
     };
     
     private float defaultHeight = 0f;
     
     public CreditsBackground() {
         TextMetrics textMetrics = new TextMetrics();
-        textMetrics.setText(font, TEXTS[0]);
+        textMetrics.setText(font, TEXT[0]);
         this.defaultHeight = textMetrics.getHeight();
     }
     
@@ -45,8 +48,8 @@ public class CreditsBackground extends Actor {
         batch.draw(this.image, 0, 0);
         
         float yBegin = Gdx.graphics.getHeight() - UP_MARGIN;
-        for (int index = 0; index < TEXTS.length; index++) {
-            font.draw(batch, TEXTS[index], LEFT_MARGIN, yBegin - index
+        for (int index = 0; index < TEXT.length; index++) {
+            font.draw(batch, TEXT[index], LEFT_MARGIN, yBegin - index
                     * (defaultHeight + SPACE_BETWEEN_LINES));
         }
     }

@@ -29,7 +29,6 @@ public class KillAliens extends ApplicationAdapter {
 	    FontCache.dispose();
 	    SoundCache.dispose();
 	    MusicCache.dispose();
-	    // TODO dispose screens
 	}
 
 	@Override
