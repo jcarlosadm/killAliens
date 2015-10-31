@@ -43,4 +43,9 @@ public class NullBulletFactory extends BulletFactory {
     protected float getRadius() {
         return 0;
     }
+
+    @Override
+    protected String getSoundName() {
+        return null;
+    }
 }

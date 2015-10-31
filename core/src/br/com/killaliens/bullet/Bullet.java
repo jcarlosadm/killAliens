@@ -50,6 +50,10 @@ public class Bullet extends Actor {
 
         this.animationData = properties.getAnimationData();
         this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
+        
+        if (properties.getSound() != null) {
+            properties.getSound().play(0.3f);
+        }
     }
 
     @Override

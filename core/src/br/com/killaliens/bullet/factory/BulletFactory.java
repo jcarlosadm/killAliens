@@ -9,6 +9,7 @@ import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.sounds.SoundCache;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -58,6 +59,10 @@ public abstract class BulletFactory {
         bulletProperties.addAnimation(AnimationTypes.NORMAL_STATE,
                 BuildAnimation.build(ANIMATION_FRAMETIME,
                         getAnimationFramesName()));
+        
+        if (this.getSoundName() != null && this.getSoundName() != "") {
+            bulletProperties.setSound(SoundCache.getSound(this.getSoundName()));
+        }
 
         Bullet bullet = this.getBulletInstance(bulletProperties);
 
@@ -129,4 +134,6 @@ public abstract class BulletFactory {
     protected abstract Speed getSpeed(CreateBulletParameter cBulletParameter);
 
     protected abstract String[] getAnimationFramesName();
+    
+    protected abstract String getSoundName();
 }

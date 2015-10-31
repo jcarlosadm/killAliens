@@ -1,5 +1,6 @@
 package br.com.killaliens.bullet;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 import br.com.killaliens.bullet.firepower.FirePower;
@@ -22,6 +23,8 @@ public class BulletProperties {
     private FirePower firePower = NullFirePower.getNullFirePowerInstance();
     
     private AnimationManagement aniManagement = new AnimationManagement();
+    
+    private Sound sound = null;
 
     /**
      * @return the enemyBullet
@@ -117,5 +120,19 @@ public class BulletProperties {
     
     public AnimationManagement getAnimationData(){
         return this.aniManagement;
+    }
+
+    /**
+     * @return the sound
+     */
+    public Sound getSound() {
+        return this.sound;
+    }
+
+    /**
+     * @param sound the sound to set
+     */
+    public void setSound(Sound sound) {
+        this.sound = sound;
     }
 }

@@ -5,6 +5,7 @@ import br.com.killaliens.util.speed.Speed;
 
 public class NormalBulletFactory extends BulletFactory {
 
+    private static final String SOUND_NAME = "normal_bullet.wav";
     private static final int FIREPOWER = 1;
     private static final float SPEEDX = 10f;
     private static final float SPEEDY = 10f;
@@ -31,5 +32,10 @@ public class NormalBulletFactory extends BulletFactory {
     @Override
     protected String[] getAnimationFramesName() {
         return ANIMATION_FRAMENAMES;
+    }
+
+    @Override
+    protected String getSoundName() {
+        return SOUND_NAME;
     }
 }

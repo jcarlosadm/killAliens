@@ -5,6 +5,8 @@ import br.com.killaliens.util.speed.Speed;
 
 public class FlowerBulletFactory extends BulletFactory {
 
+    private static final String SOUND_NAME = "normal_bullet.wav";
+
     private static final float ROTATION_INCREMENT = 25f;
 
     private static final String[] ANIMATION_FRAME_NAMES = {"bullet_normal"};
@@ -45,6 +47,11 @@ public class FlowerBulletFactory extends BulletFactory {
     @Override
     protected float getIncrementFromNumBullet(int numBullet) {
         return 0f;
+    }
+
+    @Override
+    protected String getSoundName() {
+        return SOUND_NAME;
     }
 
 }
