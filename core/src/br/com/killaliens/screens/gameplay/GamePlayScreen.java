@@ -7,8 +7,10 @@ import br.com.killaliens.screens.gameplay.states.pause.GamePlayPause;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.screens.gameplay.states.win.GamePlayWin;
 import br.com.killaliens.ship.player.PlayerShip;
+import br.com.killaliens.util.cache.musics.MusicCache;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class GamePlayScreen implements Screen {
@@ -26,14 +28,14 @@ public class GamePlayScreen implements Screen {
 
     private boolean winTimerOn = false;
     private float winTimer = 0f;
+    
+    private Music gameMusic = MusicCache.getMusic("game.mp3");
 
     private GamePlayScreen(ScreenManager screenManager) {
         this.resumeState = new GamePlayResume(this);
         this.pauseState = new GamePlayPause(this, screenManager);
         this.gameoverState = new GamePlayOver(this, screenManager);
         this.winState = new GamePlayWin(this, screenManager);
-        
-        this.resume();
     }
 
     public static GamePlayScreen getInstance(ScreenManager screenManager) {
@@ -73,6 +75,10 @@ public class GamePlayScreen implements Screen {
 
     public void resume() {
         this.currentState = this.resumeState;
+        if (!this.gameMusic.isPlaying()) {
+            this.gameMusic.setLooping(true);
+            this.gameMusic.play();
+        }
     }
 
     public void pause() {
@@ -88,6 +94,7 @@ public class GamePlayScreen implements Screen {
     }
 
     public void reset() {
+        this.gameMusic.stop();
         this.resumeState.dispose();
         PlayerShip.reset();
 

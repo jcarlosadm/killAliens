@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 
 public class SoundCache {
     
@@ -18,10 +19,17 @@ public class SoundCache {
             return sounds.get(soundName);
         }
         
-        Sound sound = Gdx.audio.newSound(Gdx.files.internal(SOUND_FOLDER +
-                File.separator + soundName));
-        if (sound != null) {
-            sounds.put(soundName, sound);
+        Sound sound = null;
+        
+        try {
+            sound = Gdx.audio.newSound(Gdx.files.internal(SOUND_FOLDER +
+                    File.separator + soundName));
+            if (sound != null) {
+                sounds.put(soundName, sound);
+            }
+        } catch (GdxRuntimeException e) {
+            System.out.println("error to load audio");
+            Gdx.app.exit();
         }
         
         return sound;

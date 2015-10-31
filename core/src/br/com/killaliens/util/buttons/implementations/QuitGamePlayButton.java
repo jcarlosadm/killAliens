@@ -3,6 +3,7 @@ package br.com.killaliens.util.buttons.implementations;
 import br.com.killaliens.screens.ScreenManager;
 import br.com.killaliens.screens.ScreenType;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
+import br.com.killaliens.screens.title.TitleScreen;
 import br.com.killaliens.util.buttons.Button;
 
 public class QuitGamePlayButton extends Button {
@@ -23,6 +24,7 @@ public class QuitGamePlayButton extends Button {
     protected void action() {
         this.gamePlayScreen.reset();
         this.screenManager.changeCurrentScreen(ScreenType.TITLE_SCREEN);
+        TitleScreen.getInstance(this.screenManager, this.gamePlayScreen).mainTitle();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package br.com.killaliens.screens.title;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import br.com.killaliens.screens.Screen;
@@ -8,6 +9,7 @@ import br.com.killaliens.screens.ScreenType;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.title.states.Credits;
 import br.com.killaliens.screens.title.states.MainTitle;
+import br.com.killaliens.util.cache.musics.MusicCache;
 
 public class TitleScreen implements Screen {
 
@@ -21,6 +23,8 @@ public class TitleScreen implements Screen {
     private GamePlayScreen gamePlayScreen = null;
     
     private static TitleScreen instance = null;
+    
+    private Music titleMusic = MusicCache.getMusic("title.mp3");
     
     private TitleScreen(ScreenManager screenManager, GamePlayScreen gamePlayScreen) {
         this.screenManager = screenManager;
@@ -58,9 +62,14 @@ public class TitleScreen implements Screen {
     
     public void mainTitle(){
         this.currentState = this.mainState;
+        if (!this.titleMusic.isPlaying()) {
+            this.titleMusic.setLooping(true);
+            this.titleMusic.play();
+        }
     }
     
     public void startGame() {
+        this.titleMusic.stop();
         this.screenManager.changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
         this.gamePlayScreen.resume();
     }
