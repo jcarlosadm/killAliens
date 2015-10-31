@@ -3,11 +3,13 @@ package br.com.killaliens.screens.gameplay.states.resume.userinterface;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.cache.images.TextureCache;
+import br.com.killaliens.util.cache.sounds.SoundCache;
 import br.com.killaliens.util.collision.CollisionChecker;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -28,6 +30,8 @@ public class PauseButton extends Actor implements ScrollObserver {
     private Rectangle limits = new Rectangle();
     
     private GamePlayScreen gamePlayScreen = null;
+    
+    private Sound soundClick = SoundCache.getSound("buttonClick.ogg");
 
     public PauseButton(PlayerShip playerShip, GamePlayScreen gamePlayScreen) {
         this.playerShip = playerShip;
@@ -79,6 +83,7 @@ public class PauseButton extends Actor implements ScrollObserver {
             float pointX = touch.getPoint().x;
             float pointY = touch.getPoint().y + this.accumulatorScrollY;
             if (CollisionChecker.check(this.limits, pointX, pointY)) {
+                this.soundClick.play();
                 this.gamePlayScreen.pause();
             }
         }

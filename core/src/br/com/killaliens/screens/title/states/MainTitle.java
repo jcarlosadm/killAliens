@@ -3,8 +3,6 @@ package br.com.killaliens.screens.title.states;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.Gdx;
-
 import br.com.killaliens.screens.options.OptionsScreen;
 import br.com.killaliens.screens.title.TitleScreen;
 import br.com.killaliens.screens.title.background.MainTitleBackground;
@@ -17,7 +15,6 @@ public class MainTitle extends OptionsScreen {
     
     public MainTitle(TitleScreen titleScreen) {
         this.addActor(new MainTitleBackground());
-        System.out.println(Gdx.graphics.getWidth()+" "+Gdx.graphics.getHeight());
         
         List<Button> buttons = new ArrayList<Button>();
         

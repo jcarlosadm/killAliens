@@ -13,13 +13,11 @@ public class BossEnemy extends RandomGroupGenerator {
 
     @Override
     protected EnemyShip getMiddleEnemy() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     protected EnemyShip getWeakEnemy() {
-        // TODO Auto-generated method stub
         return null;
     }
 

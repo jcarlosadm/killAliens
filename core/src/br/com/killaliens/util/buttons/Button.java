@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public abstract class Button extends Actor {
 
-    private static final String SOUND_BUTTON_NAME = "buttonClick.wav";
+    private static final String SOUND_BUTTON_NAME = "buttonClick.ogg";
 
     private TextureRegion image = null;
 

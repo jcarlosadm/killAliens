@@ -15,7 +15,6 @@ public abstract class EnemyFactory {
     protected EnemyFactory() {}
     
     public static EnemyFactory getFactory(EnemyTypes type){
-        //TODO implement
         
         if (type.equals(EnemyTypes.UFO)) {
             return new UFOFactory();

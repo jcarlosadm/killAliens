@@ -17,7 +17,6 @@ public class KillAliens extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		// TODO implement
 	    this.screenManager = ScreenManager.getInstance();
 	    
 	    Gdx.input.setInputProcessor(TouchAndMouseState.getInstance());
@@ -25,7 +24,6 @@ public class KillAliens extends ApplicationAdapter {
 	
 	@Override
 	public void dispose() {
-	    // TODO Auto-generated method stub
 	    super.dispose();
 	    TextureCache.dispose();
 	    FontCache.dispose();

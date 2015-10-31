@@ -37,8 +37,6 @@ public class Explosion extends Actor {
                 ANIMATION_NORMAL_FRAME_NAMES);
         this.animationData.addAnimation(AnimationTypes.NORMAL_STATE, animation);
         this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
-
-        // TODO load sound without loop
     }
 
     @Override

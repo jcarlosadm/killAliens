@@ -8,7 +8,7 @@ import br.com.killaliens.ship.enemy.types.Boss;
 public class BossFactory extends EnemyFactory {
 
     private static final BulletType BASIC_BULLET = BulletType.BIGBULLET;
-    private static final int LIFE_VALUE = 100;
+    private static final int LIFE_VALUE = 300;
     private static final int SHIELD_VALUE = 2;
     private static final float SPEED_X = 0f;
     private static final float SPEED_Y = 0f;
