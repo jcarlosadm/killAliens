@@ -1,6 +1,6 @@
 package br.com.killaliens.bullet;
 
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 

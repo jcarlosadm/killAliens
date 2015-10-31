@@ -4,7 +4,7 @@ import br.com.killaliens.bullet.BulletType;
 import br.com.killaliens.ship.ShipProperties;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

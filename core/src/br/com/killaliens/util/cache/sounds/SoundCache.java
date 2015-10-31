@@ -1,4 +1,4 @@
-package br.com.killaliens.util.sounds;
+package br.com.killaliens.util.cache.sounds;
 
 import java.io.File;
 import java.util.HashMap;

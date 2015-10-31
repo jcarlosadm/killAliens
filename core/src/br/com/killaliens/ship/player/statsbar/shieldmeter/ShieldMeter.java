@@ -2,8 +2,8 @@ package br.com.killaliens.ship.player.statsbar.shieldmeter;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
-import br.com.killaliens.util.font.FontCache;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.font.FontCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

@@ -1,10 +1,10 @@
 package br.com.killaliens.util.buttons;
 
+import br.com.killaliens.util.cache.font.FontCache;
+import br.com.killaliens.util.cache.images.TextureCache;
+import br.com.killaliens.util.cache.sounds.SoundCache;
 import br.com.killaliens.util.collision.CollisionChecker;
-import br.com.killaliens.util.font.FontCache;
-import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
-import br.com.killaliens.util.sounds.SoundCache;
 import br.com.killaliens.util.text.TextMetrics;
 
 import com.badlogic.gdx.audio.Sound;

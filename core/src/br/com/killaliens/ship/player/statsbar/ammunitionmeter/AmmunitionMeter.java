@@ -3,7 +3,7 @@ package br.com.killaliens.ship.player.statsbar.ammunitionmeter;
 import br.com.killaliens.ammunition.Ammunition;
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
-import br.com.killaliens.util.font.FontCache;
+import br.com.killaliens.util.cache.font.FontCache;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

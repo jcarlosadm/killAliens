@@ -1,7 +1,7 @@
 package br.com.killaliens.screens.title.background;
 
-import br.com.killaliens.util.font.FontCache;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.font.FontCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 import br.com.killaliens.util.text.TextMetrics;
 
 import com.badlogic.gdx.Gdx;

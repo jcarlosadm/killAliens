@@ -1,8 +1,10 @@
-package br.com.killaliens.util.image;
+package br.com.killaliens.util.cache.images;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import br.com.killaliens.util.atlas.AtlasLoader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

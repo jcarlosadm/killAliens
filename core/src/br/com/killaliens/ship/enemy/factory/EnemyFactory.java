@@ -6,7 +6,7 @@ import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 

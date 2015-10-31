@@ -1,4 +1,4 @@
-package br.com.killaliens.util.image;
+package br.com.killaliens.util.atlas;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

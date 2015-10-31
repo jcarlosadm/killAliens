@@ -1,4 +1,4 @@
-package br.com.killaliens.util.font;
+package br.com.killaliens.util.cache.font;
 
 import java.util.HashMap;
 import java.util.Map;

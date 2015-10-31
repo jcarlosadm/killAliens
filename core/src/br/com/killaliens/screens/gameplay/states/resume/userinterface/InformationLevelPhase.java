@@ -1,7 +1,7 @@
 package br.com.killaliens.screens.gameplay.states.resume.userinterface;
 
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnGenerator;
-import br.com.killaliens.util.font.FontCache;
+import br.com.killaliens.util.cache.font.FontCache;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;

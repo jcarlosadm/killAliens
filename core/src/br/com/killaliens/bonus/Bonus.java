@@ -7,8 +7,8 @@ import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
+import br.com.killaliens.util.cache.images.TextureCache;
 import br.com.killaliens.util.camera.CheckVisibleOnCamera;
-import br.com.killaliens.util.image.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;

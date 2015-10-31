@@ -2,8 +2,8 @@ package br.com.killaliens.screens.gameplay.states.resume.userinterface;
 
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.ship.player.PlayerShip;
+import br.com.killaliens.util.cache.images.TextureCache;
 import br.com.killaliens.util.collision.CollisionChecker;
-import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 

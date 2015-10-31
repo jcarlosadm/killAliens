@@ -1,10 +1,10 @@
 package br.com.killaliens;
 
 import br.com.killaliens.screens.ScreenManager;
-import br.com.killaliens.util.font.FontCache;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.font.FontCache;
+import br.com.killaliens.util.cache.images.TextureCache;
+import br.com.killaliens.util.cache.sounds.SoundCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
-import br.com.killaliens.util.sounds.SoundCache;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

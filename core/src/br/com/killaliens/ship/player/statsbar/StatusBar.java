@@ -4,7 +4,7 @@ import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.ammunitionmeter.AmmunitionMeter;
 import br.com.killaliens.ship.player.statsbar.hpbar.HPBar;
 import br.com.killaliens.ship.player.statsbar.shieldmeter.ShieldMeter;
-import br.com.killaliens.util.image.TextureCache;
+import br.com.killaliens.util.cache.images.TextureCache;
 import br.com.killaliens.util.scrollobserver.ScrollObserver;
 
 import com.badlogic.gdx.Gdx;

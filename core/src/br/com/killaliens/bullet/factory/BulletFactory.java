@@ -8,8 +8,8 @@ import br.com.killaliens.screens.gameplay.states.resume.GamePlayObjects;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
-import br.com.killaliens.util.image.TextureCache;
-import br.com.killaliens.util.sounds.SoundCache;
+import br.com.killaliens.util.cache.images.TextureCache;
+import br.com.killaliens.util.cache.sounds.SoundCache;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;

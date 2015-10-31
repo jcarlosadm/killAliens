@@ -2,7 +2,7 @@ package br.com.killaliens.ship.player.statsbar.hpbar;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.player.statsbar.StatusBar;
-import br.com.killaliens.util.font.FontCache;
+import br.com.killaliens.util.cache.font.FontCache;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
