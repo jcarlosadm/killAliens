@@ -4,8 +4,10 @@ import br.com.killaliens.util.collision.CollisionChecker;
 import br.com.killaliens.util.font.FontCache;
 import br.com.killaliens.util.image.TextureCache;
 import br.com.killaliens.util.mouse.TouchAndMouseState;
+import br.com.killaliens.util.sounds.SoundCache;
 import br.com.killaliens.util.text.TextMetrics;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -22,10 +24,16 @@ public abstract class Button extends Actor {
     private BitmapFont font = FontCache.getFont("buttonFont.fnt");
     private float textWidth = 0f;
     private float textHeight = 0f;
+    
+    private Sound sound = null;
 
     public Button() {
         this.image = TextureCache.getTextureRegion(this.getImageName());
         this.setName(this.getButtonName());
+        
+        if (this.hasSound() == true) {
+            this.sound = SoundCache.getSound("buttonClick.wav");
+        }
 
         this.setX(0);
         this.setY(0);
@@ -75,6 +83,9 @@ public abstract class Button extends Actor {
         if (touch.isOneClickDown()
                 && CollisionChecker.check(this.limits, touch.getPoint().x,
                         touch.getPoint().y)) {
+            if (this.sound != null) {
+                sound.play();
+            }
             this.action();
         }
     }
@@ -95,4 +106,6 @@ public abstract class Button extends Actor {
     protected abstract String getImageName();
 
     protected abstract String getButtonName();
+    
+    protected abstract boolean hasSound();
 }

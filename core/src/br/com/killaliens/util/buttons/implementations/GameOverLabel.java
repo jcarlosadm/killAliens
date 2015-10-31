@@ -22,4 +22,9 @@ public class GameOverLabel extends Button {
         return NAME;
     }
 
+    @Override
+    protected boolean hasSound() {
+        return false;
+    }
+
 }

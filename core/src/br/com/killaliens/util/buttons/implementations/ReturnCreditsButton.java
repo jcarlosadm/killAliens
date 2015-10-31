@@ -29,4 +29,9 @@ public class ReturnCreditsButton extends Button {
         return NAME;
     }
 
+    @Override
+    protected boolean hasSound() {
+        return true;
+    }
+
 }

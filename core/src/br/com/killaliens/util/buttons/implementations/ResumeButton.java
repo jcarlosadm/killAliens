@@ -29,4 +29,9 @@ public class ResumeButton extends Button {
     protected String getButtonName() {
         return NAME;
     }
+
+    @Override
+    protected boolean hasSound() {
+        return true;
+    }
 }
