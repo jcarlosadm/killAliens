@@ -17,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public abstract class Button extends Actor {
 
+    private static final String SOUND_BUTTON_NAME = "buttonClick.wav";
+
     private TextureRegion image = null;
 
     private Rectangle limits = new Rectangle();
@@ -32,7 +34,7 @@ public abstract class Button extends Actor {
         this.setName(this.getButtonName());
         
         if (this.hasSound() == true) {
-            this.sound = SoundCache.getSound("buttonClick.wav");
+            this.sound = SoundCache.getSound(SOUND_BUTTON_NAME);
         }
 
         this.setX(0);
