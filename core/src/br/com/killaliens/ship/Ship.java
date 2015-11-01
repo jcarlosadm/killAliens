@@ -17,7 +17,6 @@ import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 import br.com.killaliens.util.vertices.VerticesBuilder;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Intersector;
@@ -135,6 +134,7 @@ public abstract class Ship extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
+        this.animationData.advanceTime(delta);
 
         if (this.shooting == true) {
             this.shoot(delta);
@@ -145,7 +145,7 @@ public abstract class Ship extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        this.animationData.advanceTime(Gdx.graphics.getDeltaTime());
+        
         batch.draw(this.animationData.getCurrentTextureRegion(true),
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(),
                 this.getWidth(), this.getHeight(), this.getScaleX(),
