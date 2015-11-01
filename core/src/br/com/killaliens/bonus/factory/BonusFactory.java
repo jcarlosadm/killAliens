@@ -10,6 +10,14 @@ import br.com.killaliens.bonus.UpShield;
 
 public class BonusFactory {
 
+    /**
+     * Get Bonus instance
+     * @param type type of the bonus
+     * @param positionX position x of the bonus
+     * @param positionY position y of the bonus
+     * @return Bonus instance
+     * TODO Factory method pattern
+     */
     public static Bonus getBonus(BonusType type, float positionX,
             float positionY) {
         

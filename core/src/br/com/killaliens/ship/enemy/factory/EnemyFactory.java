@@ -10,10 +10,20 @@ import br.com.killaliens.util.cache.images.TextureCache;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * EnemyFactory
+ * TODO Abstract factory pattern
+ */
 public abstract class EnemyFactory {
     
     protected EnemyFactory() {}
     
+    /**
+     * get EnemyFactory instance
+     * @param type type of the enemy
+     * @return EnemyFactory instance
+     * TODO Abstract method
+     */
     public static EnemyFactory getFactory(EnemyTypes type){
         
         if (type.equals(EnemyTypes.UFO)) {

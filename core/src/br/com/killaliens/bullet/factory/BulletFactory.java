@@ -15,8 +15,8 @@ import br.com.killaliens.util.speed.Speed;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
- * BulletFactory Using pattern factory method (in getFactory) Using pattern
- * template method (in createBullet and in getAnimations)
+ * BulletFactory
+ * TODO Abstract factory pattern
  */
 public abstract class BulletFactory {
 
@@ -27,6 +27,12 @@ public abstract class BulletFactory {
     protected BulletFactory() {
     }
 
+    /**
+     * get BulletFactory instance
+     * @param type type of the BulletFactory
+     * @return BulletFactory instance
+     * TODO Factory Method pattern
+     */
     public static BulletFactory getFactory(BulletType type) {
         if (type.equals(BulletType.NORMALBULLET)) {
             return new NormalBulletFactory();

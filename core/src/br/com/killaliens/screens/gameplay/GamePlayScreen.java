@@ -2,6 +2,7 @@ package br.com.killaliens.screens.gameplay;
 
 import br.com.killaliens.screens.Screen;
 import br.com.killaliens.screens.ScreenManager;
+import br.com.killaliens.screens.ScreenState;
 import br.com.killaliens.screens.gameplay.states.gameover.GamePlayOver;
 import br.com.killaliens.screens.gameplay.states.pause.GamePlayPause;
 import br.com.killaliens.screens.gameplay.states.resume.GamePlayResume;
@@ -17,12 +18,12 @@ public class GamePlayScreen implements Screen {
 
     private static final float TIMELIMIT_TO_WIN = 3f;
 
-    private Stage resumeState = null;
-    private Stage pauseState = null;
-    private Stage gameoverState = null;
-    private Stage winState = null;
+    private ScreenState resumeState = null;
+    private ScreenState pauseState = null;
+    private ScreenState gameoverState = null;
+    private ScreenState winState = null;
 
-    private Stage currentState = null;
+    private ScreenState currentState = null;
 
     private static GamePlayScreen instance = null;
 
@@ -70,7 +71,9 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        this.currentState.getViewport().update(width, height);
+        if (this.currentState instanceof Stage) {
+            ((Stage)this.currentState).getViewport().update(width, height);
+        }
     }
 
     public void resume() {
@@ -95,7 +98,6 @@ public class GamePlayScreen implements Screen {
 
     public void reset() {
         this.gameMusic.stop();
-        this.resumeState.dispose();
         PlayerShip.reset();
 
         this.resumeState = new GamePlayResume(this);

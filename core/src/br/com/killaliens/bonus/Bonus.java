@@ -24,6 +24,12 @@ public abstract class Bonus extends Actor {
     
     private CheckVisibleOnCamera checkVisibleOnCamera  = null; 
     
+    /**
+     * Constructor
+     * @param positionX
+     * @param positionY
+     * TODO Template method pattern
+     */
     public Bonus(float positionX, float positionY) {
         this.setX(positionX);
         this.setY(positionY);

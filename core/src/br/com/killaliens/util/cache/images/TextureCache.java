@@ -11,6 +11,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * TextureCache
+ * TODO Flyweight pattern
+ *
+ */
 public class TextureCache {
 
     private static final String IMAGE_FOLDER = "images";

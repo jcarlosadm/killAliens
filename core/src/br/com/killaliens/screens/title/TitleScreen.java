@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import br.com.killaliens.screens.Screen;
 import br.com.killaliens.screens.ScreenManager;
+import br.com.killaliens.screens.ScreenState;
 import br.com.killaliens.screens.ScreenType;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.title.states.Credits;
@@ -13,10 +14,10 @@ import br.com.killaliens.util.cache.musics.MusicCache;
 
 public class TitleScreen implements Screen {
 
-    private Stage mainState = null;
-    private Stage creditsState = null;
+    private ScreenState mainState = null;
+    private ScreenState creditsState = null;
     
-    private Stage currentState = null;
+    private ScreenState currentState = null;
     
     private ScreenManager screenManager = null;
     
@@ -57,7 +58,9 @@ public class TitleScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        this.currentState.getViewport().update(width, height);
+        if (this.currentState instanceof Stage) {
+            ((Stage) this.currentState).getViewport().update(width, height);
+        }
     }
     
     public void mainTitle(){

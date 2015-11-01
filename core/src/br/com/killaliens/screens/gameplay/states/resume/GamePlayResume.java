@@ -7,6 +7,7 @@ import java.util.Map;
 
 import br.com.killaliens.bonus.Bonus;
 import br.com.killaliens.bullet.Bullet;
+import br.com.killaliens.screens.ScreenState;
 import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.gameplay.states.resume.background.Background;
 import br.com.killaliens.screens.gameplay.states.resume.userinterface.InformationLevelPhase;
@@ -23,7 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class GamePlayResume extends Stage implements ScrollSubject {
+public class GamePlayResume extends Stage implements ScrollSubject, ScreenState {
 
     private static final float SCROLLDOWN_SPEED = 1f;
 

@@ -7,8 +7,8 @@ import br.com.killaliens.screens.gameplay.GamePlayScreen;
 import br.com.killaliens.screens.title.TitleScreen;
 
 /**
- * Screen Manager
- * Manage the screens
+ * ScreenManager
+ * TODO Singleton pattern
  */
 public class ScreenManager {
     

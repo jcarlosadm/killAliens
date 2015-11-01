@@ -6,6 +6,10 @@ import java.util.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+/**
+ * FontCache
+ * TODO Flyweight pattern
+ */
 public class FontCache {
     private static final String FONT_FOLDER = "fonts/";
     private static Map<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();

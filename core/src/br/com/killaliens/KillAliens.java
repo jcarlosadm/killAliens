@@ -15,11 +15,14 @@ public class KillAliens extends ApplicationAdapter {
 	
 	private ScreenManager screenManager = null;
 	
+	private TouchAndMouseState touchAndMouse = null;
+	
 	@Override
 	public void create () {
 	    this.screenManager = ScreenManager.getInstance();
+	    this.touchAndMouse = TouchAndMouseState.getInstance();
 	    
-	    Gdx.input.setInputProcessor(TouchAndMouseState.getInstance());
+	    Gdx.input.setInputProcessor(this.touchAndMouse);
 	}
 	
 	@Override
@@ -38,7 +41,7 @@ public class KillAliens extends ApplicationAdapter {
 		
 		this.screenManager.act();
 		this.screenManager.draw();
-		TouchAndMouseState.getInstance().update();
+		this.touchAndMouse.update();
 	}
 	
 	@Override

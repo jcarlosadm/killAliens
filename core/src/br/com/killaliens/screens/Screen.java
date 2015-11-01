@@ -1,5 +1,9 @@
 package br.com.killaliens.screens;
 
+/**
+ * Screen
+ * TODO Strategy pattern
+ */
 public interface Screen {
     
     /**

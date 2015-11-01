@@ -8,6 +8,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 
+/**
+ * SoundCache
+ * TODO Flyweight pattern
+ */
 public class SoundCache {
     
     private static final String SOUND_FOLDER = "sounds";

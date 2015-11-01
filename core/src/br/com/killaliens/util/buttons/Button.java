@@ -29,6 +29,10 @@ public abstract class Button extends Actor {
     
     private Sound sound = null;
 
+    /**
+     * Constructor
+     * TODO Template method pattern
+     */
     public Button() {
         this.image = TextureCache.getTextureRegion(this.getImageName());
         this.setName(this.getButtonName());
