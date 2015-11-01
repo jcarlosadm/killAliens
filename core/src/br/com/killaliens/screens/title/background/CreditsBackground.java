@@ -11,8 +11,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class CreditsBackground extends Actor {
-    
-    private static final float SPACE_BETWEEN_LINES = 30f;
 
     private static final float LEFT_MARGIN = 40f;
 
@@ -25,12 +23,18 @@ public class CreditsBackground extends Actor {
     private BitmapFont font = FontCache.getFont("creditsFont.fnt");
     
     private static final String[] TEXT = {
-        "http://opengameart.org",
-        "https://libgdx.badlogicgames.com/",
-        "https://libgdx.badlogicgames.com/tools.html",
-        "http://stackoverflow.com/",
-        "http://gamedev.stackexchange.com/",
-        "https://github.com/"
+        "Open Game Art:",
+        "    http://opengameart.org",
+        "Libgdx:",
+        "    https://libgdx.badlogicgames.com/",
+        "Hiero4 and Texture Packer:",
+        "    https://libgdx.badlogicgames.com/tools.html",
+        "Stack Overflow:",
+        "    http://stackoverflow.com/",
+        "GameDev Stack Exchange:",
+        "    http://gamedev.stackexchange.com/",
+        "Github:",
+        "    https://github.com/"
     };
     
     private float defaultHeight = 0f;
@@ -50,7 +54,7 @@ public class CreditsBackground extends Actor {
         float yBegin = Gdx.graphics.getHeight() - UP_MARGIN;
         for (int index = 0; index < TEXT.length; index++) {
             font.draw(batch, TEXT[index], LEFT_MARGIN, yBegin - index
-                    * (defaultHeight + SPACE_BETWEEN_LINES));
+                    * (defaultHeight + this.defaultHeight/2));
         }
     }
     
