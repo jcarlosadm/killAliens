@@ -6,6 +6,7 @@ import br.com.killaliens.util.animation.AnimationManagement;
 import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.cache.images.TextureCache;
+import br.com.killaliens.util.cache.sounds.SoundCache;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Explosion extends Actor {
 
+    private static final String SOUND_NAME = "explosion.mp3";
     private static final float TIME_LIMIT_IN_FRAMES = 1f;
     private float elapsedTime = 0f;
     private static final float ANIMATION_FRAME_TIME = 0.2f;
@@ -37,6 +39,8 @@ public class Explosion extends Actor {
                 ANIMATION_NORMAL_FRAME_NAMES);
         this.animationData.addAnimation(AnimationTypes.NORMAL_STATE, animation);
         this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
+        
+        SoundCache.getSound(SOUND_NAME).play(0.3f);
     }
 
     @Override
