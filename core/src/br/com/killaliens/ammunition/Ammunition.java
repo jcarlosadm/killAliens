@@ -112,6 +112,11 @@ public class Ammunition {
         }
     }
     
+    /**
+     * make bullets
+     * @param deltaTime time in frames since the last frame
+     * @param cParameter bullet parameters
+     */
     public void makeBullets(float deltaTime, CreateBulletParameter cParameter){
         
         this.currentReloadTime += deltaTime;
@@ -135,6 +140,10 @@ public class Ammunition {
         }
     }
 
+    /**
+     * check if has ammunition
+     * @return true if has ammunition
+     */
     public boolean hasAmmunition() {
         if (this.isInfinity() || this.getCurrentBullets() > 0) {
             return true;
@@ -142,6 +151,10 @@ public class Ammunition {
         return false;
     }
     
+    /**
+     * Get bullet type
+     * @return bullet type
+     */
     public BulletType getType(){
         return this.type;
     }
