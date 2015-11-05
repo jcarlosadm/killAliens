@@ -30,6 +30,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
  */
 public abstract class Ship extends Actor {
 
+    private static final int BASIC_AMMO_LEVEL = 1;
+
     private Speed speed = NullSpeed.getNullSpeedInstance();
 
     private Life life = NullLife.getNullLifeInstance();
@@ -72,8 +74,8 @@ public abstract class Ship extends Actor {
         this.life = properties.getLife();
         this.shield = properties.getShield();
 
-        Ammunition ammunition = new Ammunition(properties.getBasicAmmunition());
-        ammunition.setInfinity(true);
+        Ammunition ammunition = Ammunition.getInfinityAmmunition(properties.getBasicAmmunition(),
+                BASIC_AMMO_LEVEL);
         this.addAmmunition(ammunition);
         
         this.animationData = properties.getAnimationData();

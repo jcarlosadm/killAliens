@@ -21,8 +21,15 @@ public class Ammunition {
     
     private float reloadTime = 0;
     private float currentReloadTime = 0;
-    
-    public Ammunition(BulletType type, int level, int totalBullets){
+
+    /**
+     * Constructor
+     * @param type type of the bullet
+     * @param level level of the ammunition
+     * @param totalBullets total of bullets
+     * @param infinity if is bullet total is infinity
+     */
+    private Ammunition(BulletType type, int level, int totalBullets, boolean infinity){
         this.type = type;
         this.bulletFactory = BulletFactory.getFactory(type);
         if (level >= MINLEVEL && level <= MAXLEVEL) {
@@ -31,22 +38,33 @@ public class Ammunition {
         
         this.reloadTime = type.getReloadTimeInSeconds();
         
-        if (totalBullets > 0) {
+        this.ammoCount.setInfinity(infinity);
+        if (totalBullets > 0 && infinity == false) {
             this.ammoCount.setTotalBullets(totalBullets);
             this.ammoCount.setCurrentBullets(totalBullets);
         }
     }
     
-    public Ammunition(BulletType type, int level) {
-        this(type, level, MINBULLET);
+    /**
+     * Get infinity ammunition
+     * @param type type of the bullet
+     * @param level level of the ammunition
+     * @return Ammunition instance
+     */
+    public static Ammunition getInfinityAmmunition(BulletType type, int level){
+        return new Ammunition(type, level, MINBULLET, true);
     }
     
-    public Ammunition(BulletType type) {
-        this(type, MINLEVEL, MINBULLET);
-    }
-    
-    public Ammunition() {
-        this(BulletType.NORMALBULLET, MINLEVEL);
+    /**
+     * Get non infinity ammunition
+     * @param type type of the bullet
+     * @param level level of the ammunition
+     * @param total total of bullets
+     * @return Ammunition instance
+     */
+    public static Ammunition getNonInfinityAmmunition(BulletType type, int level,
+            int total){
+        return new Ammunition(type, level, total, false);
     }
     
     /**
@@ -54,14 +72,6 @@ public class Ammunition {
      */
     public int getTotalBullets() {
         return this.ammoCount.getTotalBullets();
-    }
-
-    /**
-     * @param totalBullets
-     *            the totalBullets to set
-     */
-    public void setTotalBullets(int totalBullets) {
-        this.ammoCount.setTotalBullets(totalBullets);
     }
 
     /**
@@ -75,7 +85,7 @@ public class Ammunition {
      * @param currentBullets
      *            the currentBullets to set
      */
-    public void setCurrentBullets(int currentBullets) {
+    private void setCurrentBullets(int currentBullets) {
         this.ammoCount.setCurrentBullets(currentBullets);
     }
 
@@ -87,29 +97,18 @@ public class Ammunition {
     }
 
     /**
-     * @param infinity
-     *            the infinity to set
-     */
-    public void setInfinity(boolean infinity) {
-        this.ammoCount.setInfinity(infinity);
-    }
-
-    /**
      * @return the level
      */
     public int getLevel() {
         return this.level;
     }
 
+    /**
+     * Add level to ammunition
+     */
     public void addLevel() {
         if (this.level < MAXLEVEL) {
             this.level += 1;
-        }
-    }
-    
-    public void downLevel() {
-        if (this.level > MINLEVEL) {
-            this.level -= 1;
         }
     }
     

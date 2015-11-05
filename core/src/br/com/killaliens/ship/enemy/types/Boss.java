@@ -79,19 +79,21 @@ public class Boss extends EnemyShip {
         if (this.currentTime >= TIME_LIMIT_TO_CHANGE_BULLET) {
             this.currentTime = 0f;
             
+            BulletType type = BulletType.NORMALBULLET;
             int randomBullet = StaticRandom.getRandomValue(1, 3);
+            
             if (randomBullet == 1) {
-                this.addAmmunition(new Ammunition(BulletType.BIGBULLET, LEVEL_NEW_BULLETS,
-                        NUM_NEW_BULLETS));
+                type = BulletType.BIGBULLET;
             }
             else if (randomBullet == 2) {
-                this.addAmmunition(new Ammunition(BulletType.FASTBULLET, LEVEL_NEW_BULLETS,
-                        NUM_NEW_BULLETS));
+                type = BulletType.FASTBULLET;
             }
-            else if (randomBullet == 3) {
-                this.addAmmunition(new Ammunition(BulletType.FLOWERBULLET, LEVEL_NEW_BULLETS,
-                        NUM_NEW_BULLETS));
+            else {
+                type = BulletType.FLOWERBULLET;
             }
+            
+            this.addAmmunition(Ammunition.getNonInfinityAmmunition(type, LEVEL_NEW_BULLETS,
+                    NUM_NEW_BULLETS));
         }
     }
 
