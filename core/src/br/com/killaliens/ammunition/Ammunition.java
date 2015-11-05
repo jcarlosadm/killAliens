@@ -31,16 +31,18 @@ public class Ammunition {
         
         this.reloadTime = type.getReloadTimeInSeconds();
         
-        this.ammoCount.setTotalBullets(totalBullets);
-        this.ammoCount.setCurrentBullets(totalBullets);
+        if (totalBullets > 0) {
+            this.ammoCount.setTotalBullets(totalBullets);
+            this.ammoCount.setCurrentBullets(totalBullets);
+        }
     }
     
     public Ammunition(BulletType type, int level) {
-        this(type, level, 1);
+        this(type, level, MINBULLET);
     }
     
     public Ammunition(BulletType type) {
-        this(type, MINLEVEL, 1);
+        this(type, MINLEVEL, MINBULLET);
     }
     
     public Ammunition() {
