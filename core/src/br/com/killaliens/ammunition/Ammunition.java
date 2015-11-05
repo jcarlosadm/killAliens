@@ -14,7 +14,7 @@ public class Ammunition {
     private static final int MINLEVEL = 1;
     private static final int MAXLEVEL = 7;
     
-    private AmmunitionCount ammoCount = new AmmunitionCount(MINBULLET, MINBULLET, false);
+    private AmmunitionCount ammoCount = new AmmunitionCount(MINBULLET, false);
     private BulletFactory bulletFactory = null;
     private int level = MINLEVEL;
     private BulletType type = null;

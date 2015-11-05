@@ -5,10 +5,14 @@ public class AmmunitionCount {
     private int currentBullets = 1;
     private boolean infinity = false;
 
-    public AmmunitionCount(int totalBullets, int currentBullets,
-            boolean infinity) {
+    /**
+     * Constructor
+     * @param totalBullets total of bullets
+     * @param infinity infinity attribute
+     */
+    public AmmunitionCount(int totalBullets, boolean infinity) {
         this.totalBullets = totalBullets;
-        this.currentBullets = currentBullets;
+        this.currentBullets = totalBullets;
         this.infinity = infinity;
     }
 
