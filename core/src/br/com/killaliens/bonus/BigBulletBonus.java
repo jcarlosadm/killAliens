@@ -16,9 +16,8 @@ public class BigBulletBonus extends Bonus {
 
     @Override
     protected void addBonusToShip(Ship ship) {
-        Ammunition ammo = new Ammunition(BulletType.BIGBULLET, ship.getTopAmmunition().getLevel());
-        ammo.setTotalBullets(BULLET_TOTAL);
-        ammo.setCurrentBullets(BULLET_TOTAL);
+        Ammunition ammo = new Ammunition(BulletType.BIGBULLET, ship.getTopAmmunition().getLevel(),
+                BULLET_TOTAL);
         ship.addAmmunition(ammo);
     }
 

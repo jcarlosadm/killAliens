@@ -81,17 +81,17 @@ public class Boss extends EnemyShip {
             
             int randomBullet = StaticRandom.getRandomValue(1, 3);
             if (randomBullet == 1) {
-                this.addAmmunition(new Ammunition(BulletType.BIGBULLET, LEVEL_NEW_BULLETS));
+                this.addAmmunition(new Ammunition(BulletType.BIGBULLET, LEVEL_NEW_BULLETS,
+                        NUM_NEW_BULLETS));
             }
             else if (randomBullet == 2) {
-                this.addAmmunition(new Ammunition(BulletType.FASTBULLET, LEVEL_NEW_BULLETS));
+                this.addAmmunition(new Ammunition(BulletType.FASTBULLET, LEVEL_NEW_BULLETS,
+                        NUM_NEW_BULLETS));
             }
             else if (randomBullet == 3) {
-                this.addAmmunition(new Ammunition(BulletType.FLOWERBULLET, LEVEL_NEW_BULLETS));
+                this.addAmmunition(new Ammunition(BulletType.FLOWERBULLET, LEVEL_NEW_BULLETS,
+                        NUM_NEW_BULLETS));
             }
-            
-            this.getTopAmmunition().setTotalBullets(NUM_NEW_BULLETS);
-            this.getTopAmmunition().setCurrentBullets(NUM_NEW_BULLETS);
         }
     }
 

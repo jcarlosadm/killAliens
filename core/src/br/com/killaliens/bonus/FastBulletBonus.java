@@ -16,9 +16,8 @@ public class FastBulletBonus extends Bonus {
 
     @Override
     protected void addBonusToShip(Ship ship) {
-        Ammunition ammo = new Ammunition(BulletType.FASTBULLET, ship.getTopAmmunition().getLevel());
-        ammo.setTotalBullets(TOTAL_BULLETS);
-        ammo.setCurrentBullets(TOTAL_BULLETS);
+        Ammunition ammo = new Ammunition(BulletType.FASTBULLET, ship.getTopAmmunition().getLevel(),
+                TOTAL_BULLETS);
         ship.addAmmunition(ammo);
     }
 

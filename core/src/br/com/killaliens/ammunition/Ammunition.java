@@ -4,6 +4,10 @@ import br.com.killaliens.bullet.BulletType;
 import br.com.killaliens.bullet.factory.BulletFactory;
 import br.com.killaliens.bullet.factory.CreateBulletParameter;
 
+/**
+ * Ammunition
+ * class of bullet generator
+ */
 public class Ammunition {
 
     private static final int MINBULLET = 1;
@@ -18,7 +22,7 @@ public class Ammunition {
     private float reloadTime = 0;
     private float currentReloadTime = 0;
     
-    public Ammunition(BulletType type, int level) {
+    public Ammunition(BulletType type, int level, int totalBullets){
         this.type = type;
         this.bulletFactory = BulletFactory.getFactory(type);
         if (level >= MINLEVEL && level <= MAXLEVEL) {
@@ -26,10 +30,17 @@ public class Ammunition {
         }
         
         this.reloadTime = type.getReloadTimeInSeconds();
+        
+        this.ammoCount.setTotalBullets(totalBullets);
+        this.ammoCount.setCurrentBullets(totalBullets);
+    }
+    
+    public Ammunition(BulletType type, int level) {
+        this(type, level, 1);
     }
     
     public Ammunition(BulletType type) {
-        this(type, MINLEVEL);
+        this(type, MINLEVEL, 1);
     }
     
     public Ammunition() {
