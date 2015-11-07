@@ -11,6 +11,11 @@ public class UpLife extends Bonus {
     private static final String[] ANIMATION_FRAME_NAMES = {"uplife_icon"};
     private static final float ANIMATION_FRAME_TIME = 0.2f;
     
+    /**
+     * Constructor
+     * @param positionX
+     * @param positionY
+     */
     public UpLife(float positionX, float positionY) {
         super(positionX, positionY);
     }

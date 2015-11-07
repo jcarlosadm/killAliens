@@ -10,6 +10,11 @@ public class BigBulletBonus extends Bonus {
     private static final String[] ANIMATION_FRAME_NAMES = { "bigbullet_icon" };
     private static final float ANIMATION_FRAME_TIME = 0.2f;
 
+    /**
+     * Constructor
+     * @param positionX
+     * @param positionY
+     */
     public BigBulletBonus(float positionX, float positionY) {
         super(positionX, positionY);
     }

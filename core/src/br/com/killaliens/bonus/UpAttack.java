@@ -7,6 +7,11 @@ public class UpAttack extends Bonus {
     private static final String[] ANIMATION_FRAME_NAMES = {"upattack_icon"};
     private static final float ANIMATION_FRAME_TIME = 0.2f;
     
+    /**
+     * Constructor
+     * @param positionX
+     * @param positionY
+     */
     public UpAttack(float positionX, float positionY) {
         super(positionX, positionY);
     }

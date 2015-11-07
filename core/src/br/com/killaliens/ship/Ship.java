@@ -19,9 +19,7 @@ import br.com.killaliens.util.vertices.VerticesBuilder;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
@@ -281,18 +279,6 @@ public abstract class Ship extends Actor {
     
     public Polygon getLimits(){
         return this.limits;
-    }
-    
-    public boolean colliding(Rectangle rectangle){
-        Polygon rPoly = new Polygon(new float[] { 0, 0, rectangle.width, 0, rectangle.width,
-                rectangle.height, 0, rectangle.height });
-        rPoly.setPosition(rectangle.x, rectangle.y);
-        
-        if (Intersector.overlapConvexPolygons(rPoly, this.limits)){
-            return true;
-        }
-        
-        return false;
     }
 
     public void addAnimation(AnimationTypes key, Animation animation) {

@@ -43,5 +43,17 @@ public class CollisionChecker {
     public static boolean check(Polygon polygon, float pointX, float pointY){
         return polygon.contains(pointX, pointY);
     }
+    
+    public static boolean check(Polygon polygon, Rectangle rectangle){
+        Polygon rPoly = new Polygon(new float[] { 0, 0, rectangle.width, 0, rectangle.width,
+                rectangle.height, 0, rectangle.height });
+        rPoly.setPosition(rectangle.x, rectangle.y);
+        
+        if (Intersector.overlapConvexPolygons(rPoly, polygon)){
+            return true;
+        }
+        
+        return false;
+    }
 
 }

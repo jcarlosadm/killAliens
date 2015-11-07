@@ -9,6 +9,7 @@ import br.com.killaliens.util.animation.AnimationTypes;
 import br.com.killaliens.util.animation.BuildAnimation;
 import br.com.killaliens.util.cache.images.TextureCache;
 import br.com.killaliens.util.camera.CheckVisibleOnCamera;
+import br.com.killaliens.util.collision.CollisionChecker;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -99,8 +100,13 @@ public abstract class Bonus extends Actor {
         return super.remove();
     }
     
+    /**
+     * Check collision with player ship
+     * @param ship player ship
+     * @return true if the collision happens
+     */
     public boolean colliding(PlayerShip ship){
-        if (ship.colliding(this.limits)) {
+        if (CollisionChecker.check(ship.getLimits(), this.limits)) {
             this.addBonusToShip(ship);
             this.remove();
             return true;
@@ -109,9 +115,21 @@ public abstract class Bonus extends Actor {
         return false;
     }
     
+    /**
+     * Add bonus to ship
+     * @param ship
+     */
     protected abstract void addBonusToShip(Ship ship);
     
+    /**
+     * Get default timer of bonus animation
+     * @return time in seconds from one frame to another
+     */
     protected abstract float getFrameTimeNormalAnimation();
     
+    /**
+     * Get all frame names of bonus animation
+     * @return frame names of animation
+     */
     protected abstract String[] getFrameNames();
 }
