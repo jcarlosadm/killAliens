@@ -10,7 +10,7 @@ public class NullBulletFactory extends BulletFactory {
 
     private static NullBulletFactory instance = null;
     
-    private static final String[] nullString = {""};
+    private static final String[] NULLSTRING = {""};
     
     private NullBulletFactory() {}
     
@@ -36,7 +36,7 @@ public class NullBulletFactory extends BulletFactory {
 
     @Override
     protected String[] getAnimationFramesName() {
-        return nullString;
+        return NULLSTRING;
     }
 
     @Override

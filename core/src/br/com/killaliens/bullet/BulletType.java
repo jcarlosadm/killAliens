@@ -8,7 +8,7 @@ public enum BulletType {
     
     NORMALBULLET {
         @Override
-        public TextureRegion getTexture() {
+        public TextureRegion getIconTexture() {
             return TextureCache.getTextureRegion(NORMALBULLET_ICON);
         }
 
@@ -19,7 +19,7 @@ public enum BulletType {
     },
     BIGBULLET {
         @Override
-        public TextureRegion getTexture() {
+        public TextureRegion getIconTexture() {
             return TextureCache.getTextureRegion(BIGBULLET_ICON);
         }
 
@@ -30,7 +30,7 @@ public enum BulletType {
     },
     FASTBULLET {
         @Override
-        public TextureRegion getTexture() {
+        public TextureRegion getIconTexture() {
             return TextureCache.getTextureRegion(FASTBULLET_ICON);
         }
 
@@ -41,7 +41,7 @@ public enum BulletType {
     },
     FLOWERBULLET {
         @Override
-        public TextureRegion getTexture() {
+        public TextureRegion getIconTexture() {
             return TextureCache.getTextureRegion(NORMALBULLET_ICON);
         }
 
@@ -60,10 +60,14 @@ public enum BulletType {
     private static final String NORMALBULLET_ICON = "normalbullet_icon";
 
     /**
-     * Get texture relative to type
-     * @return texture
+     * Get icon texture relative to type
+     * @return icon texture
      */
-    public abstract TextureRegion getTexture();
+    public abstract TextureRegion getIconTexture();
     
+    /**
+     * Get reload time in seconds
+     * @return reload time in seconds
+     */
     public abstract float getReloadTimeInSeconds();
 }

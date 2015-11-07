@@ -47,9 +47,13 @@ public abstract class BulletFactory {
         return NullBulletFactory.getInstance();
     }
 
+    /**
+     * create bullet
+     * @param createBulletParameter set of parameters
+     */
     public void createBullet(CreateBulletParameter createBulletParameter) {
 
-        float increment = setDistanceBetweenBullets(createBulletParameter);
+        float increment = getIncrementFromNumBullet(createBulletParameter.getNumBullet());
         float radians = setAngleInRadians(createBulletParameter);
 
         float positionX = createBulletParameter.getOriginX() - this.getRadius()
@@ -62,15 +66,7 @@ public abstract class BulletFactory {
         BulletProperties bulletProperties = this.buildBulletProperties(
                 createBulletParameter, positionX, positionY, speed);
 
-        bulletProperties.addAnimation(AnimationTypes.NORMAL_STATE,
-                BuildAnimation.build(ANIMATION_FRAMETIME,
-                        getAnimationFramesName()));
-        
-        if (this.getSoundName() != null && this.getSoundName() != "") {
-            bulletProperties.setSound(SoundCache.getSound(this.getSoundName()));
-        }
-
-        Bullet bullet = this.getBulletInstance(bulletProperties);
+        Bullet bullet = new Bullet(bulletProperties);
 
         Stage stage = createBulletParameter.getParentStage();
         if (stage != null && stage instanceof GamePlayResume) {
@@ -79,6 +75,11 @@ public abstract class BulletFactory {
         }
     }
 
+    /**
+     * convert angle degree in radians
+     * @param createBulletParameter set of parameters
+     * @return angle in radians
+     */
     protected float setAngleInRadians(
             CreateBulletParameter createBulletParameter) {
         float radians = (float) Math.toRadians(createBulletParameter
@@ -86,17 +87,12 @@ public abstract class BulletFactory {
         return radians;
     }
 
-    protected float setDistanceBetweenBullets(
-            CreateBulletParameter createBulletParameter) {
-        float increment = this.getIncrementFromNumBullet(createBulletParameter
-                .getNumBullet());
-        return increment;
-    }
-
-    protected Bullet getBulletInstance(BulletProperties bulletProperties) {
-        return new Bullet(bulletProperties);
-    }
-
+    /**
+     * Set speed x and y of the bullet
+     * @param radians angle in radians
+     * @param cBulletParameter set of parameters
+     * @return speed object
+     */
     protected Speed setSpeed(float radians,
             CreateBulletParameter cBulletParameter) {
         Speed speed = this.getSpeed(cBulletParameter);
@@ -105,6 +101,14 @@ public abstract class BulletFactory {
         return speed;
     }
 
+    /**
+     * Build bullet properties
+     * @param createBulletParameter set of parameters
+     * @param positionX
+     * @param positionY
+     * @param speed
+     * @return BulletProperties instance
+     */
     private BulletProperties buildBulletProperties(
             CreateBulletParameter createBulletParameter, float positionX,
             float positionY, Speed speed) {
@@ -116,9 +120,22 @@ public abstract class BulletFactory {
         bulletProperties.setPositionY(positionY);
         bulletProperties.setRadius(this.getRadius());
         bulletProperties.setSpeed(speed);
+        bulletProperties.addAnimation(AnimationTypes.NORMAL_STATE,
+                BuildAnimation.build(ANIMATION_FRAMETIME,
+                        getAnimationFramesName()));
+        
+        if (this.getSoundName() != null && this.getSoundName() != "") {
+            bulletProperties.setSound(SoundCache.getSound(this.getSoundName()));
+        }
+        
         return bulletProperties;
     };
 
+    /**
+     * Get increment distance of the central bullet
+     * @param numBullet number of the bullet (for multiples shoots at once)
+     * @return distance of the central bullet
+     */
     protected float getIncrementFromNumBullet(int numBullet) {
         if (numBullet == 1) {
             return 0;
@@ -130,16 +147,37 @@ public abstract class BulletFactory {
         return (((numBullet - 1) / 2) * INCREMENT_BULLET_DISTANCE * (-1));
     }
 
+    /**
+     * Get radius of the bullet
+     * @return radius of the bullet
+     */
     protected float getRadius() {
         return TextureCache.getTextureRegion(this.getAnimationFramesName()[0])
                 .getRegionWidth() / 2;
     }
 
+    /**
+     * get fire power of the bullet
+     * @return FirePower object
+     */
     protected abstract FirePower getFirePower();
 
+    /**
+     * get speed of the bullet
+     * @param cBulletParameter set of parameters
+     * @return Speed object
+     */
     protected abstract Speed getSpeed(CreateBulletParameter cBulletParameter);
 
+    /**
+     * get frame names of the bullet animation
+     * @return frame names of the bullet animation
+     */
     protected abstract String[] getAnimationFramesName();
     
+    /**
+     * get sound name of the bullet
+     * @return sound name of the bullet
+     */
     protected abstract String getSoundName();
 }

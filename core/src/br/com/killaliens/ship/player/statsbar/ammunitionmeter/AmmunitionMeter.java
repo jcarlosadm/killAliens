@@ -36,7 +36,7 @@ public class AmmunitionMeter {
     
     public void draw(Batch batch, float parentAlpha) {
         Ammunition ammunition = this.playerShip.getTopAmmunition();
-        batch.draw(ammunition.getType().getTexture(), this.positionX, this.positionY 
+        batch.draw(ammunition.getType().getIconTexture(), this.positionX, this.positionY 
                 + this.playerShip.getAccumulatorScrollY());
         
         font.draw(batch, TEXT_LV+" "+ammunition.getLevel(), this.positionX 

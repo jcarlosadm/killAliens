@@ -27,14 +27,14 @@ public class BulletProperties {
     private Sound sound = null;
 
     /**
-     * @return the enemyBullet
+     * @return if bullet is enemy
      */
     public boolean isEnemyBullet() {
         return this.enemyBullet;
     }
 
     /**
-     * @param enemyBullet the enemyBullet to set
+     * @param enemyBullet set if bullet is enemy
      */
     public void setEnemyBullet(boolean enemyBullet) {
         this.enemyBullet = enemyBullet;
@@ -69,14 +69,14 @@ public class BulletProperties {
     }
 
     /**
-     * @return the speedX
+     * @return Speed instance
      */
     public Speed getSpeed() {
         return this.speed;
     }
 
     /**
-     * @param speedX the speedX to set
+     * @param speed the Speed instance to set
      */
     public void setSpeed(Speed speed) {
         if (speed != null) {
@@ -85,14 +85,14 @@ public class BulletProperties {
     }
 
     /**
-     * @return the firePower
+     * @return FirePower instance
      */
     public FirePower getFirePower() {
         return this.firePower;
     }
 
     /**
-     * @param firePower the firePower to set
+     * @param firePower the FirePower instance to set
      */
     public void setFirePower(FirePower firePower) {
         if (firePower != null) {
@@ -114,16 +114,25 @@ public class BulletProperties {
         this.radius = radius;
     }
     
+    /**
+     * Add an animation to bullet
+     * @param type type of the animation
+     * @param animation animation to set
+     */
     public void addAnimation(AnimationTypes type, Animation animation){
         this.aniManagement.addAnimation(type, animation);
     }
     
+    /**
+     * Get animation management
+     * @return animation management
+     */
     public AnimationManagement getAnimationData(){
         return this.aniManagement;
     }
 
     /**
-     * @return the sound
+     * @return the sound object
      */
     public Sound getSound() {
         return this.sound;

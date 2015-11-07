@@ -14,7 +14,6 @@ import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -33,6 +32,10 @@ public class Bullet extends Actor {
     private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(
             this);
 
+    /**
+     * Constructor
+     * @param properties set of properties
+     */
     public Bullet(BulletProperties properties) {
         this.limits.setRadius(properties.getRadius());
 
@@ -65,9 +68,12 @@ public class Bullet extends Actor {
         }
     }
 
+    /**
+     * Move action
+     */
     protected void move() {
-        this.setPosition(this.getX() + this.getSpeedX(),
-                this.getY() + this.getSpeedY());
+        this.setPosition(this.getX() + this.speed.getSpeedX(),
+                this.getY() + this.speed.getSpeedY());
     }
 
     @Override
@@ -110,24 +116,13 @@ public class Bullet extends Actor {
         this.limits.setY(y);
     }
 
-    public boolean isEnemyBullet() {
-        return this.enemyBullet;
-    }
-
-    public float getSpeedX() {
-        return this.speed.getSpeedX();
-    }
-
-    public float getSpeedY() {
-        return this.speed.getSpeedY();
-    }
-
-    public int getFirePower() {
-        return this.firePower.getFirePower();
-    }
-
+    /**
+     * Check collision with ship. After collision, this bullet will explode and make damage
+     * @param ship Ship to check
+     * @return true if collision happens
+     */
     public boolean colliding(Ship ship) {
-        if (ship.isEnemy() == this.isEnemyBullet() || ship.isDead() == true) {
+        if (ship.isEnemy() == this.enemyBullet || ship.isDead() == true) {
             return false;
         }
         
@@ -140,6 +135,9 @@ public class Bullet extends Actor {
         return false;
     }
 
+    /**
+     * Create explosion and remove bullet
+     */
     private void explode() {
         Explosion explosion = new Explosion(this.getX() + this.getWidth() / 2,
                 this.getY() + this.getHeight() / 2);
@@ -150,17 +148,5 @@ public class Bullet extends Actor {
         }
 
         this.remove();
-    }
-
-    public boolean setCurrentAnimation(AnimationTypes key) {
-        return this.animationData.setCurrentAnimation(key);
-    }
-
-    public void addAnimation(AnimationTypes key, Animation animation) {
-        this.animationData.addAnimation(key, animation);
-    }
-
-    public boolean removeAnimation(AnimationTypes key) {
-        return this.animationData.removeAnimation(key);
     }
 }

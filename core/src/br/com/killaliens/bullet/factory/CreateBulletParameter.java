@@ -13,14 +13,14 @@ public class CreateBulletParameter {
     private Stage stage = null;
 
     /**
-     * @return the bulletEnemy
+     * @return if this bullet is an enemy
      */
     public boolean isBulletEnemy() {
         return this.bulletEnemy;
     }
 
     /**
-     * @param bulletEnemy the bulletEnemy to set
+     * @param bulletEnemy set if this bullet is an enemy
      */
     public void setBulletEnemy(boolean bulletEnemy) {
         this.bulletEnemy = bulletEnemy;
@@ -41,14 +41,14 @@ public class CreateBulletParameter {
     }
 
     /**
-     * @return the numBullet
+     * @return the numBullet (for multiples shoots at once)
      */
     public int getNumBullet() {
         return this.numBullet;
     }
 
     /**
-     * @param numBullet the numBullet to set
+     * @param numBullet the numBullet to set (for multiples shoots at once)
      */
     public void setNumBullet(int numBullet) {
         if (numBullet > 0) {
@@ -57,7 +57,7 @@ public class CreateBulletParameter {
     }
     
     /**
-     * Get parent stage
+     * Get parent stage (to add this bullet)
      * @return
      */
     public Stage getParentStage(){
@@ -65,7 +65,7 @@ public class CreateBulletParameter {
     }
     
     /**
-     * set parent stage
+     * set parent stage (to add this bullet)
      * @param stage
      */
     public void setParentStage(Stage stage){
