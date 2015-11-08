@@ -22,7 +22,7 @@ public abstract class EnemyFactory {
      * get EnemyFactory instance
      * @param type type of the enemy
      * @return EnemyFactory instance
-     * TODO Abstract method
+     * TODO Factory method pattern
      */
     public static EnemyFactory getFactory(EnemyTypes type){
         
