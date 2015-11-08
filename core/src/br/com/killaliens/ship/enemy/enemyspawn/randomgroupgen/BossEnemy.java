@@ -1,24 +1,24 @@
-package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement;
+package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;
 import br.com.killaliens.ship.enemy.types.EnemyTypes;
 
-public class BasicEnemies extends RandomGroupGenerator {
-    
+public class BossEnemy extends RandomGroupGenerator {
+
     @Override
     protected EnemyShip getStrongEnemy() {
-        return EnemyFactory.getFactory(EnemyTypes.CRAZY_UFO).getShip();
+        return EnemyFactory.getFactory(EnemyTypes.BOSS).getShip();
     }
 
     @Override
     protected EnemyShip getMiddleEnemy() {
-        return EnemyFactory.getFactory(EnemyTypes.UFO).getShip();
+        return null;
     }
 
     @Override
     protected EnemyShip getWeakEnemy() {
-        return EnemyFactory.getFactory(EnemyTypes.KEEPER).getShip();
+        return null;
     }
 
 }

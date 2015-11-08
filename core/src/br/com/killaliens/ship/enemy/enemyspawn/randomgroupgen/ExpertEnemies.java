@@ -1,4 +1,4 @@
-package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement;
+package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.factory.EnemyFactory;

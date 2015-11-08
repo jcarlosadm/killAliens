@@ -1,4 +1,4 @@
-package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement;
+package br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.util.random.StaticRandom;
@@ -10,6 +10,10 @@ public abstract class RandomGroupGenerator {
     private static final int RANDOM_MINIMUM = 1;
     private static final int RANDOM_MAXIMUM = 10;
     
+    /**
+     * get random enemy ship instance
+     * @return EnemyShip instance
+     */
     public EnemyShip getEnemyShip(){
         int number = StaticRandom.getRandomValue(RANDOM_MINIMUM, RANDOM_MAXIMUM);
         
@@ -22,9 +26,21 @@ public abstract class RandomGroupGenerator {
         return this.getStrongEnemy();
     }
 
+    /**
+     * Get strong enemy ship instance
+     * @return EnemyShip instance
+     */
     protected abstract EnemyShip getStrongEnemy();
 
+    /**
+     * Get middle enemy ship instance
+     * @return EnemyShip instance
+     */
     protected abstract EnemyShip getMiddleEnemy();
 
+    /**
+     * Get weak enemy ship instance
+     * @return EnemyShip instance
+     */
     protected abstract EnemyShip getWeakEnemy();
 }

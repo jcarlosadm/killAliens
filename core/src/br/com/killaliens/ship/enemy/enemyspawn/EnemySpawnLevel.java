@@ -1,5 +1,8 @@
 package br.com.killaliens.ship.enemy.enemyspawn;
 
+/**
+ * enemy spawn levels
+ */
 public enum EnemySpawnLevel {
     BASIC {
         @Override

@@ -5,17 +5,15 @@ import java.util.Map;
 
 import br.com.killaliens.ship.enemy.EnemyShip;
 import br.com.killaliens.ship.enemy.enemyspawn.EnemySpawnLevel;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.BasicEnemies;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.BossEnemy;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.ExpertEnemies;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.HardEnemies;
-import br.com.killaliens.ship.enemy.enemyspawn.randomgroupgen.implement.RandomGroupGenerator;
 
 public class RandomEnemy {
     
     private Map<EnemySpawnLevel, RandomGroupGenerator> rndGroup = 
             new HashMap<EnemySpawnLevel, RandomGroupGenerator>();
     
+    /**
+     * Constructor
+     */
     public RandomEnemy() {
         this.rndGroup.put(EnemySpawnLevel.BASIC, new BasicEnemies());
         this.rndGroup.put(EnemySpawnLevel.EXPERT, new ExpertEnemies());
@@ -23,6 +21,11 @@ public class RandomEnemy {
         this.rndGroup.put(EnemySpawnLevel.BOSS, new BossEnemy());
     }
     
+    /**
+     * get random enemy ship
+     * @param esLevel level difficult of the enemy ship to get
+     * @return EnemyShip instance
+     */
     public EnemyShip getRandomEnemyShip(EnemySpawnLevel esLevel){
         return this.rndGroup.get(esLevel).getEnemyShip();
     }

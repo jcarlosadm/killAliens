@@ -12,9 +12,11 @@ import com.badlogic.gdx.Gdx;
 
 public class EnemySpawnGenerator implements ScrollObserver{
     
-    public static final float TIME_LIMIT_TO_SPAWN_IN_SECONDS = 2;
-    public static final int MAX_ENEMIES_ON_SCREEN = 5;
-    public static final int TOTAL_ENEMIES_TO_UP_LEVEL = 25;
+    private static final float TIME_LIMIT_TO_SPAWN_IN_SECONDS = 2;
+    
+    private static final int MAX_ENEMIES_ON_SCREEN = 5;
+    
+    private static final int TOTAL_ENEMIES_TO_UP_LEVEL = 25;
     
     private float totalTime = 0f;
     
@@ -30,10 +32,19 @@ public class EnemySpawnGenerator implements ScrollObserver{
     
     private boolean bossLock = false;
     
+    /**
+     * Constructor
+     * @param gameScreen GamePlayResume object
+     */
     public EnemySpawnGenerator(GamePlayResume gameScreen) {
         this.gameScreen = gameScreen;
     }
     
+    /**
+     * Get a random enemy ship and calculate the current spawn level
+     * @param deltaTime time in seconds since the last frame
+     * @return EnemyShip instance
+     */
     public EnemyShip getRandomEnemyShip(float deltaTime){
         this.totalTime += deltaTime;
         
@@ -68,6 +79,10 @@ public class EnemySpawnGenerator implements ScrollObserver{
         return enemyShip;
     }
 
+    /**
+     * Put enemy ship in random location
+     * @param enemyShip
+     */
     private void putInRandomLocation(EnemyShip enemyShip) {
         Random rnd = new Random();
         float x = rnd.nextInt(Gdx.graphics.getWidth() - (int) enemyShip.getWidth());
@@ -82,6 +97,9 @@ public class EnemySpawnGenerator implements ScrollObserver{
         this.scrollTotalY += yDelta;
     }
     
+    /**
+     * @return enemy spawn level
+     */
     public EnemySpawnLevel getEnemySpawnLevel(){
         return this.spawnLevel;
     }
