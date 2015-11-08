@@ -22,7 +22,7 @@ public class UpLife extends Bonus {
 
     @Override
     protected void addBonusToShip(Ship ship) {
-        ship.getHeal(StaticRandom.getRandomValue(MIN_HEAL_VALUE, MAX_HEAL_VALUE));
+        ship.receiveHeal(StaticRandom.getRandomValue(MIN_HEAL_VALUE, MAX_HEAL_VALUE));
     }
 
     @Override

@@ -4,12 +4,24 @@ public class Life {
     private int currentLife = 1;
     private int maxLife = 1;
     
+    /**
+     * Constructor
+     * @param maxLife maximum life value
+     */
     public Life(int maxLife) {
         this.maxLife = maxLife;
         this.currentLife = maxLife;
     }
 
+    /**
+     * Add amount to life
+     * @param amount
+     */
     public void upLife(int amount) {
+        if (amount < 1) {
+            return;
+        }
+        
         if (this.currentLife + amount <= this.maxLife) {
             this.currentLife += amount;
         } else {
@@ -17,7 +29,15 @@ public class Life {
         }
     }
 
+    /**
+     * Remove amount from life
+     * @param amount
+     */
     public void downLife(int amount) {
+        if (amount < 1) {
+            return;
+        }
+        
         if (this.currentLife >= amount) {
             this.currentLife -= amount;
         } else {
@@ -25,10 +45,18 @@ public class Life {
         }
     }
     
+    /**
+     * Check if is dead
+     * @return true if is dead
+     */
     public boolean isDead(){
         return (this.currentLife <= 0);
     }
     
+    /**
+     * set maximum life value
+     * @param value value to set
+     */
     public void setMaxLife(int value){
         if (value > 0) {
             this.maxLife = value;
@@ -38,10 +66,16 @@ public class Life {
         }
     }
     
+    /**
+     * @return current life value
+     */
     public int getCurrentLife(){
         return this.currentLife;
     }
     
+    /**
+     * @return maximum life value
+     */
     public int getMaxLife(){
         return this.maxLife;
     }

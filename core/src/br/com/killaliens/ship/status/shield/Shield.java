@@ -7,10 +7,19 @@ public class Shield {
     private static final int MAX_LIMIT = 6;
     private int shieldLevel = 0;
     
+    /**
+     * Constructor
+     * @param shieldLevel shield base value
+     */
     public Shield(int shieldLevel) {
         this.setShieldLevel(shieldLevel);
     }
 
+    /**
+     * Calculate protection value with this formula: [random part]+[protection base]
+     * the random part means a value in an interval (determined by constants)
+     * @return protection value
+     */
     public int calcProtectionValue(){
         return StaticRandom.getRandomValue(MIN_LIMIT, MAX_LIMIT) + this.shieldLevel;
     }

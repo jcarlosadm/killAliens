@@ -1,6 +1,7 @@
 package br.com.killaliens.ship.player.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
 import br.com.killaliens.ship.player.PlayerShip;
 import br.com.killaliens.ship.status.management.StatusManagement;
@@ -41,8 +42,22 @@ public class PlayerNormalStatus implements StatusManagement {
             float x = Gdx.input.getX() - this.playerShip.getWidth()/2;
             float y = Gdx.graphics.getHeight()  - Gdx.input.getY()
                     + this.playerShip.getAccumulatorScrollY() - this.playerShip.getHeight()/2;
-            this.playerShip.moveToLocation(x, y, delta);
+            this.moveToLocation(x, y, delta);
         }
+    }
+    
+    /**
+     * move to location action
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param delta time in seconds since the last frame
+     */
+    private void moveToLocation(float x, float y, float delta) {
+        MoveToAction movAction = new MoveToAction();
+        movAction.setPosition(x, y);
+        movAction.setDuration(delta);
+        
+        this.playerShip.addAction(movAction);
     }
 
 }

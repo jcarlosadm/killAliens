@@ -192,10 +192,18 @@ public class ShipProperties {
         this.speed = new Speed(speedX, speedY);
     }
     
+    /**
+     * Add animation
+     * @param animationType
+     * @param animation
+     */
     public void addAnimation(AnimationTypes animationType, Animation animation){
         this.aniManagement.addAnimation(animationType, animation);
     }
     
+    /**
+     * @return animation management object
+     */
     public AnimationManagement getAnimationData(){
         return this.aniManagement;
     }

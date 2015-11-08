@@ -17,15 +17,10 @@ import br.com.killaliens.util.speed.NullSpeed;
 import br.com.killaliens.util.speed.Speed;
 import br.com.killaliens.util.vertices.VerticesBuilder;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 
-/**
- * Ship
- */
 public abstract class Ship extends Actor {
 
     private static final int BASIC_AMMO_LEVEL = 1;
@@ -80,6 +75,12 @@ public abstract class Ship extends Actor {
         this.animationData.setCurrentAnimation(AnimationTypes.NORMAL_STATE);
     }
 
+    /**
+     * Build vertices limits
+     * @param width
+     * @param height
+     * @return vertices coordinates
+     */
     private float[] buildVertices(float width, float height) {
         
         VerticesBuilder vBuilder = new VerticesBuilder();
@@ -155,6 +156,10 @@ public abstract class Ship extends Actor {
         return this.speed.getSpeedX();
     }
     
+    /**
+     * set speed x
+     * @param speedX
+     */
     public void setSpeedX(float speedX) {
         this.speed.setSpeedX(speedX);
     }
@@ -166,6 +171,10 @@ public abstract class Ship extends Actor {
         return this.speed.getSpeedY();
     }
     
+    /**
+     * Get speed y
+     * @param speedY
+     */
     public void setSpeedY(float speedY){
         this.speed.setSpeedY(speedY);
     }
@@ -177,16 +186,18 @@ public abstract class Ship extends Actor {
         return this.life.getCurrentLife();
     }
 
+    /**
+     * @return the maximum life value
+     */
     public float getMaxLife() {
         return this.life.getMaxLife();
     }
 
     /**
-     * Get damage (must be greater than zero)
-     * 
+     * Receive damage (must be greater than zero)
      * @param damage
      */
-    public void getDamage(int damage) {
+    public void receiveDamage(int damage) {
 
         int totalDamage = damage - this.shield.calcProtectionValue();
 
@@ -196,16 +207,18 @@ public abstract class Ship extends Actor {
     }
 
     /**
-     * Get heal (must be greater than zero)
-     * 
+     * Receive heal (must be greater than zero)
      * @param heal
      */
-    public void getHeal(int heal) {
+    public void receiveHeal(int heal) {
         if (heal > 0) {
             this.life.upLife(heal);
         }
     }
 
+    /**
+     * @return true if is dead
+     */
     public boolean isDead() {
         return this.life.isDead();
     }
@@ -217,6 +230,9 @@ public abstract class Ship extends Actor {
         return this.shield.getShieldLevel();
     }
     
+    /**
+     * up level of the shield
+     */
     public void upShieldLevel() {
         this.shield.setShieldLevel(this.getShieldLevel() + 1);
     }
@@ -242,13 +258,15 @@ public abstract class Ship extends Actor {
         return false;
     }
     
+    /**
+     * @return ammunition in the top of the stack
+     */
     public Ammunition getTopAmmunition(){
         return this.ammunitions.peek();
     }
 
     /**
      * set shooting status
-     * 
      * @param shooting
      *            the shooting to set
      */
@@ -256,6 +274,10 @@ public abstract class Ship extends Actor {
         this.shooting = shooting;
     }
 
+    /**
+     * execute shoot action
+     * @param deltaTime time in seconds since the last frame
+     */
     private void shoot(float deltaTime) {
         CreateBulletParameter createBulletParameters = new CreateBulletParameter();
         
@@ -268,6 +290,10 @@ public abstract class Ship extends Actor {
         }
     }
 
+    /**
+     * build parameters to create bullets
+     * @param createBulletParameters
+     */
     private void buildCreateBulletParameter(
             CreateBulletParameter createBulletParameters) {
         createBulletParameters.setBulletEnemy(this.isEnemy());
@@ -277,42 +303,51 @@ public abstract class Ship extends Actor {
         createBulletParameters.setParentStage(this.getStage());
     }
     
+    /**
+     * @return space limits of this ship
+     */
     public Polygon getLimits(){
         return this.limits;
     }
 
-    public void addAnimation(AnimationTypes key, Animation animation) {
-        this.animationData.addAnimation(key, animation);
-    }
-
-    public boolean removeAnimation(AnimationTypes key) {
-        return this.animationData.removeAnimation(key);
-    }
-
+    /**
+     * Set current animation
+     * @param key animation type to set
+     * @return true if successful
+     */
     public boolean setCurrentAnimation(AnimationTypes key) {
         return this.animationData.setCurrentAnimation(key);
     }
 
+    /**
+     * @return true if this ship is enemy
+     */
     public boolean isEnemy() {
         return this.enemy;
     }
 
+    /**
+     * set if this ship is enemy
+     * @param enemy
+     */
     public void setIfIsEnemy(boolean enemy) {
         this.enemy = enemy;
     }
     
-    public void moveToLocation(float x, float y, float timeInSeconds) {
-        MoveToAction movAction = new MoveToAction();
-        movAction.setPosition(x, y);
-        movAction.setDuration(timeInSeconds);
-        
-        this.addAction(movAction);
-    }
-    
+    /**
+     * Add status
+     * @param type related animation type of the status
+     * @param status status to set
+     */
     protected void addStatus(AnimationTypes type, StatusManagement status){
         this.statusTypes.put(type, status);
     }
     
+    /**
+     * Set current status
+     * @param key related animation type
+     * @return true if successful
+     */
     protected boolean setCurrentStatus(AnimationTypes key){
         if (this.statusTypes.containsKey(key)) {
             this.currentStatus = this.statusTypes.get(key);
@@ -322,10 +357,16 @@ public abstract class Ship extends Actor {
         return false;
     }
     
+    /**
+     * @return current status
+     */
     protected StatusManagement getCurrentStatus(){
         return this.currentStatus;
     }
     
+    /**
+     * Reset all status
+     */
     public void resetAllStatus(){
         for (StatusManagement status : this.statusTypes.values()) {
             status.reset();

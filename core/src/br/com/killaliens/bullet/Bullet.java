@@ -127,7 +127,7 @@ public class Bullet extends Actor {
         }
         
         if (CollisionChecker.check(ship.getLimits(),this.limits)) {
-            ship.getDamage(this.firePower.getDamage());
+            ship.receiveDamage(this.firePower.getDamage());
             this.explode();
 
             return true;

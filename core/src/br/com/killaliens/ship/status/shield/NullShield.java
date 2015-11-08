@@ -5,13 +5,19 @@ public class NullShield extends Shield{
 
     private static Shield nullShieldInstance = null;
     
-    private NullShield(int shieldLevel) {
-        super(shieldLevel);
+    /**
+     * Constructor 
+     */
+    private NullShield() {
+        super(0);
     }
     
+    /**
+     * @return Shield instance
+     */
     public static synchronized Shield getNullShieldInstance(){
         if (nullShieldInstance == null) {
-            nullShieldInstance = new NullShield(0);
+            nullShieldInstance = new NullShield();
         }
         
         return nullShieldInstance;
