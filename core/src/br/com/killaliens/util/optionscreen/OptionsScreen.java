@@ -1,4 +1,4 @@
-package br.com.killaliens.screens.options;
+package br.com.killaliens.util.optionscreen;
 
 import java.util.List;
 

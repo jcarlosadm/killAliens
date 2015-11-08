@@ -1,5 +1,8 @@
 package br.com.killaliens.screens.gameplay.states.resume;
 
+/**
+ * type of game play objects
+ */
 public enum GamePlayObjects {
     BACKGROUND,
     BULLET_LIST,

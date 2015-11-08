@@ -32,6 +32,10 @@ public class GamePlayScreen implements Screen {
     
     private Music gameMusic = MusicCache.getMusic("game.mp3");
 
+    /**
+     * Constructor
+     * @param screenManager ScreenManager object
+     */
     private GamePlayScreen(ScreenManager screenManager) {
         this.resumeState = new GamePlayResume(this);
         this.pauseState = new GamePlayPause(this, screenManager);
@@ -39,7 +43,12 @@ public class GamePlayScreen implements Screen {
         this.winState = new GamePlayWin(this, screenManager);
     }
 
-    public static GamePlayScreen getInstance(ScreenManager screenManager) {
+    /**
+     * get GamePlayScreen instance
+     * @param screenManager ScreenManager object
+     * @return GamePlayScreen instance
+     */
+    public static synchronized GamePlayScreen getInstance(ScreenManager screenManager) {
         if (instance == null) {
             instance = new GamePlayScreen(screenManager);
         }
@@ -76,6 +85,9 @@ public class GamePlayScreen implements Screen {
         }
     }
 
+    /**
+     * set resume state
+     */
     public void resume() {
         this.currentState = this.resumeState;
         if (!this.gameMusic.isPlaying()) {
@@ -84,18 +96,30 @@ public class GamePlayScreen implements Screen {
         }
     }
 
+    /**
+     * set pause state
+     */
     public void pause() {
         this.currentState = this.pauseState;
     }
 
+    /**
+     * set game over state
+     */
     public void gameover() {
         this.currentState = this.gameoverState;
     }
 
+    /**
+     * set win state
+     */
     public void win() {
         this.winTimerOn = true;
     }
 
+    /**
+     * reset game play screen
+     */
     public void reset() {
         this.gameMusic.stop();
         PlayerShip.reset();

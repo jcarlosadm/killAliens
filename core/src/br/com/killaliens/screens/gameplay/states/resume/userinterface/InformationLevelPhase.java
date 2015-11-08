@@ -9,7 +9,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class InformationLevelPhase extends Actor implements ScrollObserver{
+/**
+ * InformationLevelPhase
+ * Show information about the phase in superior left corner of the screen
+ */
+public class InformationLevelPhase extends Actor implements ScrollObserver {
 
     private static final float POSITION_Y = Gdx.graphics.getHeight() - 10f;
     private static final float POSITION_X = 0f;
@@ -18,6 +22,10 @@ public class InformationLevelPhase extends Actor implements ScrollObserver{
     
     private EnemySpawnGenerator enSpawnGenerator = null;
     
+    /**
+     * Constructor
+     * @param enSpawnGenerator generator of enemies
+     */
     public InformationLevelPhase(EnemySpawnGenerator enSpawnGenerator) {
         this.setX(POSITION_X);
         this.setY(POSITION_Y);

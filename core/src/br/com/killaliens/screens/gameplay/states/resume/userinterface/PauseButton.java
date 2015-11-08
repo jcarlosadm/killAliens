@@ -16,6 +16,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+/**
+ * PauseButton
+ * Show pause button in inferior left corner of the screen
+ */
 public class PauseButton extends Actor implements ScrollObserver {
 
     private static final float MINIMUM_DISTANCE_TO_ACTOR = 100f;
@@ -33,6 +37,11 @@ public class PauseButton extends Actor implements ScrollObserver {
     
     private Sound soundClick = SoundCache.getSound("buttonClick.ogg");
 
+    /**
+     * Constructor
+     * @param playerShip player ship object
+     * @param gamePlayScreen GamePlayScreen object
+     */
     public PauseButton(PlayerShip playerShip, GamePlayScreen gamePlayScreen) {
         this.playerShip = playerShip;
         this.gamePlayScreen = gamePlayScreen;
@@ -77,6 +86,9 @@ public class PauseButton extends Actor implements ScrollObserver {
         this.touchedAction();
     }
 
+    /**
+     * behavior if pause button is touched
+     */
     private void touchedAction() {
         TouchAndMouseState touch = TouchAndMouseState.getInstance();
         if (touch.isOneClickDown()) {
@@ -89,6 +101,9 @@ public class PauseButton extends Actor implements ScrollObserver {
         }
     }
 
+    /**
+     * check the distance to player ship, and change position if is too close
+     */
     private void checkDistanceToPlayer() {
         float distance = Vector2.dst(this.getX(), this.getY(),
                 this.playerShip.getX(), this.playerShip.getY());
@@ -98,6 +113,9 @@ public class PauseButton extends Actor implements ScrollObserver {
         }
     }
 
+    /**
+     * change position of the pause button
+     */
     private void changePosition() {
         if (this.getX() == 0) {
             this.setX(Gdx.graphics.getWidth() - this.getWidth());

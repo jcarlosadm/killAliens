@@ -7,17 +7,24 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Background extends Actor {
+/**
+ * Background
+ * Build a infinity scrolling background
+ */
+public class InfinityBackground extends Actor {
 
     private static final String BACKGROUND_IMAGE_NAME = "background";
     
-    private BackgroundImage backImage1 = null;
-    private BackgroundImage backImage2 = null;
+    private InfinityBackgroundImage backImage1 = null;
+    private InfinityBackgroundImage backImage2 = null;
 
-    public Background() {
+    /**
+     * Constructor
+     */
+    public InfinityBackground() {
         TextureRegion image = TextureCache.getTextureRegion(BACKGROUND_IMAGE_NAME);
-        this.backImage1 = new BackgroundImage(image, 0, 0);
-        this.backImage2 = new BackgroundImage(image, 0, this.backImage1.getHeight());
+        this.backImage1 = new InfinityBackgroundImage(image, 0, 0);
+        this.backImage2 = new InfinityBackgroundImage(image, 0, this.backImage1.getHeight());
     }
 
     @Override
@@ -26,9 +33,12 @@ public class Background extends Actor {
         this.recalcPositionBackgrounds();
     }
 
+    /**
+     * recalculate background images position
+     */
     private void recalcPositionBackgrounds() {
-        this.backImage1.recalcScaledFactors();
-        this.backImage2.recalcScaledFactors();
+        this.backImage1.calcScaledFactors();
+        this.backImage2.calcScaledFactors();
 
         Camera camera = this.getStage().getCamera();
 

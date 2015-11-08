@@ -28,6 +28,11 @@ public class Explosion extends Actor {
     private static final float RADIUS = TextureCache.
             getTextureRegion(ANIMATION_NORMAL_FRAME_NAMES[0]).getRegionWidth()/2;
 
+    /**
+     * Constructor
+     * @param centerX
+     * @param centerY
+     */
     public Explosion(float centerX, float centerY) {
         this.setX(centerX - RADIUS);
         this.setY(centerY - RADIUS);

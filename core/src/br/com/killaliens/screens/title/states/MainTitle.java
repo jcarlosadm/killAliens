@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.killaliens.screens.ScreenState;
-import br.com.killaliens.screens.options.OptionsScreen;
 import br.com.killaliens.screens.title.TitleScreen;
 import br.com.killaliens.screens.title.background.MainTitleBackground;
 import br.com.killaliens.util.buttons.Button;
 import br.com.killaliens.util.buttons.implementations.CreditsButton;
 import br.com.killaliens.util.buttons.implementations.PlayButton;
 import br.com.killaliens.util.buttons.implementations.QuitMainTitleButton;
+import br.com.killaliens.util.optionscreen.OptionsScreen;
 
 public class MainTitle extends OptionsScreen implements ScreenState {
     
