@@ -15,6 +15,9 @@ public class AtlasLoader {
     
     private AtlasLoader() {}
     
+    /**
+     * @return texture atlas instance
+     */
     public static synchronized TextureAtlas getTextureAtlas(){
         if (atlasInstance == null) {
             atlasInstance = new TextureAtlas(Gdx.files.internal(ATLAS_PATH));

@@ -11,6 +11,10 @@ public class ResumeButton extends Button {
     
     private GamePlayScreen gamePlayScreen = null;
     
+    /**
+     * Constructor
+     * @param gamePlayScreen GamePlayScreen object
+     */
     public ResumeButton(GamePlayScreen gamePlayScreen) {
         this.gamePlayScreen = gamePlayScreen;
     }

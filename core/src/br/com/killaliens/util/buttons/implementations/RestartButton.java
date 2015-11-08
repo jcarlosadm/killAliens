@@ -10,6 +10,10 @@ public class RestartButton extends Button{
 
     private GamePlayScreen gamePlayScreen = null;
     
+    /**
+     * Constructor
+     * @param gamePlayScreen GamePlayScreen object
+     */
     public RestartButton(GamePlayScreen gamePlayScreen) {
         this.gamePlayScreen = gamePlayScreen;
     }

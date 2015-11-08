@@ -107,11 +107,23 @@ public abstract class Button extends Actor {
                 + this.textHeight / 2);
     }
 
+    /**
+     * default action
+     */
     protected abstract void action();
 
+    /**
+     * @return image name of the button
+     */
     protected abstract String getImageName();
 
+    /**
+     * @return name of the button
+     */
     protected abstract String getButtonName();
     
+    /**
+     * @return true if has sound
+     */
     protected abstract boolean hasSound();
 }

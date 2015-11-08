@@ -10,6 +10,10 @@ public class CreditsButton extends Button {
     
     private TitleScreen titleScreen = null;
 
+    /**
+     * Constructor
+     * @param titleScreen TitleScreen object
+     */
     public CreditsButton(TitleScreen titleScreen) {
         this.titleScreen = titleScreen;
     }

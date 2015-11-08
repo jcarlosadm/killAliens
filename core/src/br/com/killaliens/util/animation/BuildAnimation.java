@@ -9,6 +9,12 @@ public class BuildAnimation {
     
     private BuildAnimation() {}
     
+    /**
+     * Build animation object
+     * @param frametime time of a frame to another
+     * @param frameNames name of each frame
+     * @return Animation instance
+     */
     public static Animation build(float frametime, String[] frameNames){
         TextureRegion[] textureRegions = new TextureRegion[frameNames.length];
         

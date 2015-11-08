@@ -10,6 +10,10 @@ public class PlayButton extends Button {
     
     private TitleScreen titleScreen = null;
     
+    /**
+     * Constructor
+     * @param titleScreen TitleScreen object
+     */
     public PlayButton(TitleScreen titleScreen) {
         this.titleScreen = titleScreen;
     }

@@ -15,6 +15,11 @@ public class QuitGamePlayButton extends Button {
     
     private ScreenManager screenManager = null;
 
+    /**
+     * Constructor
+     * @param gamePlayScreen GamePlayScreen object
+     * @param screenManager ScreenManager object
+     */
     public QuitGamePlayButton(GamePlayScreen gamePlayScreen, ScreenManager screenManager) {
         this.gamePlayScreen = gamePlayScreen;
         this.screenManager = screenManager;
