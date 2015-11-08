@@ -45,6 +45,9 @@ public class TextureCache {
         
         if (textureRegion != null) {
             textures.put(textureRegionName, textureRegion);
+        } else {
+            Gdx.app.log("texture error", "error to load texture");
+            Gdx.app.exit();
         }
         
         return textureRegion;

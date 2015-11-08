@@ -40,7 +40,8 @@ public class SoundCache {
                 sounds.put(soundName, sound);
             }
         } catch (GdxRuntimeException e) {
-            System.out.println("error to load audio");
+            Gdx.app.log("sound error", "error to load audio");
+            e.printStackTrace();
             Gdx.app.exit();
         }
         

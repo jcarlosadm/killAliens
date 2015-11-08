@@ -40,7 +40,8 @@ public class MusicCache {
                 musics.put(musicName, music);
             }
         } catch (GdxRuntimeException e) {
-            System.out.println("error to load music");
+            Gdx.app.log("music error", "error to load music");
+            e.printStackTrace();
             Gdx.app.exit();
         }
         
