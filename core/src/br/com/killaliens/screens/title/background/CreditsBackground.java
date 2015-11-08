@@ -39,6 +39,9 @@ public class CreditsBackground extends Actor {
     
     private float defaultHeight = 0f;
     
+    /**
+     * Constructor
+     */
     public CreditsBackground() {
         TextMetrics textMetrics = new TextMetrics();
         textMetrics.setText(font, TEXT[0]);

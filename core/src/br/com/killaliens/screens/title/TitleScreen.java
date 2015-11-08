@@ -27,6 +27,11 @@ public class TitleScreen implements Screen {
     
     private Music titleMusic = MusicCache.getMusic("title.mp3");
     
+    /**
+     * Constructor
+     * @param screenManager ScreenManager object
+     * @param gamePlayScreen GamePlayScreen object
+     */
     private TitleScreen(ScreenManager screenManager, GamePlayScreen gamePlayScreen) {
         this.screenManager = screenManager;
         this.gamePlayScreen = gamePlayScreen;
@@ -37,6 +42,12 @@ public class TitleScreen implements Screen {
         this.mainTitle();
     }
     
+    /**
+     * Get TitleScreen instance
+     * @param screenManager ScreenManager object
+     * @param gamePlayScreen GamePlayScreen object
+     * @return TitleScreen instance
+     */
     public static TitleScreen getInstance(ScreenManager screenManager,
             GamePlayScreen gamePlayScreen){
         if (instance == null) {
@@ -63,6 +74,9 @@ public class TitleScreen implements Screen {
         }
     }
     
+    /**
+     * show the main title
+     */
     public void mainTitle(){
         this.currentState = this.mainState;
         if (!this.titleMusic.isPlaying()) {
@@ -71,12 +85,18 @@ public class TitleScreen implements Screen {
         }
     }
     
+    /**
+     * start the game
+     */
     public void startGame() {
         this.titleMusic.stop();
         this.screenManager.changeCurrentScreen(ScreenType.GAMEPLAY_SCREEN);
         this.gamePlayScreen.resume();
     }
     
+    /**
+     * show the credits
+     */
     public void credits() {
         this.currentState = this.creditsState;
     }

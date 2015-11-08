@@ -14,6 +14,11 @@ import br.com.killaliens.util.optionscreen.OptionsScreen;
 
 public class GamePlayWin extends OptionsScreen implements ScreenState {
     
+    /**
+     * Constructor
+     * @param gamePlayScreen GamePlayScreen object
+     * @param screenManager ScreenManager object
+     */
     public GamePlayWin(GamePlayScreen gamePlayScreen, ScreenManager screenManager) {
         List<Button> buttons = new ArrayList<Button>();
         

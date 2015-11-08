@@ -18,6 +18,9 @@ public class ScreenManager {
     
     private static ScreenManager instance = new ScreenManager();
     
+    /**
+     * Constructor
+     */
     private ScreenManager() {
         GamePlayScreen gamePlayScreen = GamePlayScreen.getInstance(this);
         this.screens.put(ScreenType.GAMEPLAY_SCREEN, gamePlayScreen);
@@ -26,18 +29,32 @@ public class ScreenManager {
         this.currentScreen = this.screens.get(ScreenType.TITLE_SCREEN);
     }
     
+    /**
+     * Get instance of ScreenManager
+     * @return instance of ScreenManager
+     */
     public static ScreenManager getInstance(){
         return instance;
     }
     
+    /**
+     * act the current screen
+     */
     public void act() {
         this.currentScreen.act();
     }
     
+    /**
+     * draw the current screen
+     */
     public void draw(){
         this.currentScreen.draw();
     }
     
+    /**
+     * change the current screen
+     * @param type type of the screen
+     */
     public void changeCurrentScreen(ScreenType type){
         Screen screen = this.screens.get(type);
         if (screen != null) {
@@ -45,6 +62,11 @@ public class ScreenManager {
         }
     }
     
+    /**
+     * resize current screen
+     * @param width width to resize
+     * @param height height to resize
+     */
     public void resize(int width, int height) {
         this.currentScreen.resize(width, height);
     }

@@ -14,6 +14,10 @@ import br.com.killaliens.util.optionscreen.OptionsScreen;
 
 public class MainTitle extends OptionsScreen implements ScreenState {
     
+    /**
+     * Constructor
+     * @param titleScreen TitleScreen object
+     */
     public MainTitle(TitleScreen titleScreen) {
         this.addActor(new MainTitleBackground());
         

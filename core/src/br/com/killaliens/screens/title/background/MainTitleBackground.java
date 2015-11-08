@@ -26,6 +26,9 @@ public class MainTitleBackground extends Actor {
 
     private float titleHeight = 0f;
     
+    /**
+     * Constructor
+     */
     public MainTitleBackground() {
         TextMetrics textMetrics = new TextMetrics();
         textMetrics.setText(font, TITLE_NAME);

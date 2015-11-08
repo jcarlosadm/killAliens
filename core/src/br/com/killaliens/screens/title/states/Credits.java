@@ -10,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Credits extends Stage implements ScreenState {
     
+    /**
+     * Constructor
+     * @param titleScreen TitleScreen object
+     */
     public Credits(TitleScreen titleScreen) {
         this.addActor(new CreditsBackground());
         
