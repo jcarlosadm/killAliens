@@ -12,6 +12,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+/**
+ * HPBar
+ * Show the Hit Points bar in player status bar
+ */
 public class HPBar {
     
     private static final float RELATIVE_POSITIONX = 13f;
@@ -37,6 +41,11 @@ public class HPBar {
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private boolean projectionMatrixSet = false;
     
+    /**
+     * Constructor
+     * @param statusBar StatusBar object
+     * @param playerShip PlayerShip object
+     */
     public HPBar(StatusBar statusBar, PlayerShip playerShip) {
         this.positionX = statusBar.getX() + RELATIVE_POSITIONX;
         this.positionY = statusBar.getY() + RELATIVE_POSITIONY;
@@ -44,6 +53,11 @@ public class HPBar {
         this.playerShip = playerShip;
     }
     
+    /**
+     * draw the HPBar
+     * @param batch place to draw
+     * @param parentAlpha
+     */
     public void draw(Batch batch, float parentAlpha) {
         
         float relativePlayerHp = this.playerShip.getCurrentLife() 
@@ -66,6 +80,12 @@ public class HPBar {
         drawText(batch);
     }
 
+    /**
+     * draw the bar relative to current player hit points
+     * @param batch 
+     * @param adjustedWidth
+     * @param currentColor
+     */
     private void drawWithShapeRenderer(Batch batch, float adjustedWidth,
             Color currentColor) {
         this.shapeRenderer.begin(ShapeType.Filled);
@@ -76,6 +96,10 @@ public class HPBar {
         this.shapeRenderer.end();
     }
     
+    /**
+     * draw text in hit points bar
+     * @param batch
+     */
     private void drawText(Batch batch) {
         int currentLife = (int) this.playerShip.getCurrentLife();
         int maxLife = (int) this.playerShip.getMaxLife();
@@ -85,6 +109,10 @@ public class HPBar {
                 + this.playerShip.getAccumulatorScrollY() + ADJUST_TEXT_POSITIONY);
     }
     
+    /**
+     * set the projection matrix (only one time)
+     * @param batch
+     */
     private void setProjectionMatrix(Batch batch) {
         if (!this.projectionMatrixSet) {
             this.shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
@@ -92,6 +120,11 @@ public class HPBar {
         }
     }
     
+    /**
+     * Define color of the bar relative to player current hit points
+     * @param relativePlayerHp relative player current hit points
+     * @return color of the hit points bar
+     */
     private Color setCurrentColor(float relativePlayerHp) {
         Color currentColor = COLOR_GOOD;
         if (relativePlayerHp <= BAD_MARK) {

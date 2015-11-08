@@ -29,6 +29,9 @@ public class ShipPlayerPropertiesBuilder {
 
     private static final BulletType BASIC_AMMUNITION = BulletType.NORMALBULLET;
 
+    /**
+     * @return ship properties
+     */
     public ShipProperties getShipProperties(){
         
         ShipProperties properties = new ShipProperties();
@@ -56,12 +59,18 @@ public class ShipPlayerPropertiesBuilder {
         return properties;
     }
     
-    protected float getStartWidth(){
+    /**
+     * @return start width
+     */
+    private float getStartWidth(){
         TextureRegion textureRegion = TextureCache.getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
         return (textureRegion == null ? 0 : textureRegion.getRegionWidth());
     }
     
-    protected float getStartHeight(){
+    /**
+     * @return start height
+     */
+    private float getStartHeight(){
         TextureRegion textureRegion = TextureCache.getTextureRegion(ANIMATION_NORMAL_FRAMES[0]);
         return (textureRegion == null ? 0 : textureRegion.getRegionHeight());
     }

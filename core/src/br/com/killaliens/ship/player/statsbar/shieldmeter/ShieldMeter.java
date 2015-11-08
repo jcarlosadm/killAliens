@@ -9,6 +9,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * ShieldMeter
+ * Show the shield meter in player status bar
+ */
 public class ShieldMeter {
     
     private static final String ICON_NAME = "shield_icon";
@@ -26,6 +30,11 @@ public class ShieldMeter {
     private BitmapFont font = FontCache.getFont(FONT_NAME);
     private TextureRegion textureRegion = TextureCache.getTextureRegion(ICON_NAME);
     
+    /**
+     * Constructor
+     * @param statusBar StatusBar object
+     * @param playerShip PlayerShip object
+     */
     public ShieldMeter(StatusBar statusBar, PlayerShip playerShip) {
         this.playerShip = playerShip;
         
@@ -33,6 +42,11 @@ public class ShieldMeter {
         this.positionY = statusBar.getY() + RELATIVE_POSITIONY;
     }
     
+    /**
+     * draw the shield meter in player status bar
+     * @param batch place to draw
+     * @param parentAlpha
+     */
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(this.textureRegion, this.positionX, this.positionY 
                 + this.playerShip.getAccumulatorScrollY());

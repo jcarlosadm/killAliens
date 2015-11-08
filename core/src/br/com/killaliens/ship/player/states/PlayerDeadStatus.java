@@ -16,6 +16,10 @@ public class PlayerDeadStatus implements StatusManagement {
     
     private boolean setupComplete = false;
     
+    /**
+     * Constructor
+     * @param playerShip
+     */
     public PlayerDeadStatus(PlayerShip playerShip) {
         this.playerShip = playerShip;
     }

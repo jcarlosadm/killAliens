@@ -8,6 +8,10 @@ import br.com.killaliens.util.cache.font.FontCache;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+/**
+ * AmmunitionMeter
+ * Show type and total of Ammunition in player status bar
+ */
 public class AmmunitionMeter {
     
     private static final float RELATIVE_POSITIONX = 190f;
@@ -27,6 +31,11 @@ public class AmmunitionMeter {
     
     private BitmapFont font = FontCache.getFont(FONT_NAME);
     
+    /**
+     * Constructor
+     * @param statusBar StatusBar object
+     * @param playerShip PlayerShip object
+     */
     public AmmunitionMeter(StatusBar statusBar, PlayerShip playerShip) {
         this.playerShip = playerShip;
         
@@ -34,6 +43,11 @@ public class AmmunitionMeter {
         this.positionY = statusBar.getY() + RELATIVE_POSITIONY;
     }
     
+    /**
+     * draw the ammunition meter
+     * @param batch place to draw
+     * @param parentAlpha
+     */
     public void draw(Batch batch, float parentAlpha) {
         Ammunition ammunition = this.playerShip.getTopAmmunition();
         batch.draw(ammunition.getType().getIconTexture(), this.positionX, this.positionY 

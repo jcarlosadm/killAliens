@@ -21,6 +21,10 @@ public class PlayerShip extends Ship implements ScrollObserver {
 
     private float accumulatorScrollY = 0f;
 
+    /**
+     * Constructor
+     * @param properties
+     */
     private PlayerShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(false);
@@ -31,6 +35,10 @@ public class PlayerShip extends Ship implements ScrollObserver {
         this.setCurrentStatus(AnimationTypes.NORMAL_STATE);
     }
 
+    /**
+     * Get player ship instance
+     * @return player ship instance
+     */
     public static synchronized PlayerShip getPlayerShip() {
         if (playerShipInstance == null) {
             ShipPlayerPropertiesBuilder builder = new ShipPlayerPropertiesBuilder();
@@ -41,6 +49,9 @@ public class PlayerShip extends Ship implements ScrollObserver {
         return playerShipInstance;
     }
     
+    /**
+     * Reset player ship instance
+     */
     public static synchronized void reset(){
         playerShipInstance = null;
     }
@@ -82,12 +93,15 @@ public class PlayerShip extends Ship implements ScrollObserver {
     }
 
     /**
-     * @return the touched
+     * @return if player ship is touched
      */
     public boolean isTouched() {
         return this.touched;
     }
 
+    /**
+     * @return accumulator vertical scroll
+     */
     public float getAccumulatorScrollY() {
         return this.accumulatorScrollY;
     }

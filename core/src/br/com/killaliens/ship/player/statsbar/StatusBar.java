@@ -26,13 +26,18 @@ public class StatusBar extends Actor implements ScrollObserver {
     private ShieldMeter shieldMeter = null;
     private AmmunitionMeter ammunitionMeter = null;
 
-    private float accumulatorScrollY = 0f;
-
+    /**
+     * Constructor
+     * @param playerShip PlayerShip object
+     */
     public StatusBar(PlayerShip playerShip) {
         this.playerShip = playerShip;
         this.setup();
     }
 
+    /**
+     * setup status bar
+     */
     private void setup() {
         this.setX(Gdx.graphics.getWidth() - 10f
                 - this.statusBarTexture.getRegionWidth());
@@ -59,13 +64,8 @@ public class StatusBar extends Actor implements ScrollObserver {
         batch.setColor(color.r, color.g, color.b, 1f);
     }
 
-    public float getAccumulatorScrollY() {
-        return this.accumulatorScrollY;
-    }
-
     @Override
     public void updateScroll(float xDelta, float yDelta) {
-        this.accumulatorScrollY += yDelta;
         this.setY(this.getY() + yDelta);
     }
 

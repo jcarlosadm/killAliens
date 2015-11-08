@@ -12,6 +12,10 @@ public class PlayerNormalStatus implements StatusManagement {
     
     private boolean setupComplete = false;
     
+    /**
+     * Constructor
+     * @param playerShip
+     */
     public PlayerNormalStatus(PlayerShip playerShip) {
         this.playerShip = playerShip;
     }
