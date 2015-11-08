@@ -14,10 +14,18 @@ public class AnimationManagement {
     
     private float elapsedTime = 0;
 
-    public TextureRegion getCurrentTextureRegion(boolean looping){
-        return this.currentAnimation.getKeyFrame(elapsedTime, looping);
+    /**
+     * @return current texture region image
+     */
+    public TextureRegion getCurrentTextureRegion(){
+        return this.currentAnimation.getKeyFrame(elapsedTime, true);
     }
 
+    /**
+     * set current animation type
+     * @param key animation type
+     * @return true if successful
+     */
     public boolean setCurrentAnimation(AnimationTypes key) {
         if (this.animations.containsKey(key)) {
             this.currentAnimation = this.animations.get(key);
@@ -27,19 +35,20 @@ public class AnimationManagement {
         return false;
     }
 
+    /**
+     * Advance time of animation manager
+     * @param deltaTime time in seconds since the last frame
+     */
     public void advanceTime(float deltaTime){
         this.elapsedTime += deltaTime;
     }
     
+    /**
+     * add animation
+     * @param type type of the animation
+     * @param animation animation to add
+     */
     public void addAnimation(AnimationTypes type, Animation animation){
         this.animations.put(type, animation);
-    }
-    
-    public boolean removeAnimation(AnimationTypes key){
-        if (this.animations.containsKey(key)) {
-            this.animations.remove(key);
-            return true;
-        }
-        return false;
     }
 }

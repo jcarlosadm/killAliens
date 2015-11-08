@@ -143,7 +143,7 @@ public abstract class Ship extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         
-        batch.draw(this.animationData.getCurrentTextureRegion(true),
+        batch.draw(this.animationData.getCurrentTextureRegion(),
                 this.getX(), this.getY(), this.getOriginX(), this.getOriginY(),
                 this.getWidth(), this.getHeight(), this.getScaleX(),
                 this.getScaleY(), this.getRotation());

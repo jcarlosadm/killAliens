@@ -85,7 +85,7 @@ public abstract class Bonus extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         
-        batch.draw(this.animationManagement.getCurrentTextureRegion(true), 
+        batch.draw(this.animationManagement.getCurrentTextureRegion(), 
                 this.getX(), this.getY());
     }
     
