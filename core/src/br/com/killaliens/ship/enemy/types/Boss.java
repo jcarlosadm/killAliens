@@ -38,6 +38,10 @@ public class Boss extends EnemyShip {
     
     private float spawnEnemyTime = 0f;
     
+    /**
+     * Constructor
+     * @param properties
+     */
     public Boss(ShipProperties properties) {
         super(properties);
         this.addStatus(AnimationTypes.DEAD, new BossDeadStatus(this));
@@ -54,7 +58,11 @@ public class Boss extends EnemyShip {
         this.setShooting(true);
     }
 
-    protected void spawnEnemies(float delta) {
+    /**
+     * spawn random enemies in screen 
+     * @param delta time in seconds since the last frame
+     */
+    private void spawnEnemies(float delta) {
         this.spawnEnemyTime += delta;
         if (this.spawnEnemyTime >= TIME_LIMIT_TO_SPAWN_ENEMY) {
             this.spawnEnemyTime = 0f;
@@ -74,7 +82,11 @@ public class Boss extends EnemyShip {
         }
     }
 
-    protected void changeBullets(float delta) {
+    /**
+     * change bullet type
+     * @param delta time in seconds since the last frame
+     */
+    private void changeBullets(float delta) {
         this.currentTime += delta;
         if (this.currentTime >= TIME_LIMIT_TO_CHANGE_BULLET) {
             this.currentTime = 0f;
@@ -97,7 +109,10 @@ public class Boss extends EnemyShip {
         }
     }
 
-    protected void move() {
+    /**
+     * move algorithm
+     */
+    private void move() {
         Camera camera = this.getStage().getCamera();
         
         goToLocation(camera);
@@ -107,7 +122,11 @@ public class Boss extends EnemyShip {
         this.setY(this.getY() + this.getSpeedY());
     }
 
-    protected void moveLeftRight(Camera camera) {
+    /**
+     * move to left and right
+     * @param camera
+     */
+    private void moveLeftRight(Camera camera) {
         if (this.positioned && this.moveLeft) {
             if (this.getX() <= camera.position.x - camera.viewportWidth / 2) {
                 this.moveLeft = false;
@@ -122,7 +141,11 @@ public class Boss extends EnemyShip {
         }
     }
 
-    protected void goToLocation(Camera camera) {
+    /**
+     * initial move
+     * @param camera
+     */
+    private void goToLocation(Camera camera) {
         if (!this.positioned &&
                 this.getY() + this.getHeight()*2 < camera.position.y + camera.viewportHeight/2) {
             this.setSpeedY(SPEED_Y_POSITIONED);

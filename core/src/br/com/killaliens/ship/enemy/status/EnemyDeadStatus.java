@@ -9,6 +9,10 @@ public class EnemyDeadStatus extends EnemyStatus {
     private static final float LIMIT_TIME_TO_DEAD = 1.5f;
     private float currentTime = 0;
     
+    /**
+     * Constructor
+     * @param enemyShip enemy ship with this status
+     */
     public EnemyDeadStatus(EnemyShip enemyShip) {
         super(enemyShip);
     }

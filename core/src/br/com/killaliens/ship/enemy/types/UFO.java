@@ -8,6 +8,10 @@ public class UFO extends EnemyShip {
 
     private static final float ROTATION_SPEED = 1f;
 
+    /**
+     * Constructor
+     * @param properties
+     */
     public UFO(ShipProperties properties) {
         super(properties);
     }

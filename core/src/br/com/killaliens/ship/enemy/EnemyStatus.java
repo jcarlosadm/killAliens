@@ -8,6 +8,10 @@ public abstract class EnemyStatus implements StatusManagement {
     
     private boolean setupComplete = false;
     
+    /**
+     * Constructor
+     * @param enemyShip
+     */
     public EnemyStatus(EnemyShip enemyShip) {
         this.enemyShip = enemyShip;
     }
@@ -21,6 +25,9 @@ public abstract class EnemyStatus implements StatusManagement {
         }
     }
     
+    /**
+     * additional setup
+     */
     protected abstract void specificSetup();
 
     @Override
@@ -28,6 +35,9 @@ public abstract class EnemyStatus implements StatusManagement {
         this.setupComplete = false;
     }
     
+    /**
+     * @return enemy ship with this status
+     */
     protected EnemyShip getShip(){
         return this.enemyShip;
     }

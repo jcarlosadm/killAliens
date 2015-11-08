@@ -20,6 +20,10 @@ public abstract class EnemyShip extends Ship {
     private CheckVisibleOnCamera checkVisibleOnCamera = new CheckVisibleOnCamera(
             this);
 
+    /**
+     * Constructor
+     * @param properties
+     */
     public EnemyShip(ShipProperties properties) {
         super(properties);
         this.setIfIsEnemy(true);
@@ -60,7 +64,11 @@ public abstract class EnemyShip extends Ship {
         return super.remove();
     }
 
-    private void createBonus(GamePlayResume gameScreen) {
+    /**
+     * Generate bonus (if is dead)
+     * @param gamePlayResume GamePlayResume object
+     */
+    private void createBonus(GamePlayResume gamePlayResume) {
         int randomNumber = StaticRandom.getRandomValue(1, 10);
 
         Bonus bonus = null;
@@ -81,14 +89,27 @@ public abstract class EnemyShip extends Ship {
             return;
         }
 
-        gameScreen.addObjectToGroup(GamePlayObjects.BONUS_LIST, bonus);
+        gamePlayResume.addObjectToGroup(GamePlayObjects.BONUS_LIST, bonus);
     }
 
+    /**
+     * @return low bonus type
+     */
     protected abstract BonusType getLowBonusType();
 
+    /**
+     * @return middle bonus type
+     */
     protected abstract BonusType getMiddleBonusType();
 
+    /**
+     * @return high bonus type
+     */
     protected abstract BonusType getHighBonusType();
 
+    /**
+     * default AI of this enemy ship
+     * @param delta time in seconds since the last frame
+     */
     public abstract void runArtificialIntelligence(float delta);
 }

@@ -21,6 +21,10 @@ public class CrazyUFO extends EnemyShip {
     private float currentTimeToChangeSpeeds = 0f;
     private float rotationSpeed = INITIAL_ROTATION_SPEED;
     
+    /**
+     * Constructor
+     * @param properties
+     */
     public CrazyUFO(ShipProperties properties) {
         super(properties);
     }
@@ -38,11 +42,18 @@ public class CrazyUFO extends EnemyShip {
         this.rotateBy(this.rotationSpeed);
     }
 
+    /**
+     * move algorithm
+     * @param delta time in seconds since the last frame
+     */
     private void move(float delta) {
         this.setX(this.getX() + this.getSpeedX());
         this.setY(this.getY() + this.getSpeedY());
     }
 
+    /**
+     * change the own speed
+     */
     private void changeSpeeds() {
         if (this.currentTimeToChangeSpeeds >= LIMIT_TIME_TO_CHANGE_SPEEDS) {
             this.setSpeedX(StaticRandom.getRandomValue(MIN_RANDOM_SPEED_X, MAX_RANDOM_SPEED_X));
@@ -52,6 +63,9 @@ public class CrazyUFO extends EnemyShip {
         }
     }
 
+    /**
+     * change the own rotation
+     */
     private void changeRotation() {
         if (this.currentTimeToChangeRotationDirection >= LIMIT_TIME_TO_CHANGE_ROTATION) {
             this.rotationSpeed = StaticRandom.

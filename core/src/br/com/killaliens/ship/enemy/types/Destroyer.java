@@ -14,6 +14,10 @@ public class Destroyer extends EnemyShip{
     private boolean moveDown = true;
     private float accumulatorMove = 0f;
     
+    /**
+     * Constructor
+     * @param properties
+     */
     public Destroyer(ShipProperties properties) {
         super(properties);
         this.getTopAmmunition().addLevel();

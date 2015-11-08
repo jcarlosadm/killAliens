@@ -48,13 +48,26 @@ public abstract class EnemyFactory {
         return null;
     }
     
+    /**
+     * get EnemyShip instance
+     * @return EnemyShip instance
+     */
     public EnemyShip getShip(){
         ShipProperties shipProperties = this.buildProperties();
         return this.getShipInstance(shipProperties);
     }
     
+    /**
+     * get ship instance
+     * @param shipProperties
+     * @return ship instance
+     */
     protected abstract EnemyShip getShipInstance(ShipProperties shipProperties);
     
+    /**
+     * Build ship properties
+     * @return ship properties
+     */
     private ShipProperties buildProperties(){
         ShipProperties shipProperties = new ShipProperties();
         
@@ -79,35 +92,71 @@ public abstract class EnemyFactory {
         return shipProperties;
     }
     
+    /**
+     * @return start height
+     */
     private float getStartHeight() {
         TextureRegion textureRegion = TextureCache.getTextureRegion
                 (this.getAnimationNormalFrameNames()[0]);
         return (textureRegion == null ? 0 : textureRegion.getRegionHeight());
     }
 
+    /**
+     * @return start width
+     */
     private float getStartWidth() {
         TextureRegion textureRegion = TextureCache.getTextureRegion
                 (this.getAnimationNormalFrameNames()[0]);
         return (textureRegion == null ? 0 : textureRegion.getRegionWidth());
     }
 
+    /**
+     * @return animation normal state frame names
+     */
     protected abstract String[] getAnimationNormalFrameNames();
     
+    /**
+     * @return animation dead state frame names
+     */
     protected abstract String[] getAnimationDeadFrames();
     
+    /**
+     * @return animation normal state frame time
+     */
     protected abstract float getAnimationNormalFrameTime();
     
+    /**
+     * @return animation dead frame time
+     */
     protected abstract float getAnimationDeadFrameTime();
     
+    /**
+     * @return rotation
+     */
     protected abstract float getRotation();
     
+    /**
+     * @return speed x
+     */
     protected abstract float getSpeedX();
     
+    /**
+     * @return speed y
+     */
     protected abstract float getSpeedY();
     
+    /**
+     * @return total and current life value
+     */
     protected abstract int getLifeValue();
     
+    /**
+     * @return shield value
+     */
     protected abstract int getShieldValue();
     
+    /**
+     * @return type of basic ammunition
+     */
     protected abstract BulletType getBasicAmmunition();
 }

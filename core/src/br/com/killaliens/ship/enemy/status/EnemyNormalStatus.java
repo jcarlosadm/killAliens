@@ -6,6 +6,10 @@ import br.com.killaliens.util.animation.AnimationTypes;
 
 public class EnemyNormalStatus extends EnemyStatus{
 
+    /**
+     * Constructor
+     * @param enemyShip enemy ship with this status
+     */
     public EnemyNormalStatus(EnemyShip enemyShip) {
         super(enemyShip);
     }

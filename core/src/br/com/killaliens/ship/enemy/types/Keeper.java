@@ -10,6 +10,10 @@ public class Keeper extends EnemyShip {
     
     private static final float SPEED_Y_MOVING = 2f;
 
+    /**
+     * Constructor
+     * @param properties
+     */
     public Keeper(ShipProperties properties) {
         super(properties);
         this.getTopAmmunition().addLevel();

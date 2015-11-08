@@ -6,6 +6,10 @@ import br.com.killaliens.ship.enemy.EnemyShip;
 
 public class BossDeadStatus extends EnemyDeadStatus {
     
+    /**
+     * Constructor
+     * @param enemyShip enemy ship with this status
+     */
     public BossDeadStatus(EnemyShip enemyShip) {
         super(enemyShip);
     }

@@ -11,6 +11,10 @@ public class Cannon extends EnemyShip {
     
     private float currentTime = 0f;
     
+    /**
+     * Constructor
+     * @param properties
+     */
     public Cannon(ShipProperties properties) {
         super(properties);
     }
