@@ -14,6 +14,14 @@ public class FontCache {
     private static final String FONT_FOLDER = "fonts/";
     private static Map<String, BitmapFont> fonts = new HashMap<String, BitmapFont>();
     
+    private FontCache() {
+    }
+    
+    /**
+     * get font
+     * @param fontName
+     * @return font instance
+     */
     public static BitmapFont getFont(String fontName){
         if (fonts.containsKey(fontName)) {
             return fonts.get(fontName);
@@ -24,6 +32,9 @@ public class FontCache {
         return font;
     }
     
+    /**
+     * dispose all fonts
+     */
     public static void dispose() {
         for (BitmapFont font : fonts.values()) {
             font.dispose();

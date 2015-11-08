@@ -18,6 +18,14 @@ public class SoundCache {
     
     private static Map<String, Sound> sounds = new HashMap<String, Sound>();
     
+    private SoundCache(){
+    }
+    
+    /**
+     * Get sound object
+     * @param soundName
+     * @return Sound instance
+     */
     public static Sound getSound(String soundName){
         if (sounds.containsKey(soundName)) {
             return sounds.get(soundName);
@@ -39,6 +47,9 @@ public class SoundCache {
         return sound;
     }
     
+    /**
+     * dispose all sounds
+     */
     public static void dispose() {
         for (Sound sound : sounds.values()) {
             sound.dispose();

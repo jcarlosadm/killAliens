@@ -25,6 +25,11 @@ public class TextureCache {
     private TextureCache() {
     }
 
+    /**
+     * get texture region
+     * @param textureRegionName
+     * @return texture region instance
+     */
     public static synchronized TextureRegion getTextureRegion(
             String textureRegionName) {
         if (textures.containsKey(textureRegionName)) {
@@ -34,15 +39,23 @@ public class TextureCache {
         TextureAtlas atlas = AtlasLoader.getTextureAtlas();
 
         TextureRegion textureRegion = atlas.findRegion(textureRegionName);
-        if (textureRegion != null) {
-            textures.put(textureRegionName, textureRegion);
-        } else if (checkImage(textureRegionName) == true) {
+        if (textureRegion == null && checkTextureRegionOutOfAtlas(textureRegionName) == true) {
             textureRegion = findOutOfTheAtlas(textureRegionName);
         }
+        
+        if (textureRegion != null) {
+            textures.put(textureRegionName, textureRegion);
+        }
+        
         return textureRegion;
     }
 
-    protected static TextureRegion findOutOfTheAtlas(String textureRegionName) {
+    /**
+     * find texture region out of the atlas
+     * @param textureRegionName
+     * @return texture region instance
+     */
+    private static TextureRegion findOutOfTheAtlas(String textureRegionName) {
         TextureRegion textureRegion;
         textureRegion = new TextureRegion(new Texture(
                 Gdx.files.internal(IMAGE_FOLDER + File.separator
@@ -51,11 +64,19 @@ public class TextureCache {
         return textureRegion;
     }
 
-    private static boolean checkImage(String textureRegionName) {
+    /**
+     * Check if texture out of the atlas exists
+     * @param textureRegionName
+     * @return true if exists
+     */
+    private static boolean checkTextureRegionOutOfAtlas(String textureRegionName) {
         return Gdx.files.internal(
                 IMAGE_FOLDER + File.separator + textureRegionName).exists();
     }
 
+    /**
+     * Dispose all textures
+     */
     public static void dispose() {
         for (TextureRegion textureRegion : textures.values()) {
             textureRegion.getTexture().dispose();

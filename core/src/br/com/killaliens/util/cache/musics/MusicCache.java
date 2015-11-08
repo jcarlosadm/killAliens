@@ -18,6 +18,14 @@ public class MusicCache {
     
     private static Map<String, Music> musics = new HashMap<String, Music>();
     
+    private MusicCache(){
+    }
+    
+    /**
+     * get music object
+     * @param musicName
+     * @return Music instance
+     */
     public static Music getMusic(String musicName){
         if (musics.containsKey(musicName)) {
             return musics.get(musicName);
@@ -39,6 +47,9 @@ public class MusicCache {
         return music;
     }
     
+    /**
+     * Dispose all musics
+     */
     public static void dispose() {
         for (Music music : musics.values()) {
             music.dispose();
