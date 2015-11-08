@@ -8,6 +8,12 @@ public class StaticRandom {
     
     private StaticRandom(){}
     
+    /**
+     * Get random value between two limits
+     * @param min
+     * @param max
+     * @return random value
+     */
     public static synchronized int getRandomValue(int min, int max){
         if (instance == null) {
             instance = new Random();

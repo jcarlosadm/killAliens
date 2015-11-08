@@ -6,5 +6,10 @@ package br.com.killaliens.util.scrollobserver;
  */
 public interface ScrollObserver {
     
+    /**
+     * update scroll
+     * @param xDelta
+     * @param yDelta
+     */
     public void updateScroll(float xDelta, float yDelta);
 }

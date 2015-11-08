@@ -9,10 +9,19 @@ public class VerticesBuilder {
     
     private List<Vector2> points = new ArrayList<Vector2>();
     
+    /**
+     * Add point
+     * @param x
+     * @param y
+     */
     public void addPoint(float x, float y) {
         this.points.add(new Vector2(x, y));
     }
     
+    /**
+     * Build vertices with added points
+     * @return vertices
+     */
     public float[] buildVertices() {
         float[] vertices = new float[this.points.size()*2];
         

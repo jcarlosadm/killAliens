@@ -11,7 +11,11 @@ public class OptionsScreen extends Stage {
     
     private static final float SPACE_BETWEEN_BUTTONS = 20f;
     
-    protected void setButtons(List<Button> buttons){
+    /**
+     * set a list of buttons
+     * @param buttons list of buttons to set
+     */
+    protected void setButtons(List<Button> buttons) {
         float centerX = Gdx.graphics.getWidth() / 2;
         float centerY = Gdx.graphics.getHeight() / 2;
 
