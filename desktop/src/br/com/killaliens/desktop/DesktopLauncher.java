@@ -14,6 +14,7 @@ public class DesktopLauncher {
     
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		System.setProperty("org.lwjgl.opengl.Display.allowSoftwareOpenGL", "true");
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		config.height = (int) (screenSize.getHeight() 
