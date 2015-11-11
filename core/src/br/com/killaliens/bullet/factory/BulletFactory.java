@@ -31,7 +31,6 @@ public abstract class BulletFactory {
      * get BulletFactory instance
      * @param type type of the Bullet
      * @return BulletFactory instance
-     * TODO Factory Method pattern
      */
     public static BulletFactory getFactory(BulletType type) {
         if (type.equals(BulletType.NORMALBULLET)) {
