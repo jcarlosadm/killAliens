@@ -6,3 +6,5 @@ This project uses libgdx library. Visit https://libgdx.badlogicgames.com/ for mo
 Download the folder assets (download as zip in superior-right corner of the page): https://www.dropbox.com/sh/05je4gpzz3ee7ac/AADbvvXQcYuLh4znMXrtwQdia?dl=0
 
 Put the folder assets in "killAliens/android/" folder
+
+The assets can be found in http://opengameart.org/
