@@ -11,9 +11,9 @@ Put the folder assets in "killAliens/android/" folder
 
 ##Screenshots
 
-![Alt screenshot01](https://www.dropbox.com/s/502dhd35p7j1rdu/Screenshot01.jpg?dl=0?raw=true "Screenshot01")
+![Alt screenshot01](https://www.dropbox.com/s/502dhd35p7j1rdu/Screenshot01.jpg?raw=true "Screenshot01")
 
-![Alt screenshot02](https://www.dropbox.com/s/arj1rwiw5l677bp/Screenshot02.jpg?dl=0?raw=true "Screenshot02")
+![Alt screenshot02](https://www.dropbox.com/s/arj1rwiw5l677bp/Screenshot02.jpg?raw=true "Screenshot02")
 
 ![Alt screenshot03](repoImages/Screenshot03.jpg?raw=true "Screenshot03")
 
