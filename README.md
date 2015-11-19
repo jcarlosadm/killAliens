@@ -9,6 +9,10 @@ Put the folder assets in "killAliens/android/" folder
 
 (All the used assets can be found in http://opengameart.org/)
 
+##Link to jar
+
+https://www.dropbox.com/s/3rg45pc7j6s8bia/KillAliens.jar?dl=0
+
 ##Screenshots
 
 ![Alt screenshot01](https://www.dropbox.com/s/502dhd35p7j1rdu/Screenshot01.jpg?raw=true "Screenshot01")
